@@ -26,6 +26,23 @@ class AdminProfileController extends Controller
         $user->phone = $request->phone;
         $user->save();
 
+        toastr()->success('Profile berhasil diupdate');
+        return redirect()->back();
+    }
+
+    //update password
+    public function updatePassword(Request $request)
+    {
+        $request->validate([
+            'current_password' => ['required', 'current_password'],
+            'password' => ['required', 'confirmed', 'min:8']
+        ]);
+        
+        $request->user()->update([
+            'password' => bcrypt($request->password)
+        ]);
+
+        toastr()->success('Password berhasil diubah');
         return redirect()->back();
     }
 }

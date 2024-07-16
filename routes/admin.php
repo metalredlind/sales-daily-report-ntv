@@ -11,6 +11,7 @@ Route::get('dashboard', [AdminController::class, 'dashboard'])->name('dashboard'
 //profile route
 Route::get('profile', [AdminProfileController::class, 'index'])->name('profile');
 Route::post('profile/update', [AdminProfileController::class, 'updateProfile'])->name('profile.update');
+Route::post('profile/update/password', [AdminProfileController::class, 'updatePassword'])->name('password.update');
 
 //brand client route
 Route::get('brand-client', [BrandClientController::class, 'index'])->name('brand-client');
