@@ -15,7 +15,7 @@
             <div class="card-header">
                 <h4>Brand / Klien</h4>
                 <div class="card-header-action">
-                  <a href="#" class="btn btn-primary">
+                  <a href="{{route('admin.brand-client.create')}}" class="btn btn-primary">
                     +  Add New
                   </a>
                 </div>
@@ -41,75 +41,22 @@
                       <td>
                         1
                       </td>
-                      <td>Create a mobile app</td>
+                      <td><a href="#" id="modal-1">Manager 1</a></td>
                       <td class="align-middle">
-                        <div class="progress" data-height="4" data-toggle="tooltip" title="100%">
-                          <div class="progress-bar bg-success" data-width="100%"></div>
-                        </div>
+                        Otomotif
                       </td>
                       <td>
-                        <img alt="image" src="assets/img/avatar/avatar-5.png" class="rounded-circle" width="35" data-toggle="tooltip" title="Wildan Ahdian">
-                      </td>
-                      <td>2018-01-20</td>
-                      <td><div class="badge badge-success">Completed</div></td>
-                      <td><a href="#" class="btn btn-secondary">Detail</a></td>
-                    </tr>
-                    <tr>
-                      <td>
-                        2
-                      </td>
-                      <td>Redesign homepage</td>
-                      <td class="align-middle">
-                        <div class="progress" data-height="4" data-toggle="tooltip" title="0%">
-                          <div class="progress-bar" data-width="0"></div>
-                        </div>
+                        Brand 1
                       </td>
                       <td>
-                        <img alt="image" src="assets/img/avatar/avatar-1.png" class="rounded-circle" width="35" data-toggle="tooltip" title="Nur Alpiana">
-                        <img alt="image" src="assets/img/avatar/avatar-3.png" class="rounded-circle" width="35" data-toggle="tooltip" title="Hariono Yusup">
-                        <img alt="image" src="assets/img/avatar/avatar-4.png" class="rounded-circle" width="35" data-toggle="tooltip" title="Bagus Dwi Cahya">
+                        Rp. 20.000.000
                       </td>
-                      <td>2018-04-10</td>
-                      <td><div class="badge badge-info">Todo</div></td>
-                      <td><a href="#" class="btn btn-secondary">Detail</a></td>
-                    </tr>
-                    <tr>
+                      <td><div class="badge badge-success">Selesai</div></td>
                       <td>
-                        3
+                        <a href="#" class="btn btn-info"><i class="fas fa-edit"></i></a>
+                        <a href="#" class="btn btn-danger"><i class="fas fa-trash"></i></a>
+                        <a href="#" class="btn btn-dark"><i class="fa fa-eye"></i></a>
                       </td>
-                      <td>Backup database</td>
-                      <td class="align-middle">
-                        <div class="progress" data-height="4" data-toggle="tooltip" title="70%">
-                          <div class="progress-bar bg-warning" data-width="70%"></div>
-                        </div>
-                      </td>
-                      <td>
-                        <img alt="image" src="assets/img/avatar/avatar-1.png" class="rounded-circle" width="35" data-toggle="tooltip" title="Rizal Fakhri">
-                        <img alt="image" src="assets/img/avatar/avatar-2.png" class="rounded-circle" width="35" data-toggle="tooltip" title="Hasan Basri">
-                      </td>
-                      <td>2018-01-29</td>
-                      <td><div class="badge badge-warning">In Progress</div></td>
-                      <td><a href="#" class="btn btn-secondary">Detail</a></td>
-                    </tr>
-                    <tr>
-                      <td>
-                        4
-                      </td>
-                      <td>Input data</td>
-                      <td class="align-middle">
-                        <div class="progress" data-height="4" data-toggle="tooltip" title="100%">
-                          <div class="progress-bar bg-success" data-width="100%"></div>
-                        </div>
-                      </td>
-                      <td>
-                        <img alt="image" src="assets/img/avatar/avatar-2.png" class="rounded-circle" width="35" data-toggle="tooltip" title="Rizal Fakhri">
-                        <img alt="image" src="assets/img/avatar/avatar-5.png" class="rounded-circle" width="35" data-toggle="tooltip" title="Isnap Kiswandi">
-                        <img alt="image" src="assets/img/avatar/avatar-4.png" class="rounded-circle" width="35" data-toggle="tooltip" title="Yudi Nawawi">
-                        <img alt="image" src="assets/img/avatar/avatar-1.png" class="rounded-circle" width="35" data-toggle="tooltip" title="Khaerul Anwar">
-                      </td>
-                      <td>2018-01-16</td>
-                      <td><div class="badge badge-success">Completed</div></td>
-                      <td><a href="#" class="btn btn-secondary">Detail</a></td>
                     </tr>
                   </tbody>
                 </table>
@@ -120,5 +67,25 @@
       </div>
     </div>
   </section>
+
+  <div class="modal fade" tabindex="-1" role="dialog" id="exampleModal">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title">Modal title</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <p>Modal body text goes here.</p>
+        </div>
+        <div class="modal-footer bg-whitesmoke br">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+          <button type="button" class="btn btn-primary">Save changes</button>
+        </div>
+      </div>
+    </div>
+  </div>
 
 @endsection

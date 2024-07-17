@@ -14,6 +14,7 @@
   <link rel="stylesheet" href="{{asset('stisla/assets/modules/weather-icon/css/weather-icons.min.css')}}">
   <link rel="stylesheet" href="{{asset('stisla/assets/modules/weather-icon/css/weather-icons-wind.min.css')}}">
   <link rel="stylesheet" href="{{asset('stisla/assets/modules/summernote/summernote-bs4.css')}}">
+  <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css">
 
   <!-- Template CSS -->
   <link rel="stylesheet" href="{{asset('stisla/assets/css/style.css')}}">
@@ -76,13 +77,16 @@
   <!-- Template JS File -->
   <script src="{{asset('stisla/assets/js/scripts.js')}}"></script>
   <script src="{{asset('stisla/assets/js/custom.js')}}"></script>
-  
+
+  <!-- Toastr JS File -->
+  <script src="//cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
+
   <script>
     @if ($errors->any())
       @foreach ($errors->all() as $error)
-        @php
-          toastr()->error($error);
-        @endphp
+        
+        toastr.error("{{$error}}")
+
       @endforeach
     @endif
   </script>

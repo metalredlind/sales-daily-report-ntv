@@ -14,5 +14,4 @@ Route::post('profile/update', [AdminProfileController::class, 'updateProfile'])-
 Route::post('profile/update/password', [AdminProfileController::class, 'updatePassword'])->name('password.update');
 
 //brand client route
-Route::get('brand-client', [BrandClientController::class, 'index'])->name('brand-client');
-
+Route::resource('brand-client', BrandClientController::class);
