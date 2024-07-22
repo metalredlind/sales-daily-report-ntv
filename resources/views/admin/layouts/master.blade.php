@@ -14,6 +14,7 @@
   <link rel="stylesheet" href="{{asset('stisla/assets/modules/weather-icon/css/weather-icons.min.css')}}">
   <link rel="stylesheet" href="{{asset('stisla/assets/modules/weather-icon/css/weather-icons-wind.min.css')}}">
   <link rel="stylesheet" href="{{asset('stisla/assets/modules/summernote/summernote-bs4.css')}}">
+  <link rel="stylesheet" href="{{asset('stisla/assets/modules/prism/prism.css')}}">
   <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css">
 
   <!-- Template CSS -->
@@ -70,9 +71,12 @@
   <script src="{{asset('stisla/assets/modules/jqvmap/dist/maps/jquery.vmap.world.js')}}"></script>
   <script src="{{asset('stisla/assets/modules/summernote/summernote-bs4.js')}}"></script>
   <script src="{{asset('stisla/assets/modules/chocolat/dist/js/jquery.chocolat.min.js')}}"></script>
+  <script src="{{asset('stisla/assets/modules/prism/prism.js')}}"></script>
 
   <!-- Page Specific JS File -->
   <script src="{{asset('stisla/assets/js/page/index-0.js')}}"></script>
+  <script src="{{asset('stisla/assets/js/page/bootstrap-modal.js')}}"></script>
+  <script src="{{asset('stisla/assets/js/page/modules-ion-icons.js')}}"></script>
   
   <!-- Template JS File -->
   <script src="{{asset('stisla/assets/js/scripts.js')}}"></script>

@@ -4,7 +4,7 @@
 
 <section class="section">
     <div class="section-header">
-      <h1>Brand / Client</h1>
+      <h1>Pembagian Brand/Klien yang Dikelola</h1>
     </div>
 
     <div class="section-body">
@@ -41,7 +41,7 @@
                       <td>
                         1
                       </td>
-                      <td><a href="#" id="modal-1">Manager 1</a></td>
+                      <td>Manager 1</td>
                       <td class="align-middle">
                         Otomotif
                       </td>
@@ -55,7 +55,7 @@
                       <td>
                         <a href="#" class="btn btn-info"><i class="fas fa-edit"></i></a>
                         <a href="#" class="btn btn-danger"><i class="fas fa-trash"></i></a>
-                        <a href="#" class="btn btn-dark"><i class="fa fa-eye"></i></a>
+                        <a href="" class="btn btn-dark" data-toggle="modal" data-target="#exampleModal"><i class="fa fa-eye"></i></a>
                       </td>
                     </tr>
                   </tbody>
@@ -68,21 +68,20 @@
     </div>
   </section>
 
-  <div class="modal fade" tabindex="-1" role="dialog" id="exampleModal">
+  <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog" role="document">
       <div class="modal-content">
         <div class="modal-header">
-          <h5 class="modal-title">Modal title</h5>
+          <h5 class="modal-title" id="exampleModalLabel">Detail Brand/Klien</h5>
           <button type="button" class="close" data-dismiss="modal" aria-label="Close">
             <span aria-hidden="true">&times;</span>
           </button>
         </div>
         <div class="modal-body">
-          <p>Modal body text goes here.</p>
+          ...
         </div>
-        <div class="modal-footer bg-whitesmoke br">
+        <div class="modal-footer">
           <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-          <button type="button" class="btn btn-primary">Save changes</button>
         </div>
       </div>
     </div>

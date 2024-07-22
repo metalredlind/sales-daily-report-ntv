@@ -18,9 +18,9 @@
         </li>
         <li class="menu-header">Starter</li>
         <li><a class="nav-link" href="{{route('admin.brand-client.index')}}"><i class="far fa-square"></i> <span>Brand/Client</span></a></li>
-        <li><a class="nav-link" href="#"><i class="far fa-square"></i> <span>Daily Report</span></a></li>
-        <li><a class="nav-link" href="#"><i class="far fa-square"></i> <span>Proposal dan Surat</span></a></li>
-        <li><a class="nav-link" href="#"><i class="far fa-square"></i> <span>List Media Order</span></a></li>
+        <li><a class="nav-link" href="{{route('admin.daily-report.index')}}"><i class="far fa-square"></i> <span>Daily Report</span></a></li>
+        <li><a class="nav-link" href="{{route('admin.proposal-surat.index')}}"><i class="far fa-square"></i> <span>Proposal dan Surat</span></a></li>
+        <li><a class="nav-link" href="{{route('admin.media-order.index')}}"><i class="far fa-square"></i> <span>List Media Order</span></a></li>
 
         <li class="menu-header">Setting</li>
         <li><a class="nav-link" href="{{route('admin.profile')}}"><i class="far fa-square"></i> <span>My Profile</span></a></li>
