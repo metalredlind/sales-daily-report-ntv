@@ -15,7 +15,7 @@
             <div class="card-header">
                 <h4>Media Order</h4>
                 <div class="card-header-action">
-                  <a href="#" class="btn btn-primary">
+                  <a href="{{route('admin.media-order.create')}}" class="btn btn-primary">
                     +  Add New
                   </a>
                 </div>

@@ -3,7 +3,7 @@
 @section('content')
     <section class="section">
         <div class="section-header">
-            <h1>Create Brand / Client</h1>
+            <h1>Create Proposal dan Surat Menyurat</h1>
         </div>
 
         <div class="section-body">
@@ -12,50 +12,32 @@
                 <div class="col-8">
                     <div class="card">
                         <div class="card-header">
-                            <h4>Brand / Klien</h4>
+                            <h4>Proposal dan Surat Menyurat</h4>
                         </div>
                         <div class="card-body">
                             <form action="">
                                 <div class="form-group">
-                                    <label>PIC NTV</label>
-                                    <input type="text" class="form-control">
-                                </div>
-                                <label>Brand/Client</label>
-                                <div class="form-group">
-                                    <label>Jenis Industri</label>
+                                    <label>Tanggal</label>
                                     <input type="text" class="form-control">
                                 </div>
                                 <div class="form-group">
-                                    <label>Nama Brand</label>
-                                    <input type="text" class="form-control">
-                                </div>
-                                <label>PIC</label>
-                                <div class="form-group">
-                                    <label>PIC Nama</label>
+                                    <label>No. Surat/MO/Proposal</label>
                                     <input type="text" class="form-control">
                                 </div>
                                 <div class="form-group">
-                                    <label>PIC Jabatan</label>
+                                    <label>Tujuan Surat</label>
                                     <input type="text" class="form-control">
                                 </div>
                                 <div class="form-group">
-                                    <label>PIC No. Telepon</label>
+                                    <label>Perihal</label>
                                     <input type="text" class="form-control">
                                 </div>
                                 <div class="form-group">
-                                    <label>Target</label>
-                                    <div class="input-group">
-                                      <div class="input-group-prepend">
-                                        <div class="input-group-text">
-                                          Rp
-                                        </div>
-                                      </div>
-                                      <input type="text" class="form-control currency">
-                                    </div>
-                                  </div>
-                                <div class="form-group">
-                                    <label>Keterangan</label>
-                                    <input type="text" class="form-control">
+                                    <label>Status Follow Up</label>
+                                    <select class="form-control">
+                                        <option>Sudah Dikirim</option>
+                                        <option>Belum Dikirim</option>
+                                    </select>
                                 </div>
                             </form>
                             
