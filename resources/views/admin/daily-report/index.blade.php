@@ -15,7 +15,7 @@
             <div class="card-header">
                 <h4>Daily Report</h4>
                 <div class="card-header-action">
-                  <a href="#" class="btn btn-primary">
+                  <a href="{{route('admin.daily-report.create')}}" class="btn btn-primary">
                     +  Add New
                   </a>
                 </div>

@@ -72,11 +72,21 @@
   <script src="{{asset('stisla/assets/modules/summernote/summernote-bs4.js')}}"></script>
   <script src="{{asset('stisla/assets/modules/chocolat/dist/js/jquery.chocolat.min.js')}}"></script>
   <script src="{{asset('stisla/assets/modules/prism/prism.js')}}"></script>
+  <script src="{{asset('stisla/assets/modules/cleave-js/dist/cleave.min.js')}}"></script>
+  <script src="{{asset('stisla/assets/modules/cleave-js/dist/addons/cleave-phone.us.js')}}"></script>
+  <script src="{{asset('stisla/assets/modules/jquery-pwstrength/jquery.pwstrength.min.js')}}"></script>
+  <script src="{{asset('stisla/assets/modules/bootstrap-daterangepicker/daterangepicker.js')}}"></script>
+  <script src="{{asset('stisla/assets/modules/bootstrap-colorpicker/dist/js/bootstrap-colorpicker.min.js')}}"></script>
+  <script src="{{asset('stisla/assets/modules/bootstrap-timepicker/js/bootstrap-timepicker.min.js')}}"></script>
+  <script src="{{asset('stisla/assets/modules/bootstrap-tagsinput/dist/bootstrap-tagsinput.min.js')}}"></script>
+  <script src="{{asset('stisla/assets/modules/select2/dist/js/select2.full.min.js')}}"></script>
+  <script src="{{asset('stisla/assets/modules/jquery-selectric/jquery.selectric.min.js')}}"></script>
 
   <!-- Page Specific JS File -->
   <script src="{{asset('stisla/assets/js/page/index-0.js')}}"></script>
   <script src="{{asset('stisla/assets/js/page/bootstrap-modal.js')}}"></script>
   <script src="{{asset('stisla/assets/js/page/modules-ion-icons.js')}}"></script>
+  <script src="{{asset('stisla/assets/js/page/forms-advanced-forms.js')}}"></script>
   
   <!-- Template JS File -->
   <script src="{{asset('stisla/assets/js/scripts.js')}}"></script>
