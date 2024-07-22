@@ -18,7 +18,8 @@
             <div class="row mt-sm-4">
                 <div class="col-12 col-md-12 col-lg-8">
                     <div class="card">
-                        <form method="post" class="needs-validation" novalidate="" action="{{route('admin.profile.update')}}" enctype="multipart/form-data">
+                        <form method="post" class="needs-validation" novalidate=""
+                            action="{{ route('admin.profile.update') }}" enctype="multipart/form-data">
                             @csrf
                             <div class="card-header">
                                 <h4>Edit Profile</h4>
@@ -27,20 +28,23 @@
                                 <div class="row">
                                     <div class="form-group col-md-12 col-12">
                                         <label>Nama</label>
-                                        <input type="text" name="name" class="form-control" value="{{Auth::user()->name}}" required="">
+                                        <input type="text" name="name" class="form-control"
+                                            value="{{ Auth::user()->name }}" required="">
                                     </div>
                                 </div>
                                 <div class="row">
                                     <div class="form-group col-md-7 col-12">
                                         <label>Email</label>
-                                        <input type="email" name="email" class="form-control" value="{{Auth::user()->email}}" required="">
+                                        <input type="email" name="email" class="form-control"
+                                            value="{{ Auth::user()->email }}" required="">
                                         <div class="invalid-feedback">
                                             Please fill in the email
                                         </div>
                                     </div>
                                     <div class="form-group col-md-5 col-12">
                                         <label>Phone</label>
-                                        <input type="text" name="phone" class="form-control" value="{{Auth::user()->phone}}">
+                                        <input type="text" name="phone" class="form-control"
+                                            value="{{ Auth::user()->phone }}">
                                     </div>
                                 </div>
                             </div>
@@ -55,7 +59,8 @@
             <div class="row mt-sm-4">
                 <div class="col-12 col-md-12 col-lg-8">
                     <div class="card">
-                        <form method="post" class="needs-validation" novalidate="" action="{{route('admin.password.update')}}" enctype="multipart/form-data">
+                        <form method="post" class="needs-validation" novalidate=""
+                            action="{{ route('admin.password.update') }}" enctype="multipart/form-data">
                             @csrf
                             <div class="card-header">
                                 <h4>Update Password</h4>
@@ -64,15 +69,36 @@
                                 <div class="row">
                                     <div class="form-group col-md-12 col-12">
                                         <label>Password Sekarang</label>
-                                        <input type="password" name="current_password" class="form-control">
+                                        <div class="input-group">
+                                            <div class="input-group-prepend">
+                                                <div class="input-group-text">
+                                                    <i class="fas fa-lock"></i>
+                                                </div>
+                                            </div>
+                                            <input type="password" name="current_password" class="form-control">
+                                        </div>
                                     </div>
                                     <div class="form-group col-md-12 col-12">
                                         <label>Password Baru</label>
-                                        <input type="password" name="password" class="form-control">
+                                        <div class="input-group">
+                                            <div class="input-group-prepend">
+                                                <div class="input-group-text">
+                                                    <i class="fas fa-lock"></i>
+                                                </div>
+                                            </div>
+                                            <input type="password" name="password" class="form-control">
+                                        </div>
                                     </div>
                                     <div class="form-group col-md-12 col-12">
                                         <label>Konfirmasi Password</label>
-                                        <input type="password" name="password_confirmation" class="form-control">
+                                        <div class="input-group">
+                                            <div class="input-group-prepend">
+                                                <div class="input-group-text">
+                                                    <i class="fas fa-lock"></i>
+                                                </div>
+                                            </div>
+                                            <input type="password" name="password_confirmation" class="form-control">
+                                        </div>
                                     </div>
                                 </div>
                             </div>
