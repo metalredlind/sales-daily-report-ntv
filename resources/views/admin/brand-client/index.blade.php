@@ -21,46 +21,42 @@
                 </div>
               </div>
             <div class="card-body">
-              <div class="table-responsive">
-                <table class="table table-striped" id="table-1">
-                  <thead>                                 
-                    <tr>
-                      <th class="text-center">
-                        #
-                      </th>
-                      <th>PIC NTV</th>
-                      <th>Jenis Industry</th>
-                      <th>Nama Brand</th>
-                      <th>Proyeksi Revenue</th>
-                      <th>Keterangan</th>
-                      <th>Action</th>
-                    </tr>
-                  </thead>
-                  <tbody>                                 
-                    <tr>
-                      <td>
-                        1
-                      </td>
-                      <td>Manager 1</td>
-                      <td class="align-middle">
-                        Otomotif
-                      </td>
-                      <td>
-                        Brand 1
-                      </td>
-                      <td>
-                        Rp. 20.000.000
-                      </td>
-                      <td><div class="badge badge-success">Selesai</div></td>
-                      <td>
-                        <a href="#" class="btn btn-info"><i class="fas fa-edit"></i></a>
-                        <a href="#" class="btn btn-danger"><i class="fas fa-trash"></i></a>
-                        <a href="" class="btn btn-dark" data-toggle="modal" data-target="#exampleModal"><i class="fa fa-eye"></i></a>
-                      </td>
-                    </tr>
-                  </tbody>
-                </table>
-              </div>
+            <div class="table-responsive">
+  <table class="table table-striped" id="table-1">
+    <thead>                                 
+      <tr>
+        <th class="text-center">#</th>
+        <th>PIC NTV</th>
+        <th>Jenis Industry</th>
+        <th>Nama Brand</th>
+        <th>Proyeksi Revenue</th>
+        <th>Keterangan</th>
+        <th>Action</th>
+      </tr>
+    </thead>
+    <tbody>                                 
+      <tr>
+        <td>1</td>
+        <td>Manager 1</td>
+        <td class="align-middle">Otomotif</td>
+        <td>Brand 1</td>
+        <td>Rp. 20.000.000</td>
+        <td><div class="badge badge-success">Selesai</div></td>
+        <td>
+          <a href="#" class="btn btn-info"><i class="fas fa-edit"></i></a>
+          <a href="#" class="btn btn-danger"><i class="fas fa-trash"></i></a>
+          <a href="" class="btn btn-dark" data-toggle="modal" data-target="#exampleModal"><i class="fa fa-eye"></i></a>
+        </td>
+      </tr>
+    </tbody>
+    <tfoot>
+      <tr>
+        <td colspan="4" class="text-right"><strong>Grand Total:</strong></td>
+        <td><strong id="grand-total">Rp. 20.000.000</strong></td>
+      </tr>
+    </tfoot>
+  </table>
+</div>
             </div>
           </div>
         </div>

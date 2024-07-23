@@ -64,6 +64,12 @@
                       </td>
                     </tr>
                   </tbody>
+                  <tfoot>
+                    <tr>
+        <td colspan="5" class="text-right"><strong>Total Nominal:</strong></td>
+        <td><strong id="total-nominal">Rp. 20.000.000</strong></td>
+      </tr>
+    </tfoot>
                 </table>
               </div>
             </div>
