@@ -76,13 +76,26 @@
   <div class="modal-dialog" role="document">
     <div class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLabel">Detail Brand/Klien</h5>
+        <h5 class="modal-title" id="exampleModalLabel">Detail Client Laporan Kegiatan Harian Tim Sales</h5>
         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>
       </div>
       <div class="modal-body">
-        ...
+        <form>
+          <div class="form-group">
+            <label for="lokasiPertemuan">Lokasi Pertemuan</label>
+            <input type="text" class="form-control" id="lokasiPertemuan" readonly>
+          </div>
+          <div class="form-group">
+            <label for="namaClient">Nama Client</label>
+            <input type="text" class="form-control" id="namaClient" readonly>
+          </div>
+          <div class="form-group">
+            <label for="telpClient">No. Telp</label>
+            <input type="text" class="form-control" id="telpClient" readonly>
+          </div>
+        </form>
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
@@ -90,5 +103,6 @@
     </div>
   </div>
 </div>
+
 
 @endsection
