@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\DataTables\BrandClientDataTable;
 use App\Models\BrandClient;
 use Illuminate\Http\Request;
 
@@ -10,9 +11,9 @@ class BrandClientController extends Controller
     /**
      * Display a listing of the resource.
      */
-    public function index()
+    public function index(BrandClientDataTable $dataTable)
     {
-        return view('admin.brand-client.index');
+        return $dataTable->render('admin.brand-client.index');
     }
 
     /**

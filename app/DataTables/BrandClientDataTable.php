@@ -22,7 +22,13 @@ class BrandClientDataTable extends DataTable
     public function dataTable(QueryBuilder $query): EloquentDataTable
     {
         return (new EloquentDataTable($query))
-            ->addColumn('action', 'brandclient.action')
+            ->addColumn('action', function($query){
+                $editBtn = "<a href='#' class='btn btn-info'><i class='far fa-edit'></i></a>";
+                $deleteBtn = "<a href='#' class='btn btn-danger ml-1'><i class='fas fa-trash-alt'></i></a>";
+                $detailBtn = "<a href='#' class='btn btn-dark ml-1'><i class='fa fa-eye'></i></a>";
+                return $editBtn.$deleteBtn.$detailBtn;
+            })
+            ->rawColumns(['action'])
             ->setRowId('id');
     }
 
@@ -44,7 +50,7 @@ class BrandClientDataTable extends DataTable
                     ->columns($this->getColumns())
                     ->minifiedAjax()
                     //->dom('Bfrtip')
-                    ->orderBy(1)
+                    ->orderBy(0)
                     ->selectStyleSingle()
                     ->buttons([
                         Button::make('excel'),
@@ -61,16 +67,17 @@ class BrandClientDataTable extends DataTable
      */
     public function getColumns(): array
     {
-        return [
+        return [            
+            Column::make('id'),
+            Column::make('pic_ntv'),
+            Column::make('jenis_industri'),
+            Column::make('nama_brand'),
+            Column::make('proyeksi_revenue'),
             Column::computed('action')
                   ->exportable(false)
                   ->printable(false)
-                  ->width(60)
+                  ->width(180)
                   ->addClass('text-center'),
-            Column::make('id'),
-            Column::make('add your columns'),
-            Column::make('created_at'),
-            Column::make('updated_at'),
         ];
     }
 
