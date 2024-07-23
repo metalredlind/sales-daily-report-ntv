@@ -31,7 +31,7 @@
                       <th>PIC NTV</th>
                       <th>Jenis Industry</th>
                       <th>Nama Brand</th>
-                      <th>Target</th>
+                      <th>Proyeksi Revenue</th>
                       <th>Keterangan</th>
                       <th>Action</th>
                     </tr>

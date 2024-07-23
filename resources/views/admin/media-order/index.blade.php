@@ -28,7 +28,8 @@
                       <th class="text-center">
                         #
                       </th>
-                      <th>Klien</th>
+                      <th>Tanggal Input</th>
+                      <th>Client</th>
                       <th>No. Paket</th>
                       <th>Tanggal Paket</th>
                       <th>Nominal Paket</th>
@@ -42,22 +43,24 @@
                         1
                       </td>
                       <td>
-                        7-4-2024, 08:00
+                      7-1-2024
+                      </td>
+                      <td>
+                        Si Eta
                       </td>
                       <td c lass="align-middle">
-                        Tim I
+                        1
                       </td>
                       <td>
-                        Brand 1
+                      7-24-2024
                       </td>
                       <td>
-                        Bahas I
+                      Rp.20.000.000
                       </td>
-                      <td><div class="badge badge-success">Deal</div></td>
+                      <td>Fisik?</td>
                       <td>
                         <a href="#" class="btn btn-info"><i class="fas fa-edit"></i></a>
                         <a href="#" class="btn btn-danger"><i class="fas fa-trash"></i></a>
-                        <a href="" class="btn btn-dark" data-toggle="modal" data-target="#exampleModal"><i class="fa fa-eye"></i></a>
                       </td>
                     </tr>
                   </tbody>
@@ -70,25 +73,6 @@
     </div>
   </section>
   
-</div>
-
-<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-  <div class="modal-dialog" role="document">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLabel">Detail Brand/Klien</h5>
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-        </button>
-      </div>
-      <div class="modal-body">
-        ...
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-      </div>
-    </div>
-  </div>
 </div>
 
 @endsection
