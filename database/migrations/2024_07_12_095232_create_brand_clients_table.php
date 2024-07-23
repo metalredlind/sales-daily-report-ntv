@@ -13,6 +13,16 @@ return new class extends Migration
     {
         Schema::create('brand_clients', function (Blueprint $table) {
             $table->id();
+            
+            $table->string('pic_ntv');
+            $table->string('jenis_industri');
+            $table->string('nama_brand');
+            $table->string('pic_brand_nama');
+            $table->string('pic_brand_jabatan');
+            $table->string('pic_brand_telepon');
+            $table->string('proyeksi_revenue');
+            $table->text('keterangan')->nullable();
+
             $table->timestamps();
         });
     }
