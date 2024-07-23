@@ -20,6 +20,10 @@
   <!-- Template CSS -->
   <link rel="stylesheet" href="{{asset('stisla/assets/css/style.css')}}">
   <link rel="stylesheet" href="{{asset('stisla/assets/css/components.css')}}">
+
+  <!-- Yajra Datatables -->
+  <link rel="stylesheet" href="//cdn.datatables.net/2.1.0/css/dataTables.dataTables.min.css">
+  
 <!-- Start GA -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=UA-94034622-3"></script>
 <script>
@@ -95,6 +99,9 @@
   <!-- Toastr JS File -->
   <script src="//cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
 
+  <!-- Yajra Datatables -->
+  <script src="//cdn.datatables.net/2.1.0/js/dataTables.min.js"></script>
+
   <script>
     @if ($errors->any())
       @foreach ($errors->all() as $error)
@@ -105,5 +112,6 @@
     @endif
   </script>
   
+  @stack('scripts')
 </body>
 </html>

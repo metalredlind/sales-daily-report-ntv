@@ -15,54 +15,57 @@
                             <h4>Brand / Klien</h4>
                         </div>
                         <div class="card-body">
-                            <form action="">
+                            <form action="{{ route('admin.brand-client.store') }}" method="POST"
+                                enctype="multipart/form-data">
+                                @csrf
                                 <div class="form-group">
                                     <label>PIC NTV</label>
-                                    <input type="text" class="form-control">
+                                    <input type="text" class="form-control" name="pic_ntv" value="{{old('pic_ntv')}}">
                                 </div>
                                 <label>Brand/Client</label>
                                 <div class="form-group">
                                     <label>Jenis Industri</label>
-                                    <input type="text" class="form-control">
+                                    <input type="text" class="form-control" name="jenis_industri" value="{{old('jenis_industri')}}">
                                 </div>
                                 <div class="form-group">
                                     <label>Nama Brand</label>
-                                    <input type="text" class="form-control">
+                                    <input type="text" class="form-control" name="nama_brand" value="{{old('nama_brand')}}">
                                 </div>
                                 <label>PIC</label>
                                 <div class="form-group">
                                     <label>PIC Nama</label>
-                                    <input type="text" class="form-control">
+                                    <input type="text" class="form-control" name="pic_brand_nama" value="{{old('pic_brand_nama')}}">
                                 </div>
                                 <div class="form-group">
                                     <label>PIC Jabatan</label>
-                                    <input type="text" class="form-control">
+                                    <input type="text" class="form-control" name="pic_brand_jabatan" value="{{old('pic_brand_jabatan')}}">
                                 </div>
                                 <div class="form-group">
                                     <label>PIC No. Telepon</label>
-                                    <input type="text" class="form-control">
+                                    <input type="text" class="form-control" name="pic_brand_telepon" value="{{old('pic_brand_telepon')}}">
                                 </div>
                                 <div class="form-group">
                                     <label>Proyeksi Revenue</label>
                                     <div class="input-group">
-                                      <div class="input-group-prepend">
-                                        <div class="input-group-text">
-                                          Rp
+                                        <div class="input-group-prepend">
+                                            <div class="input-group-text">
+                                                Rp
+                                            </div>
                                         </div>
-                                      </div>
-                                      <input type="text" class="form-control currency">
+                                        <input type="text" class="form-control" name="proyeksi_revenue" value="{{old('proyeksi_revenue')}}">
                                     </div>
-                                  </div>
+                                </div>
                                 <div class="form-group">
                                     <label>Keterangan</label>
-                                    <input type="text" class="form-control">
+                                    <input type="text" class="form-control" name="keterangan" value="{{old('keterangan')}}">
+                                </div>
+
+                                <div class="card-footer text-right">
+                                    <button class="btn btn-primary mr-1" type="submit">Tambah</button>
                                 </div>
                             </form>
-                            
+
                         </div>
-                        <div class="card-footer text-right">
-                            <button class="btn btn-primary mr-1" type="submit">Tambah</button>
-                          </div>
                     </div>
                 </div>
             </div>

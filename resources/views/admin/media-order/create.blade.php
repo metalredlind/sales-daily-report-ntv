@@ -3,7 +3,7 @@
 @section('content')
     <section class="section">
         <div class="section-header">
-            <h1>Create Brand / Client</h1>
+            <h1>Create Deal Media Order</h1>
         </div>
 
         <div class="section-body">
@@ -12,49 +12,28 @@
                 <div class="col-8">
                     <div class="card">
                         <div class="card-header">
-                            <h4>Brand / Klien</h4>
+                            <h4>Deal Media Order</h4>
                         </div>
                         <div class="card-body">
                             <form action="">
                                 <div class="form-group">
-                                    <label>PIC NTV</label>
-                                    <input type="text" class="form-control">
-                                </div>
-                                <label>Brand/Client</label>
-                                <div class="form-group">
-                                    <label>Jenis Industri</label>
+                                    <label>Klien</label>
                                     <input type="text" class="form-control">
                                 </div>
                                 <div class="form-group">
-                                    <label>Nama Brand</label>
-                                    <input type="text" class="form-control">
-                                </div>
-                                <label>PIC</label>
-                                <div class="form-group">
-                                    <label>PIC Nama</label>
+                                    <label>No. Paket</label>
                                     <input type="text" class="form-control">
                                 </div>
                                 <div class="form-group">
-                                    <label>PIC Jabatan</label>
+                                    <label>Ranggal Paket</label>
                                     <input type="text" class="form-control">
                                 </div>
                                 <div class="form-group">
-                                    <label>PIC No. Telepon</label>
+                                    <label>Nominal Paket</label>
                                     <input type="text" class="form-control">
                                 </div>
                                 <div class="form-group">
-                                    <label>Target</label>
-                                    <div class="input-group">
-                                      <div class="input-group-prepend">
-                                        <div class="input-group-text">
-                                          Rp
-                                        </div>
-                                      </div>
-                                      <input type="text" class="form-control currency">
-                                    </div>
-                                  </div>
-                                <div class="form-group">
-                                    <label>Keterangan</label>
+                                    <label>Jenis Paket</label>
                                     <input type="text" class="form-control">
                                 </div>
                             </form>
