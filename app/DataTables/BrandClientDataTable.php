@@ -25,8 +25,11 @@ class BrandClientDataTable extends DataTable
             ->addColumn('action', function($query){
                 $editBtn = "<a href='#' class='btn btn-info'><i class='far fa-edit'></i></a>";
                 $deleteBtn = "<a href='#' class='btn btn-danger ml-1'><i class='fas fa-trash-alt'></i></a>";
-                $detailBtn = "<a href='#' class='btn btn-dark ml-1'><i class='fa fa-eye'></i></a>";
+                $detailBtn = "<a href='#' class='btn btn-dark ml-1' data-bs-toggle='modal' data-bs-target='#exampleModal'><i class='fa fa-eye'></i></a>";
                 return $editBtn.$deleteBtn.$detailBtn;
+            })
+            ->addColumn('proyeksi_revenue', function($query){
+                return 'Rp ' . number_format($query->proyeksi_revenue, 0, ".", ".");;
             })
             ->rawColumns(['action'])
             ->setRowId('id');
