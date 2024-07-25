@@ -112,6 +112,9 @@ class BrandClientController extends Controller
      */
     public function destroy(string $id)
     {
-        //
+        $brandClient = BrandClient::findOrFail($id);
+        $brandClient->delete();
+
+        return response(['status' => 'success', 'message'=> 'Brand/Klien is deleted successfully']);
     }
 }
