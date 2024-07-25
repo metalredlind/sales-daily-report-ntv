@@ -6,6 +6,7 @@ use App\Http\Controllers\BrandClientController;
 use App\Http\Controllers\DailyReportController;
 use App\Http\Controllers\MediaOrderController;
 use App\Http\Controllers\ProposalSuratController;
+use App\Http\Controllers\TargetSalesController;
 use Illuminate\Support\Facades\Route;
 
 //admin route
@@ -27,3 +28,6 @@ Route::resource('proposal-surat', ProposalSuratController::class);
 
 //proposal-surat route
 Route::resource('media-order', MediaOrderController::class);
+
+//target route
+Route::resource('target-sales', TargetSalesController::class);
