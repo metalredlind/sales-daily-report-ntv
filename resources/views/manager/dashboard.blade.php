@@ -82,8 +82,8 @@
             <li class="dropdown active">
               <a href="#" class="nav-link has-dropdown"><i class="fas fa-fire"></i><span>Target</span></a>
               <ul class="dropdown-menu">
-                <li class=active><a class="nav-link" href="index-0.html">General Dashboard</a></li>
-                <li><a class="nav-link" href="index.html">Ecommerce Dashboard</a></li>
+                <li class=active><a class="nav-link" href="index-0.html">Input Target</a></li>
+                <li><a class="nav-link" href="index.html">View Target</a></li>
               </ul>
             </li>
             <li class="menu-header">Starter</li>
