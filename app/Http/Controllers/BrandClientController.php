@@ -54,7 +54,7 @@ class BrandClientController extends Controller
 
         toastr('Brand/Klien baru berhasil ditambah', 'success');
 
-        return redirect()->back();
+        return redirect()->route('admin.brand-client.index');
     }
 
     /**
