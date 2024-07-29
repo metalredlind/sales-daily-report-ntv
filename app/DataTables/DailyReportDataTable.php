@@ -28,9 +28,6 @@ class DailyReportDataTable extends DataTable
                 $detailBtn = "<a href='#' class='btn btn-dark ml-1' data-bs-toggle='modal' data-bs-target='#exampleModal'><i class='fa fa-eye'></i></a>";
                 return $editBtn.$deleteBtn.$detailBtn;
             })
-            ->addColumn('proyeksi_revenue', function($query){
-                return 'Rp ' . number_format($query->proyeksi_revenue, 0, ".", ".");;
-            })
             ->rawColumns(['action'])
             ->setRowId('id');
     }

@@ -16,7 +16,6 @@ return new class extends Migration
 
             $table->date('waktu');
             $table->string('tim_bertugas');
-            $table->string('nama_brand');
             $table->string('nama_brand_klien')->nullable();
             $table->string('lokasi_pertemuan')->nullable();
             $table->string('nama_klien')->nullable();
