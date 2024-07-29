@@ -4,16 +4,15 @@
 
 <section class="section">
     <div class="section-header">
-      <h1>Laporan Kegiatan Harian Tim Sales</h1>
+      <h1>Target Bulanan Tim Sales</h1>
     </div>
 
     <div class="section-body">
-      
       <div class="row">
         <div class="col-12">
           <div class="card">
             <div class="card-header">
-                <h4>Target [Filter Bulan]</h4>
+                <h4>Target <input type="text" class="form-control datetimepicker"></h4>
                 <div class="card-header-action">
                   <a href="{{route('admin.target-sales.create')}}" class="btn btn-primary">
                     +  Add New
@@ -28,6 +27,7 @@
                       <th class="text-center">
                         #
                       </th>
+                      <th>Tim</th>
                       <th>Nama</th>
                       <th>Jabatan</th>
                       <th>Target (Rp)</th>
@@ -38,8 +38,11 @@
                   </thead>
                   <tbody>                                 
                     <tr>
-                      <td>
+                    <td>
                         1
+                      </td>
+                      <td>
+                        Tim 1
                       </td>
                       <td>
                         Sales SHG
