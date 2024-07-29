@@ -47,7 +47,7 @@ class UserSeeder extends Seeder
             [
                 'name' => 'Manager Team 1',
                 'username' => 'manager1',
-                'email' => 'manager.dailyreport@nusantaratv.com',
+                'email' => 'manager1.dailyreport@nusantaratv.com',
                 'role' => 'manager',
                 'title'=>'Manager Tim 1',
                 'team' => '1',
@@ -57,7 +57,7 @@ class UserSeeder extends Seeder
             [
                 'name' => 'Sales Team 1',
                 'username' => 'sales1',
-                'email' => 'sales.dailyreport@nusantaratv.com',
+                'email' => 'sales1.dailyreport@nusantaratv.com',
                 'role' => 'sales',
                 'title'=>'Sales Tim 1',
                 'team' => '1',
@@ -67,7 +67,7 @@ class UserSeeder extends Seeder
             [
                 'name' => 'Manager Team 2',
                 'username' => 'manager2',
-                'email' => 'manager.dailyreport@nusantaratv.com',
+                'email' => 'manager2.dailyreport@nusantaratv.com',
                 'role' => 'manager',
                 'title'=>'Manager Tim 2',
                 'team' => '2',
@@ -77,7 +77,7 @@ class UserSeeder extends Seeder
             [
                 'name' => 'Sales Team 2',
                 'username' => 'sales2',
-                'email' => 'sales.dailyreport@nusantaratv.com',
+                'email' => 'sales2.dailyreport@nusantaratv.com',
                 'role' => 'sales',
                 'title'=>'Sales Tim 2',
                 'team' => '2',
