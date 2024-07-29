@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\DataTables\DailyReportDataTable;
 use Illuminate\Http\Request;
 
 class DailyReportController extends Controller
@@ -9,9 +10,9 @@ class DailyReportController extends Controller
     /**
      * Display a listing of the resource.
      */
-    public function index()
+    public function index(DailyReportDataTable $dataTable)
     {
-        return view('admin.daily-report.index');
+        return $dataTable->render('admin.daily-report.index');
     }
 
     /**
