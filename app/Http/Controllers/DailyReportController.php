@@ -117,6 +117,9 @@ class DailyReportController extends Controller
      */
     public function destroy(string $id)
     {
-        //
+        $dailyReport = DailyReport::findOrFail($id);
+        $dailyReport->delete();
+
+        return response(['status' => 'success', 'message'=> 'Daily Report has been deleted successfully']);
     }
 }
