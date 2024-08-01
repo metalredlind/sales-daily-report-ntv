@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\DataTables\ProposalSuratDataTable;
 use Illuminate\Http\Request;
 
 class ProposalSuratController extends Controller
@@ -9,9 +10,9 @@ class ProposalSuratController extends Controller
     /**
      * Display a listing of the resource.
      */
-    public function index()
+    public function index(ProposalSuratDataTable $dataTable)
     {
-        return view('admin.proposal-surat.index');
+        return $dataTable->render('admin.proposal-surat.index');
     }
 
     /**

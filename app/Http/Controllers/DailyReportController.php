@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\DataTables\DailyReportDataTable;
 use App\Models\DailyReport;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class DailyReportController extends Controller
 {
@@ -50,6 +51,8 @@ class DailyReportController extends Controller
         $dailyReport->nomor_telepon = $request->nomor_telepon;
         $dailyReport->jenis_kegiatan = $request->jenis_kegiatan;
         $dailyReport->follow_up = $request->follow_up;
+        $dailyReport->user_team = Auth::user()->team;
+
         $dailyReport->save();
 
         toastr('Daily Report baru berhasil ditambah', 'success');
@@ -100,6 +103,8 @@ class DailyReportController extends Controller
         $dailyReport->nomor_telepon = $request->nomor_telepon;
         $dailyReport->jenis_kegiatan = $request->jenis_kegiatan;
         $dailyReport->follow_up = $request->follow_up;
+        $dailyReport->user_team = Auth::user()->team;
+        
         $dailyReport->save();
 
         toastr('Daily Report baru berhasil diupdate', 'success');
