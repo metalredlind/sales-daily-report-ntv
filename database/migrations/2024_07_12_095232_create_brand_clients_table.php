@@ -22,6 +22,7 @@ return new class extends Migration
             $table->string('pic_brand_telepon');
             $table->string('proyeksi_revenue');
             $table->text('keterangan')->nullable();
+            $table->integer('user_team');
 
             $table->timestamps();
         });

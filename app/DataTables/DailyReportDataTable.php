@@ -2,7 +2,7 @@
 
 namespace App\DataTables;
 
-use App\Models\BrandClient;
+use App\Models\DailyReport;
 use Illuminate\Database\Eloquent\Builder as QueryBuilder;
 use Yajra\DataTables\EloquentDataTable;
 use Yajra\DataTables\Html\Builder as HtmlBuilder;
@@ -12,7 +12,7 @@ use Yajra\DataTables\Html\Editor\Editor;
 use Yajra\DataTables\Html\Editor\Fields;
 use Yajra\DataTables\Services\DataTable;
 
-class BrandClientDataTable extends DataTable
+class DailyReportDataTable extends DataTable
 {
     /**
      * Build the DataTable class.
@@ -23,13 +23,10 @@ class BrandClientDataTable extends DataTable
     {
         return (new EloquentDataTable($query))
             ->addColumn('action', function($query){
-                $editBtn = "<a href='".route('admin.brand-client.edit', $query->id)."' class='btn btn-info'><i class='far fa-edit'></i></a>";
-                $deleteBtn = "<a href='".route('admin.brand-client.destroy', $query->id)."' class='btn btn-danger ml-1 delete-item'><i class='fas fa-trash-alt'></i></a>";
+                $editBtn = "<a href='".route('admin.daily-report.edit', $query->id)."' class='btn btn-info'><i class='far fa-edit'></i></a>";
+                $deleteBtn = "<a href='".route('admin.daily-report.destroy', $query->id)."' class='btn btn-danger ml-1 delete-item'><i class='fas fa-trash-alt'></i></a>";
                 $detailBtn = "<a href='#' class='btn btn-dark ml-1' data-bs-toggle='modal' data-bs-target='#exampleModal'><i class='fa fa-eye'></i></a>";
                 return $editBtn.$deleteBtn.$detailBtn;
-            })
-            ->addColumn('proyeksi_revenue', function($query){
-                return 'Rp ' . number_format($query->proyeksi_revenue, 0, ".", ".");;
             })
             ->rawColumns(['action'])
             ->setRowId('id');
@@ -38,7 +35,7 @@ class BrandClientDataTable extends DataTable
     /**
      * Get the query source of dataTable.
      */
-    public function query(BrandClient $model): QueryBuilder
+    public function query(DailyReport $model): QueryBuilder
     {
         return $model->newQuery();
     }
@@ -49,11 +46,11 @@ class BrandClientDataTable extends DataTable
     public function html(): HtmlBuilder
     {
         return $this->builder()
-                    ->setTableId('brandclient-table')
+                    ->setTableId('dailyreport-table')
                     ->columns($this->getColumns())
                     ->minifiedAjax()
                     //->dom('Bfrtip')
-                    ->orderBy(0)
+                    ->orderBy(1)
                     ->selectStyleSingle()
                     ->buttons([
                         Button::make('excel'),
@@ -70,12 +67,13 @@ class BrandClientDataTable extends DataTable
      */
     public function getColumns(): array
     {
-        return [            
+        return [
             Column::make('id'),
-            Column::make('pic_ntv'),
-            Column::make('jenis_industri'),
-            Column::make('nama_brand'),
-            Column::make('proyeksi_revenue'),
+            Column::make('waktu'),
+            Column::make('tim_bertugas'),
+            Column::make('nama_brand_klien'),
+            Column::make('jenis_kegiatan'),
+            Column::make('follow_up'),
             Column::computed('action')
                   ->exportable(false)
                   ->printable(false)
@@ -89,6 +87,6 @@ class BrandClientDataTable extends DataTable
      */
     protected function filename(): string
     {
-        return 'BrandClient_' . date('YmdHis');
+        return 'DailyReport_' . date('YmdHis');
     }
 }

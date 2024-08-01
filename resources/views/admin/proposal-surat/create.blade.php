@@ -15,36 +15,41 @@
                             <h4>Proposal dan Surat Menyurat</h4>
                         </div>
                         <div class="card-body">
-                            <form action="">
+                            <form action="{{ route('admin.proposal-surat.store') }}" method="POST"
+                                enctype="multipart/form-data">
+                                @csrf
                                 <div class="form-group">
                                     <label>Tanggal</label>
-                                    <input type="text" class="form-control">
+                                    <input type="text" class="form-control datepicker" name="tanggal" value="{{old('tanggal')}}">
                                 </div>
                                 <div class="form-group">
                                     <label>No. Surat/MO/Proposal</label>
-                                    <input type="text" class="form-control">
+                                    <input type="text" class="form-control" name="no_surat" value="{{old('no_surat')}}">
                                 </div>
                                 <div class="form-group">
                                     <label>Tujuan Surat</label>
-                                    <input type="text" class="form-control">
+                                    <input type="text" class="form-control" name="tujuan_surat" value="{{old('tujuan_surat')}}">
                                 </div>
                                 <div class="form-group">
                                     <label>Perihal</label>
-                                    <input type="text" class="form-control">
+                                    <input type="text" class="form-control" name="perihal" value="{{old('perihal')}}">
                                 </div>
                                 <div class="form-group">
                                     <label>Status Follow Up</label>
-                                    <select class="form-control">
-                                        <option>Sudah Dikirim</option>
-                                        <option>Belum Dikirim</option>
+                                    <select id="inputState" class="form-control wsus__input" name="status_follow_up">
+                                        <option value="">Pilih</option>
+                                        <option value="0">Belum Dikirim</option>
+                                        <option value="1">Sudah Dikirim</option>
                                     </select>
                                 </div>
+
+                                <div class="card-footer text-right">
+                                    <button class="btn btn-primary mr-1" type="submit">Tambah</button>
+                                </div>
                             </form>
-                            
+
                         </div>
-                        <div class="card-footer text-right">
-                            <button class="btn btn-primary mr-1" type="submit">Tambah</button>
-                          </div>
+
                     </div>
                 </div>
             </div>
