@@ -14,12 +14,12 @@ return new class extends Migration
         Schema::create('daily_reports', function (Blueprint $table) {
             $table->id();
 
-            $table->date('waktu');
+            $table->dateTime('waktu');
             $table->string('tim_bertugas');
-            $table->string('nama_brand_klien')->nullable();
-            $table->string('lokasi_pertemuan')->nullable();
-            $table->string('nama_klien')->nullable();
-            $table->string('nomor_telepon')->nullable();
+            $table->string('nama_brand_klien');
+            $table->string('lokasi_pertemuan');
+            $table->string('nama_klien');
+            $table->string('nomor_telepon');
             $table->string('jenis_kegiatan');
             $table->string('follow_up');
 
