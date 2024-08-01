@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\DataTables\TargetSalesDataTable;
+use App\Models\TargetSales;
 use Illuminate\Http\Request;
 
 class TargetSalesController extends Controller

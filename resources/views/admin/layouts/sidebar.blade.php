@@ -9,14 +9,8 @@
         <ul class="sidebar-menu">
             <li class="menu-header">Dashboard</li>
             <li class="active"><a class="nav-link" href="#"><i class="fas fa-home"></i> <span>Home</span></a></li>
-            <li class="dropdown">
-                <a href="#" class="nav-link has-dropdown"><i
-                        class="fas fa-bullseye"></i></i><span>Target</span></a>
-                <ul class="dropdown-menu">
-                    <li class=''><a class="nav-link" href="{{ route('admin.target-sales.create') }}">Input Target</a></li>
-                    <li><a class="nav-link" href="{{ route('admin.target-sales.index') }}">Detail Target</a></li>
-                </ul>
-            </li>
+            <li><a class="nav-link" href="{{ route('admin.target-sales.index') }}"><i class="fas fa-bullseye"></i></i>
+            <span>Target</span></a></li>
             <li class="menu-header">Starter</li>
             <li><a class="nav-link" href="{{ route('admin.brand-client.index') }}"><i class="fas fa-phone"></i>
                     <span>Brand/Client</span></a></li>
