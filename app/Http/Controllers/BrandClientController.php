@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\DataTables\BrandClientDataTable;
 use App\Models\BrandClient;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class BrandClientController extends Controller
 {
@@ -50,6 +51,7 @@ class BrandClientController extends Controller
         $brandClient->pic_brand_telepon = $request->pic_brand_telepon;
         $brandClient->proyeksi_revenue = $request->proyeksi_revenue;
         $brandClient->keterangan = $request->keterangan;
+        $brandClient->user_team = Auth::user()->team;
         $brandClient->save();
 
         toastr('Brand/Klien baru berhasil ditambah', 'success');
@@ -100,6 +102,8 @@ class BrandClientController extends Controller
         $brandClient->pic_brand_telepon = $request->pic_brand_telepon;
         $brandClient->proyeksi_revenue = $request->proyeksi_revenue;
         $brandClient->keterangan = $request->keterangan;
+        $brandClient->user_team = Auth::user()->team;
+        
         $brandClient->save();
 
         toastr('Brand/Klien baru berhasil diupdate', 'success');

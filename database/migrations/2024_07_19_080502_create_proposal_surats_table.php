@@ -13,6 +13,14 @@ return new class extends Migration
     {
         Schema::create('proposal_surats', function (Blueprint $table) {
             $table->id();
+
+            $table->date('tanggal');
+            $table->string('no_surat');
+            $table->string('tujuan_surat');
+            $table->string('perihal');
+            $table->boolean('status_follow_up');
+            $table->integer('user_team');
+
             $table->timestamps();
         });
     }

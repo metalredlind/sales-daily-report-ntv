@@ -13,6 +13,14 @@ return new class extends Migration
     {
         Schema::create('media_orders', function (Blueprint $table) {
             $table->id();
+
+            $table->string('klien');
+            $table->string('nomor_paket');
+            $table->date('tanggal_paket');
+            $table->string('nominal_paket');
+            $table->string('jenis_paket');
+            $table->integer('user_team');
+
             $table->timestamps();
         });
     }

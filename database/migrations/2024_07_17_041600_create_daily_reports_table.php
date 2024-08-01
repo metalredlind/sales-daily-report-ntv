@@ -22,6 +22,7 @@ return new class extends Migration
             $table->string('nomor_telepon');
             $table->string('jenis_kegiatan');
             $table->string('follow_up');
+            $table->integer('user_team');
 
             $table->timestamps();
         });
