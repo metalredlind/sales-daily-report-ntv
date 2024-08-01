@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\DataTables\MediaOrderDataTable;
 use Illuminate\Http\Request;
 
 class MediaOrderController extends Controller
@@ -9,9 +10,9 @@ class MediaOrderController extends Controller
     /**
      * Display a listing of the resource.
      */
-    public function index()
+    public function index(MediaOrderDataTable $dataTable)
     {
-        return view('admin.media-order.index');
+        return $dataTable->render('admin.media-order.index');
     }
 
     /**
