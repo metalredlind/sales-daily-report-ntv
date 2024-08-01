@@ -3,7 +3,9 @@
 namespace App\Http\Controllers;
 
 use App\DataTables\MediaOrderDataTable;
+use App\Models\MediaOrder;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class MediaOrderController extends Controller
 {
@@ -28,7 +30,28 @@ class MediaOrderController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $request->validate([
+            'klien' => ['required','max:200'],
+            'nomor_paket' => ['required', 'max:200'],
+            'tanggal_paket' => ['required', 'max:100'],
+            'nominal_paket' => ['required','numeric'],
+            'jenis_paket' => ['required','max:200'],
+        ]);
+
+        $mediaOrder = new MediaOrder();
+
+        $mediaOrder->klien = $request->klien;
+        $mediaOrder->nomor_paket = $request->nomor_paket;
+        $mediaOrder->tanggal_paket = $request->tanggal_paket;
+        $mediaOrder->nominal_paket = $request->nominal_paket;
+        $mediaOrder->jenis_paket = $request->jenis_paket;
+        $mediaOrder->user_team = Auth::user()->team;
+
+        $mediaOrder->save();
+
+        toastr('Media Order baru berhasil ditambah', 'success');
+
+        return redirect()->route('admin.media-order.index');
     }
 
     /**
@@ -44,7 +67,8 @@ class MediaOrderController extends Controller
      */
     public function edit(string $id)
     {
-        //
+        $mediaOrder = MediaOrder::findOrFail($id);
+        return view('admin.media-order.edit', compact('mediaOrder'));
     }
 
     /**
@@ -52,7 +76,28 @@ class MediaOrderController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        //
+        $request->validate([
+            'klien' => ['required','max:200'],
+            'nomor_paket' => ['required', 'max:200'],
+            'tanggal_paket' => ['required', 'max:100'],
+            'nominal_paket' => ['required','numeric'],
+            'jenis_paket' => ['required','max:200'],
+        ]);
+
+        $mediaOrder = MediaOrder::findOrFail($id);
+
+        $mediaOrder->klien = $request->klien;
+        $mediaOrder->nomor_paket = $request->nomor_paket;
+        $mediaOrder->tanggal_paket = $request->tanggal_paket;
+        $mediaOrder->nominal_paket = $request->nominal_paket;
+        $mediaOrder->jenis_paket = $request->jenis_paket;
+        $mediaOrder->user_team = Auth::user()->team;
+
+        $mediaOrder->save();
+
+        toastr('Media Order berhasil diedit', 'success');
+
+        return redirect()->route('admin.media-order.index');
     }
 
     /**
@@ -60,6 +105,9 @@ class MediaOrderController extends Controller
      */
     public function destroy(string $id)
     {
-        //
+        $mediaOrder = MediaOrder::findOrFail($id);
+        $mediaOrder->delete();
+
+        return response(['status' => 'success', 'message'=> 'Media Order has been deleted successfully']);
     }
 }

@@ -20,24 +20,24 @@
                                 @csrf
                                 <div class="form-group">
                                     <label>Tanggal</label>
-                                    <input type="text" class="form-control datepicker" name="tanggal">
+                                    <input type="text" class="form-control datepicker" name="tanggal" value="{{old('tanggal')}}">
                                 </div>
                                 <div class="form-group">
                                     <label>No. Surat/MO/Proposal</label>
-                                    <input type="text" class="form-control" name="no_surat">
+                                    <input type="text" class="form-control" name="no_surat" value="{{old('no_surat')}}">
                                 </div>
                                 <div class="form-group">
                                     <label>Tujuan Surat</label>
-                                    <input type="text" class="form-control" name="tujuan_surat">
+                                    <input type="text" class="form-control" name="tujuan_surat" value="{{old('tujuan_surat')}}">
                                 </div>
                                 <div class="form-group">
                                     <label>Perihal</label>
-                                    <input type="text" class="form-control" name="perihal">
+                                    <input type="text" class="form-control" name="perihal" value="{{old('perihal')}}">
                                 </div>
                                 <div class="form-group">
                                     <label>Status Follow Up</label>
                                     <select id="inputState" class="form-control wsus__input" name="status_follow_up">
-                                        <option value="" class="disabled">Pilih</option>
+                                        <option value="">Pilih</option>
                                         <option value="0">Belum Dikirim</option>
                                         <option value="1">Sudah Dikirim</option>
                                     </select>
