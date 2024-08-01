@@ -3,7 +3,9 @@
 namespace App\Http\Controllers;
 
 use App\DataTables\ProposalSuratDataTable;
+use App\Models\ProposalSurat;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class ProposalSuratController extends Controller
 {
@@ -28,7 +30,28 @@ class ProposalSuratController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $request->validate([
+            'tanggal' => ['date','required'],
+            'no_surat' => ['required', 'max:200'],
+            'tujuan_surat' => ['required', 'max:100'],
+            'perihal' => ['required','max:200'],
+            'status_follow_up' => ['required'],
+        ]);
+
+        $proposalSurat = new ProposalSurat();
+
+        $proposalSurat->tanggal = $request->tanggal;
+        $proposalSurat->no_surat = $request->no_surat;
+        $proposalSurat->tujuan_surat = $request->tujuan_surat;
+        $proposalSurat->perihal = $request->perihal;
+        $proposalSurat->status_follow_up = $request->status_follow_up;
+        $proposalSurat->user_team = Auth::user()->team;
+
+        $proposalSurat->save();
+
+        toastr('Proposal/Surat baru berhasil ditambah', 'success');
+
+        return redirect()->route('admin.proposal-surat.index');
     }
 
     /**
@@ -44,7 +67,8 @@ class ProposalSuratController extends Controller
      */
     public function edit(string $id)
     {
-        //
+        $proposalSurat = ProposalSurat::findOrFail($id);
+        return view('admin.proposal-surat.edit', compact('proposalSurat'));
     }
 
     /**
@@ -52,7 +76,28 @@ class ProposalSuratController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        //
+        $request->validate([
+            'tanggal' => ['date','required'],
+            'no_surat' => ['required', 'max:200'],
+            'tujuan_surat' => ['required', 'max:100'],
+            'perihal' => ['required','max:200'],
+            'status_follow_up' => ['required'],
+        ]);
+
+        $proposalSurat = ProposalSurat::findOrFail($id);
+
+        $proposalSurat->tanggal = $request->tanggal;
+        $proposalSurat->no_surat = $request->no_surat;
+        $proposalSurat->tujuan_surat = $request->tujuan_surat;
+        $proposalSurat->perihal = $request->perihal;
+        $proposalSurat->status_follow_up = $request->status_follow_up;
+        $proposalSurat->user_team = Auth::user()->team;
+
+        $proposalSurat->save();
+
+        toastr('Proposal/Surat baru berhasil diupdate', 'success');
+
+        return redirect()->route('admin.proposal-surat.index');
     }
 
     /**
@@ -60,6 +105,9 @@ class ProposalSuratController extends Controller
      */
     public function destroy(string $id)
     {
-        //
+        $proposalSurat = ProposalSurat::findOrFail($id);
+        $proposalSurat->delete();
+
+        return response(['status' => 'success', 'message'=> 'Proposal/Surat is deleted successfully']);
     }
 }

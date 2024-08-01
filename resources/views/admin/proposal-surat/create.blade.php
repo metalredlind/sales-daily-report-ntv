@@ -15,11 +15,12 @@
                             <h4>Proposal dan Surat Menyurat</h4>
                         </div>
                         <div class="card-body">
-                            <form action="{{ route('admin.proposal-surat.store') }}" method="POST" enctype="multipart/form-data">
+                            <form action="{{ route('admin.proposal-surat.store') }}" method="POST"
+                                enctype="multipart/form-data">
                                 @csrf
                                 <div class="form-group">
                                     <label>Tanggal</label>
-                                    <input type="text" class="form-control" name="tanggal">
+                                    <input type="text" class="form-control datepicker" name="tanggal">
                                 </div>
                                 <div class="form-group">
                                     <label>No. Surat/MO/Proposal</label>
@@ -41,12 +42,14 @@
                                         <option value="1">Sudah Dikirim</option>
                                     </select>
                                 </div>
+
+                                <div class="card-footer text-right">
+                                    <button class="btn btn-primary mr-1" type="submit">Tambah</button>
+                                </div>
                             </form>
-                            
+
                         </div>
-                        <div class="card-footer text-right">
-                            <button class="btn btn-primary mr-1" type="submit">Tambah</button>
-                          </div>
+
                     </div>
                 </div>
             </div>

@@ -23,12 +23,21 @@ class ProposalSuratDataTable extends DataTable
     {
         return (new EloquentDataTable($query))
             ->addColumn('action', function($query){
-                $editBtn = "<a href='".route('admin.daily-report.edit', $query->id)."' class='btn btn-info'><i class='far fa-edit'></i></a>";
-                $deleteBtn = "<a href='".route('admin.daily-report.destroy', $query->id)."' class='btn btn-danger ml-1'><i class='fas fa-trash-alt'></i></a>";
+                $editBtn = "<a href='".route('admin.proposal-surat.edit', $query->id)."' class='btn btn-info'><i class='far fa-edit'></i></a>";
+                $deleteBtn = "<a href='".route('admin.proposal-surat.destroy', $query->id)."' class='btn btn-danger ml-1 delete-item'><i class='fas fa-trash-alt'></i></a>";
                 $detailBtn = "<a href='#' class='btn btn-dark ml-1' data-bs-toggle='modal' data-bs-target='#exampleModal'><i class='fa fa-eye'></i></a>";
                 return $editBtn.$deleteBtn.$detailBtn;
             })
-            ->rawColumns(['action'])
+            ->addColumn('status_follow_up', function($query){
+                $belumDikirim = "<i class='badge badge-danger'>Belum Dikirim</i>";
+                $sudahDikirim = "<i class='badge badge-success'>Sudah Dikirim</i>";
+                if($query->status_follow_up == 1){
+                    return $sudahDikirim;
+                } else {
+                    return $belumDikirim;
+                };
+            })
+            ->rawColumns(['action','status_follow_up'])
             ->setRowId('id');
     }
 
