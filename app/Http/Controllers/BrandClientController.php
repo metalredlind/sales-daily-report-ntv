@@ -50,6 +50,7 @@ class BrandClientController extends Controller
         $brandClient->pic_brand_jabatan = $request->pic_brand_jabatan;
         $brandClient->pic_brand_telepon = $request->pic_brand_telepon;
         $brandClient->proyeksi_revenue = $request->proyeksi_revenue;
+        $brandClient->realisasi_revenue = 0;
         $brandClient->keterangan = $request->keterangan;
         $brandClient->user_team = Auth::user()->team;
         $brandClient->save();
@@ -89,6 +90,7 @@ class BrandClientController extends Controller
             'pic_brand_jabatan' => ['required', 'max:200'],
             'pic_brand_telepon' => ['required', 'max:200'],
             'proyeksi_revenue' => ['required', 'numeric'],
+            'realisasi_revenue' => ['required', 'numeric'],
             'keterangan' => ['max:500'],
         ]);
 
@@ -101,6 +103,7 @@ class BrandClientController extends Controller
         $brandClient->pic_brand_jabatan = $request->pic_brand_jabatan;
         $brandClient->pic_brand_telepon = $request->pic_brand_telepon;
         $brandClient->proyeksi_revenue = $request->proyeksi_revenue;
+        $brandClient->realisasi_revenue = $request->realisasi_revenue;
         $brandClient->keterangan = $request->keterangan;
         $brandClient->user_team = Auth::user()->team;
         

@@ -52,7 +52,18 @@
                                                 Rp
                                             </div>
                                         </div>
-                                        <input type="text" class="form-control" name="proyeksi_revenue" value="{{old('proyeksi_revenue')}}">
+                                        <input type="numeric" class="form-control" name="proyeksi_revenue" value="{{old('proyeksi_revenue')}}">
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label>Realisasi</label>
+                                    <div class="input-group">
+                                        <div class="input-group-prepend">
+                                            <div class="input-group-text">
+                                                Rp
+                                            </div>
+                                        </div>
+                                        <input type="numeric" disabled class="form-control" name="realisasi_revenue" value="0">
                                     </div>
                                 </div>
                                 <div class="form-group">
