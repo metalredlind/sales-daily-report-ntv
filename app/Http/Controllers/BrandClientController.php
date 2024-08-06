@@ -124,4 +124,9 @@ class BrandClientController extends Controller
 
         return response(['status' => 'success', 'message'=> 'Brand/Klien is deleted successfully']);
     }
+
+    public function getData(BrandClientDataTable $dataTable)
+    {
+        return $dataTable->ajax();
+    }
 }
