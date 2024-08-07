@@ -55,8 +55,7 @@
                 // Get the DataTable instance
                 var table = $('#brandclient-table').DataTable();
                 // Reload the table with new date range filters
-                table.ajax.url('{{ route('admin.brand-client.data') }}?start_date=' + startDate +
-                    '&end_date=' + endDate).load();
+                table.ajax.url('{{ route("admin.brand-client.data") }}?start_date=' + startDate + '&end_date=' + endDate).load();
             });
         });
     </script>

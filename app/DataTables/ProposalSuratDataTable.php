@@ -49,7 +49,15 @@ class ProposalSuratDataTable extends DataTable
      */
     public function query(ProposalSurat $model): QueryBuilder
     {
-        return $model->newQuery();
+        $query = $model->newQuery();
+
+        if (request()->has('start_date') && request()->has('end_date')) {
+            $startDate = request('start_date') . ' 00:00:00';
+            $endDate = request('end_date') . ' 23:59:59';
+            $query->whereBetween('created_at', [$startDate, $endDate]);
+        }
+
+        return $query;
     }
 
     /**
@@ -60,7 +68,7 @@ class ProposalSuratDataTable extends DataTable
         return $this->builder()
                     ->setTableId('proposalsurat-table')
                     ->columns($this->getColumns())
-                    ->minifiedAjax()
+                    ->minifiedAjax(route('admin.proposal-surat.data'))
                     //->dom('Bfrtip')
                     ->orderBy(1)
                     ->selectStyleSingle()

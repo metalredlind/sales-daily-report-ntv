@@ -106,4 +106,9 @@ class ProposalSuratController extends Controller
 
         return response(['status' => 'success', 'message'=> 'Proposal/Surat is deleted successfully']);
     }
+
+    public function getData(ProposalSuratDataTable $dataTable)
+    {
+        return $dataTable->ajax();
+    }
 }
