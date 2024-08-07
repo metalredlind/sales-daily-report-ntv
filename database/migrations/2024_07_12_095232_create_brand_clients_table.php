@@ -20,7 +20,8 @@ return new class extends Migration
             $table->string('pic_brand_nama');
             $table->string('pic_brand_jabatan');
             $table->string('pic_brand_telepon');
-            $table->string('proyeksi_revenue');
+            $table->decimal('proyeksi_revenue', 20, 0);
+            $table->decimal('realisasi_revenue', 20, 0);
             $table->text('keterangan')->nullable();
             $table->integer('user_team');
 

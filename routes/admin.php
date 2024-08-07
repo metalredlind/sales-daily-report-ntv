@@ -31,3 +31,5 @@ Route::resource('media-order', MediaOrderController::class);
 
 //target route
 Route::resource('target-sales', TargetSalesController::class);
+
+Route::get('brand-client-data', [BrandClientController::class, 'getData'])->name('brand-client.data');

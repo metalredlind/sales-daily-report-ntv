@@ -1,67 +1,59 @@
 @extends('admin.layouts.master')
 
 @section('content')
-    <section class="section">
-        <div class="section-header">
-            <h1>Pembagian Brand/Klien yang Dikelola</h1>
-        </div>
+<section class="section">
+    <div class="section-header">
+        <h1>Pembagian Brand/Klien yang Dikelola</h1>
+    </div>
 
-        <div class="section-body">
-
-            <div class="row">
-                <div class="col-12">
-                    <div class="card">
-                        <div class="card-header">
-                            <h4>Brand / Klien</h4>
-                            <div class="card-header-action">
-                                <a href="{{ route('admin.brand-client.create') }}" class="btn btn-primary">
-                                    + Add New
-                                </a>
-                            </div>
+    <div class="section-body">
+        <div class="row">
+            <div class="col-12">
+                <div class="card">
+                    <div class="card-header">
+                        <h4>Brand / Klien</h4>
+                        <div class="card-header-action">
+                            <a href="{{ route('admin.brand-client.create') }}" class="btn btn-primary">
+                                + Add New
+                            </a>
                         </div>
-                        <div class="card-body">
-                            {{ $dataTable->table() }}
+                    </div>
+                    <div class="card-body">
+                        <!-- Date Range Picker Input -->
+                        <div class="mb-3">
+                            <input type="text" id="daterange" class="form-control" placeholder="Select Date Range">
                         </div>
+                        {{ $dataTable->table() }}
                     </div>
                 </div>
             </div>
         </div>
-    </section>
-
-    <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
-        aria-hidden="true">
-        <div class="modal-dialog" role="document">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLabel">Detail PIC Brand/Client</h5>
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">&times;</span>
-                    </button>
-                </div>
-                <div class="modal-body">
-                    <form>
-                        <div class="form-group">
-                            <label for="namaPIC">Nama PIC</label>
-                            <input type="text" class="form-control" id="namaPIC" readonly="readonly">
-                        </div>
-                        <div class="form-group">
-                            <label for="jabatanPIC">Jabatan PIC</label>
-                            <input type="text" class="form-control" id="jabatanPIC" readonly="readonly">
-                        </div>
-                        <div class="form-group">
-                            <label for="telpPIC">No. Telp PIC</label>
-                            <input type="text" class="form-control" id="telpPIC" readonly="readonly">
-                        </div>
-                    </form>
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                </div>
-            </div>
-        </div>
     </div>
+</section>
 @endsection
 
 @push('scripts')
-    {{ $dataTable->scripts(attributes: ['type' => 'module']) }}
+{{ $dataTable->scripts(attributes: ['type' => 'module']) }}
+<script>
+    $(document).ready(function() {
+        // Initialize date range picker
+        $('#daterange').daterangepicker({
+            locale: {
+                format: 'YYYY-MM-DD'
+            }
+        });
+
+        // Filter data on date range change
+        $('#daterange').on('apply.daterangepicker', function(ev, picker) {
+            // Adjust dates to avoid timezone issues
+            let startDate = picker.startDate.clone().startOf('day').format('YYYY-MM-DD');
+            let endDate = picker.endDate.clone().endOf('day').format('YYYY-MM-DD');
+
+            // Get the DataTable instance
+            var table = $('#brandclient-table').DataTable();
+            // Reload the table with new date range filters
+            table.ajax.url('{{ route("admin.brand-client.data") }}?start_date=' + startDate + '&end_date=' + endDate).load();
+        });
+    });
+</script>
 @endpush

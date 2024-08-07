@@ -57,6 +57,17 @@
                                     </div>
                                 </div>
                                 <div class="form-group">
+                                    <label>Proyeksi Revenue</label>
+                                    <div class="input-group">
+                                        <div class="input-group-prepend">
+                                            <div class="input-group-text">
+                                                Rp
+                                            </div>
+                                        </div>
+                                        <input type="text" class="form-control" name="realisasi_revenue" value="{{$brandClient->realisasi_revenue}}">
+                                    </div>
+                                </div>
+                                <div class="form-group">
                                     <label>Keterangan</label>
                                     <input type="text" class="form-control" name="keterangan" value="{{$brandClient->keterangan}}">
                                 </div>

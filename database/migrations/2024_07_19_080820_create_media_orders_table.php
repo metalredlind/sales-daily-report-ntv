@@ -17,7 +17,7 @@ return new class extends Migration
             $table->string('klien');
             $table->string('nomor_paket');
             $table->date('tanggal_paket');
-            $table->string('nominal_paket');
+            $table->decimal('nominal_paket', 20, 0);
             $table->string('jenis_paket');
             $table->integer('user_team');
 
