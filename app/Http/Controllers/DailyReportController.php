@@ -122,4 +122,9 @@ class DailyReportController extends Controller
 
         return response(['status' => 'success', 'message'=> 'Daily Report has been deleted successfully']);
     }
+
+    public function getData(DailyReportDataTable $dataTable)
+    {
+        return $dataTable->ajax();
+    }
 }

@@ -37,7 +37,15 @@ class DailyReportDataTable extends DataTable
      */
     public function query(DailyReport $model): QueryBuilder
     {
-        return $model->newQuery();
+        $query = $model->newQuery();
+
+        if (request()->has('start_date') && request()->has('end_date')) {
+            $startDate = request('start_date') . ' 00:00:00';
+            $endDate = request('end_date') . ' 23:59:59';
+            $query->whereBetween('waktu', [$startDate, $endDate]);
+        }
+
+        return $query;
     }
 
     /**
@@ -48,7 +56,7 @@ class DailyReportDataTable extends DataTable
         return $this->builder()
                     ->setTableId('dailyreport-table')
                     ->columns($this->getColumns())
-                    ->minifiedAjax()
+                    ->minifiedAjax(route('admin.daily-report.data'))
                     //->dom('Bfrtip')
                     ->orderBy(1)
                     ->selectStyleSingle()
