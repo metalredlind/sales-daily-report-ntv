@@ -37,6 +37,9 @@ class ProposalSuratDataTable extends DataTable
                     return $belumDikirim;
                 };
             })
+            ->addColumn('tanggal_dibuat', function($query){
+                return date('d F Y', strtotime($query->created_at));
+            })
             ->rawColumns(['action','status_follow_up'])
             ->setRowId('id');
     }
@@ -78,11 +81,11 @@ class ProposalSuratDataTable extends DataTable
     {
         return [
             Column::make('id'),
-            Column::make('tanggal'),
             Column::make('no_surat'),
             Column::make('tujuan_surat'),
             Column::make('perihal'),
             Column::make('status_follow_up'),
+            Column::make('tanggal_dibuat'),
             Column::computed('action')
                   ->exportable(false)
                   ->printable(false)

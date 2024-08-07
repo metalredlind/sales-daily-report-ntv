@@ -31,7 +31,6 @@ class ProposalSuratController extends Controller
     public function store(Request $request)
     {
         $request->validate([
-            'tanggal' => ['date','required'],
             'no_surat' => ['required', 'max:200'],
             'tujuan_surat' => ['required', 'max:100'],
             'perihal' => ['required','max:200'],
@@ -40,7 +39,6 @@ class ProposalSuratController extends Controller
 
         $proposalSurat = new ProposalSurat();
 
-        $proposalSurat->tanggal = $request->tanggal;
         $proposalSurat->no_surat = $request->no_surat;
         $proposalSurat->tujuan_surat = $request->tujuan_surat;
         $proposalSurat->perihal = $request->perihal;
@@ -77,7 +75,6 @@ class ProposalSuratController extends Controller
     public function update(Request $request, string $id)
     {
         $request->validate([
-            'tanggal' => ['date','required'],
             'no_surat' => ['required', 'max:200'],
             'tujuan_surat' => ['required', 'max:100'],
             'perihal' => ['required','max:200'],
@@ -86,7 +83,6 @@ class ProposalSuratController extends Controller
 
         $proposalSurat = ProposalSurat::findOrFail($id);
 
-        $proposalSurat->tanggal = $request->tanggal;
         $proposalSurat->no_surat = $request->no_surat;
         $proposalSurat->tujuan_surat = $request->tujuan_surat;
         $proposalSurat->perihal = $request->perihal;
