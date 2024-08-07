@@ -110,4 +110,9 @@ class MediaOrderController extends Controller
 
         return response(['status' => 'success', 'message'=> 'Media Order has been deleted successfully']);
     }
+
+    public function getData(MediaOrderDataTable $dataTable)
+    {
+        return $dataTable->ajax();
+    }
 }

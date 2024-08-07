@@ -36,3 +36,4 @@ Route::resource('target-sales', TargetSalesController::class);
 Route::get('brand-client-data', [BrandClientController::class, 'getData'])->name('brand-client.data');
 Route::get('daily-report-data', [DailyReportController::class, 'getData'])->name('daily-report.data');
 Route::get('proposal-surat-data', [ProposalSuratController::class, 'getData'])->name('proposal-surat.data');
+Route::get('media-order-data', [MediaOrderController::class, 'getData'])->name('media-order.data');
