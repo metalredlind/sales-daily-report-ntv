@@ -38,10 +38,10 @@ class SalesDailyReportDataTable extends DataTable
      */
     public function query(DailyReport $model): QueryBuilder
     {
-        // Join with the users table and filter based on user_team and team match
-        $userId = Auth::id();
+        // Get the currently authenticated user's team
+        $userTeam = auth()->user()->team;
 
-        $query = $model->newQuery();
+        $query = $model->newQuery()->where('user_team', $userTeam);
 
         if (request()->has('start_date') && request()->has('end_date')) {
             $startDate = request('start_date') . ' 00:00:00';

@@ -43,7 +43,10 @@ class SalesMediaOrderDataTable extends DataTable
      */
     public function query(MediaOrder $model): QueryBuilder
     {
-        $query = $model->newQuery();
+        // Get the currently authenticated user's team
+        $userTeam = auth()->user()->team;
+
+        $query = $model->newQuery()->where('user_team', $userTeam);
 
         if (request()->has('start_date') && request()->has('end_date')) {
             $startDate = request('start_date') . ' 00:00:00';
