@@ -1,4 +1,4 @@
-@extends('admin.layouts.master')
+@extends('sales.layouts.master')
 
 @section('content')
     <section class="section">
@@ -14,7 +14,7 @@
                         <div class="card-header">
                             <h4>Proposal & Surat</h4>
                             <div class="card-header-action">
-                                <a href="{{ route('admin.proposal-surat.create') }}" class="btn btn-primary">
+                                <a href="{{ route('sales.proposal-surat.create') }}" class="btn btn-primary">
                                     + Add New
                                 </a>
                             </div>
@@ -57,7 +57,7 @@
                 let endDate = picker.endDate.clone().endOf('day').format('YYYY-MM-DD');
 
                 // Get the DataTable instance
-                var table = $('#proposalsurat-table').DataTable();
+                var table = $('#salesproposalsurat-table').DataTable();
                 // Reload the table with new date range filters
                 table.ajax.url('{{ route("admin.proposal-surat.data") }}?start_date=' + startDate + '&end_date=' + endDate).load();
             });

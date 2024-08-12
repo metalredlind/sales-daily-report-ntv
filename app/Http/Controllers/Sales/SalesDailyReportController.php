@@ -1,20 +1,21 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Sales;
 
-use App\DataTables\DailyReportDataTable;
+use App\DataTables\SalesDailyReportDataTable;
+use App\Http\Controllers\Controller;
 use App\Models\DailyReport;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
-class DailyReportController extends Controller
+class SalesDailyReportController extends Controller
 {
     /**
      * Display a listing of the resource.
      */
-    public function index(DailyReportDataTable $dataTable)
+    public function index(SalesDailyReportDataTable $dataTable)
     {
-        return $dataTable->render('admin.daily-report.index');
+        return $dataTable->render('sales.daily-report.index');
     }
 
     /**
@@ -22,7 +23,7 @@ class DailyReportController extends Controller
      */
     public function create()
     {
-        return view('admin.daily-report.create');
+        return view('sales.daily-report.create');
     }
 
     /**
@@ -57,7 +58,7 @@ class DailyReportController extends Controller
 
         toastr('Daily Report baru berhasil ditambah', 'success');
 
-        return redirect()->route('admin.daily-report.index');
+        return redirect()->route('sales.daily-report.index');
     }
 
     /**
@@ -74,7 +75,7 @@ class DailyReportController extends Controller
     public function edit(string $id)
     {
         $dailyReport = DailyReport::findOrFail($id);
-        return view('admin.daily-report.edit', compact('dailyReport'));
+        return view('sales.daily-report.edit', compact('dailyReport'));
     }
 
     /**
@@ -109,7 +110,7 @@ class DailyReportController extends Controller
 
         toastr('Daily Report baru berhasil diupdate', 'success');
 
-        return redirect()->route('admin.daily-report.index');
+        return redirect()->route('sales.daily-report.index');
     }
 
     /**
@@ -123,7 +124,7 @@ class DailyReportController extends Controller
         return response(['status' => 'success', 'message'=> 'Daily Report has been deleted successfully']);
     }
 
-    public function getData(DailyReportDataTable $dataTable)
+    public function getData(SalesDailyReportDataTable $dataTable)
     {
         return $dataTable->ajax();
     }

@@ -8,7 +8,7 @@
         </div>
         <ul class="sidebar-menu">
             <li class="menu-header">Dashboard</li>
-            <li class="active"><a class="nav-link" href="#"><i class="fas fa-home"></i> <span>Home</span></a></li>
+            <li class="active"><a class="nav-link" href="{{ route('admin.dashboard') }}"><i class="fas fa-home"></i> <span>Home</span></a></li>
             <li><a class="nav-link" href="{{ route('admin.target-sales.index') }}"><i class="fas fa-bullseye"></i></i>
             <span>Target</span></a></li>
             <li class="menu-header">Starter</li>

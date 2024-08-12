@@ -1,9 +1,9 @@
-@extends('admin.layouts.master')
+@extends('sales.layouts.master')
 
 @section('content')
     <section class="section">
         <div class="section-header">
-            <h1>Proposal dan Surat Menyurat</h1>
+            <h1>List Deal Media Order</h1>
         </div>
 
         <div class="section-body">
@@ -12,9 +12,9 @@
                 <div class="col-12">
                     <div class="card">
                         <div class="card-header">
-                            <h4>Proposal & Surat</h4>
+                            <h4>Media Order</h4>
                             <div class="card-header-action">
-                                <a href="{{ route('admin.proposal-surat.create') }}" class="btn btn-primary">
+                                <a href="{{ route('sales.media-order.create') }}" class="btn btn-primary">
                                     + Add New
                                 </a>
                             </div>
@@ -33,7 +33,6 @@
                 </div>
             </div>
         </div>
-        </div>
     </section>
 
     </div>
@@ -49,17 +48,17 @@
                     format: 'YYYY-MM-DD'
                 }
             });
-
+    
             // Filter data on date range change
             $('#daterange').on('apply.daterangepicker', function(ev, picker) {
                 // Adjust dates to avoid timezone issues
                 let startDate = picker.startDate.clone().startOf('day').format('YYYY-MM-DD');
                 let endDate = picker.endDate.clone().endOf('day').format('YYYY-MM-DD');
-
+    
                 // Get the DataTable instance
-                var table = $('#proposalsurat-table').DataTable();
+                var table = $('#salesmediaorder-table').DataTable();
                 // Reload the table with new date range filters
-                table.ajax.url('{{ route("admin.proposal-surat.data") }}?start_date=' + startDate + '&end_date=' + endDate).load();
+                table.ajax.url('{{ route("sales.media-order.data") }}?start_date=' + startDate + '&end_date=' + endDate).load();
             });
         });
     </script>

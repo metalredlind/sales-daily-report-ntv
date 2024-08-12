@@ -1,4 +1,4 @@
-@extends('admin.layouts.master')
+@extends('sales.layouts.master')
 
 @section('content')
     <section class="section">
@@ -14,7 +14,7 @@
                         <div class="card-header">
                             <h4>Daily Report</h4>
                             <div class="card-header-action">
-                                <a href="{{ route('admin.daily-report.create') }}" class="btn btn-primary">
+                                <a href="{{ route('sales.daily-report.create') }}" class="btn btn-primary">
                                     + Add New
                                 </a>
                             </div>
@@ -71,6 +71,7 @@
 
 @push('scripts')
     {{ $dataTable->scripts(attributes: ['type' => 'module']) }}
+    
     <script>
         $(document).ready(function() {
             // Initialize date range picker
@@ -87,9 +88,9 @@
                 let endDate = picker.endDate.clone().endOf('day').format('YYYY-MM-DD');
     
                 // Get the DataTable instance
-                var table = $('#dailyreport-table').DataTable();
+                var table = $('#salesdailyreport-table').DataTable();
                 // Reload the table with new date range filters
-                table.ajax.url('{{ route("admin.daily-report.data") }}?start_date=' + startDate + '&end_date=' + endDate).load();
+                table.ajax.url('{{ route("sales.daily-report.data") }}?start_date=' + startDate + '&end_date=' + endDate).load();
             });
         });
     </script>

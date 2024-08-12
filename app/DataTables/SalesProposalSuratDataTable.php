@@ -12,7 +12,7 @@ use Yajra\DataTables\Html\Editor\Editor;
 use Yajra\DataTables\Html\Editor\Fields;
 use Yajra\DataTables\Services\DataTable;
 
-class ProposalSuratDataTable extends DataTable
+class SalesProposalSuratDataTable extends DataTable
 {
     /**
      * Build the DataTable class.
@@ -49,7 +49,10 @@ class ProposalSuratDataTable extends DataTable
      */
     public function query(ProposalSurat $model): QueryBuilder
     {
-        $query = $model->newQuery();
+        // Get the currently authenticated user's team
+        $userTeam = auth()->user()->team;
+
+        $query = $model->newQuery()->where('user_team', $userTeam);
 
         if (request()->has('start_date') && request()->has('end_date')) {
             $startDate = request('start_date') . ' 00:00:00';
@@ -66,9 +69,9 @@ class ProposalSuratDataTable extends DataTable
     public function html(): HtmlBuilder
     {
         return $this->builder()
-                    ->setTableId('proposalsurat-table')
+                    ->setTableId('salesproposalsurat-table')
                     ->columns($this->getColumns())
-                    ->minifiedAjax(route('admin.proposal-surat.data'))
+                    ->minifiedAjax(route('sales.proposal-surat.data'))
                     //->dom('Bfrtip')
                     ->orderBy(1)
                     ->selectStyleSingle()
@@ -107,6 +110,6 @@ class ProposalSuratDataTable extends DataTable
      */
     protected function filename(): string
     {
-        return 'ProposalSurat_' . date('YmdHis');
+        return 'SalesProposalSurat_' . date('YmdHis');
     }
 }

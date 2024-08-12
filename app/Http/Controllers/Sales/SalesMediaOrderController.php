@@ -1,20 +1,21 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Sales;
 
-use App\DataTables\MediaOrderDataTable;
+use App\DataTables\SalesMediaOrderDataTable;
+use App\Http\Controllers\Controller;
 use App\Models\MediaOrder;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
-class MediaOrderController extends Controller
+class SalesMediaOrderController extends Controller
 {
     /**
      * Display a listing of the resource.
      */
-    public function index(MediaOrderDataTable $dataTable)
+    public function index(SalesMediaOrderDataTable $dataTable)
     {
-        return $dataTable->render('admin.media-order.index');
+        return $dataTable->render('sales.media-order.index');
     }
 
     /**
@@ -22,7 +23,7 @@ class MediaOrderController extends Controller
      */
     public function create()
     {
-        return view('admin.media-order.create');
+        return view('sales.media-order.create');
     }
 
     /**
@@ -51,7 +52,7 @@ class MediaOrderController extends Controller
 
         toastr('Media Order baru berhasil ditambah', 'success');
 
-        return redirect()->route('admin.media-order.index');
+        return redirect()->route('sales.media-order.index');
     }
 
     /**
@@ -68,7 +69,7 @@ class MediaOrderController extends Controller
     public function edit(string $id)
     {
         $mediaOrder = MediaOrder::findOrFail($id);
-        return view('admin.media-order.edit', compact('mediaOrder'));
+        return view('sales.media-order.edit', compact('mediaOrder'));
     }
 
     /**
@@ -97,7 +98,7 @@ class MediaOrderController extends Controller
 
         toastr('Media Order berhasil diedit', 'success');
 
-        return redirect()->route('admin.media-order.index');
+        return redirect()->route('sales.media-order.index');
     }
 
     /**
@@ -111,7 +112,7 @@ class MediaOrderController extends Controller
         return response(['status' => 'success', 'message'=> 'Media Order has been deleted successfully']);
     }
 
-    public function getData(MediaOrderDataTable $dataTable)
+    public function getData(SalesMediaOrderDataTable $dataTable)
     {
         return $dataTable->ajax();
     }

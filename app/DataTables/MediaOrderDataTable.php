@@ -31,6 +31,9 @@ class MediaOrderDataTable extends DataTable
         ->addColumn('nominal_paket', function($query){
             return 'Rp ' . number_format($query->nominal_paket, 0, ".", ".");;
         })
+        ->addColumn('tanggal_dibuat', function($query){
+            return date('d F Y', strtotime($query->created_at));
+        })
         ->rawColumns(['action', 'nominal_paket'])
         ->setRowId('id');
     }
@@ -40,7 +43,15 @@ class MediaOrderDataTable extends DataTable
      */
     public function query(MediaOrder $model): QueryBuilder
     {
-        return $model->newQuery();
+        $query = $model->newQuery();
+
+        if (request()->has('start_date') && request()->has('end_date')) {
+            $startDate = request('start_date') . ' 00:00:00';
+            $endDate = request('end_date') . ' 23:59:59';
+            $query->whereBetween('created_at', [$startDate, $endDate]);
+        }
+
+        return $query;
     }
 
     /**
@@ -51,7 +62,7 @@ class MediaOrderDataTable extends DataTable
         return $this->builder()
                     ->setTableId('mediaorder-table')
                     ->columns($this->getColumns())
-                    ->minifiedAjax()
+                    ->minifiedAjax(route('admin.media-order.data'))
                     //->dom('Bfrtip')
                     ->orderBy(1)
                     ->selectStyleSingle()
@@ -77,6 +88,7 @@ class MediaOrderDataTable extends DataTable
             Column::make('tanggal_paket'),
             Column::make('nominal_paket'),
             Column::make('jenis_paket'),
+            Column::make('tanggal_dibuat'),  // Add created_at column
             Column::computed('action')
                   ->exportable(false)
                   ->printable(false)

@@ -1,20 +1,21 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Sales;
 
-use App\DataTables\ProposalSuratDataTable;
+use App\DataTables\SalesProposalSuratDataTable;
+use App\Http\Controllers\Controller;
 use App\Models\ProposalSurat;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
-class ProposalSuratController extends Controller
+class SalesProposalSuratController extends Controller
 {
     /**
      * Display a listing of the resource.
      */
-    public function index(ProposalSuratDataTable $dataTable)
+    public function index(SalesProposalSuratDataTable $dataTable)
     {
-        return $dataTable->render('admin.proposal-surat.index');
+        return $dataTable->render('sales.proposal-surat.index');
     }
 
     /**
@@ -22,7 +23,7 @@ class ProposalSuratController extends Controller
      */
     public function create()
     {
-        return view('admin.proposal-surat.create');
+        return view('sales.proposal-surat.create');
     }
 
     /**
@@ -49,7 +50,7 @@ class ProposalSuratController extends Controller
 
         toastr('Proposal/Surat baru berhasil ditambah', 'success');
 
-        return redirect()->route('admin.proposal-surat.index');
+        return redirect()->route('sales.proposal-surat.index');
     }
 
     /**
@@ -66,7 +67,7 @@ class ProposalSuratController extends Controller
     public function edit(string $id)
     {
         $proposalSurat = ProposalSurat::findOrFail($id);
-        return view('admin.proposal-surat.edit', compact('proposalSurat'));
+        return view('sales.proposal-surat.edit', compact('proposalSurat'));
     }
 
     /**
@@ -93,7 +94,7 @@ class ProposalSuratController extends Controller
 
         toastr('Proposal/Surat baru berhasil diupdate', 'success');
 
-        return redirect()->route('admin.proposal-surat.index');
+        return redirect()->route('sales.proposal-surat.index');
     }
 
     /**
@@ -107,7 +108,7 @@ class ProposalSuratController extends Controller
         return response(['status' => 'success', 'message'=> 'Proposal/Surat is deleted successfully']);
     }
 
-    public function getData(ProposalSuratDataTable $dataTable)
+    public function getData(SalesProposalSuratDataTable $dataTable)
     {
         return $dataTable->ajax();
     }

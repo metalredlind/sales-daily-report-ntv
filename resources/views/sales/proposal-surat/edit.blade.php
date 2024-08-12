@@ -1,4 +1,4 @@
-@extends('admin.layouts.master')
+@extends('sales.layouts.master')
 
 @section('content')
     <section class="section">
@@ -15,7 +15,7 @@
                             <h4>Proposal dan Surat Menyurat</h4>
                         </div>
                         <div class="card-body">
-                            <form action="{{ route('admin.proposal-surat.update', $proposalSurat->id) }}" method="POST"enctype="multipart/form-data">
+                            <form action="{{ route('sales.proposal-surat.update', $proposalSurat->id) }}" method="POST"enctype="multipart/form-data">
                                 @csrf
                                 @method('PUT')
                                 <div class="form-group">
