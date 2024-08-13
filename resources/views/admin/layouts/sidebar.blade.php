@@ -22,9 +22,8 @@
                         Media Order</span></a></li>
 
             <li class="menu-header">Setting</li>
-            <li><a class="nav-link" href="{{ route('admin.profile') }}"><i class="fas fa-user-alt"></i> <span>My
-                        Profile</span></a></li>
-            <li><a class="nav-link" href="#"><i class="fas fa-user-cog"></i> <span>User Settings</span></a></li>
+            <li><a class="nav-link" href="{{ route('admin.profile') }}"><i class="fas fa-user-alt"></i> <span>My Profile</span></a></li>
+            <li><a class="nav-link" href="{{ route('admin.manage-user.index')}}"><i class="fas fa-user-cog"></i> <span>User List</span></a></li>
 
     </aside>
 </div>

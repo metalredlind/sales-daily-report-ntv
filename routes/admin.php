@@ -4,6 +4,7 @@ use App\Http\Controllers\AdminProfileController;
 use App\Http\Controllers\Backend\AdminController;
 use App\Http\Controllers\BrandClientController;
 use App\Http\Controllers\DailyReportController;
+use App\Http\Controllers\ManageUserController;
 use App\Http\Controllers\MediaOrderController;
 use App\Http\Controllers\ProposalSuratController;
 use App\Http\Controllers\TargetSalesController;
@@ -31,6 +32,11 @@ Route::resource('media-order', MediaOrderController::class);
 
 //target route
 Route::resource('target-sales', TargetSalesController::class);
+
+/** manage user routes */
+Route::get('manage-user', [ManageUserController::class, 'index'])->name('manage-user.index');
+Route::get('manage-user/create', [ManageUserController::class, 'create'])->name('manage-user.create');
+Route::get('manage-user/store', [ManageUserController::class, 'store'])->name('manage-user.store');
 
 //daterangefilter Datatables
 Route::get('brand-client-data', [BrandClientController::class, 'getData'])->name('brand-client.data');
