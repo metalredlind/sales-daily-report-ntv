@@ -17,17 +17,24 @@
 
                   </div>
                   <div class="card-body">
-                    <form action="" method="POST">
+                    <form action="{{route('admin.manage-user.store')}}" method="POST">
                         @csrf
 
                         <div class="form-group">
                             <label>Nama</label>
-                            <input type="text" class="form-control" name="name" value="">
+                            <input type="text" class="form-control" name="name" value="{{old('name')}}">
                         </div>
-
+                        <div class="form-group">
+                          <label>Username</label>
+                          <input type="text" class="form-control" name="username" value="{{old('username')}}">
+                        </div>
                         <div class="form-group">
                             <label>Email</label>
-                            <input type="text" class="form-control" name="email" value="">
+                            <input type="text" class="form-control" name="email" value="{{old('email')}}">
+                        </div>
+                        <div class="form-group">
+                          <label>Title</label>
+                          <input type="text" class="form-control" name="title" value="{{old('title')}}">
                         </div>
                         <div class="row">
                             <div class="col-md-6">
@@ -55,7 +62,7 @@
                         </div>
                         <div class="form-group">
                           <label>Tim</label>
-                          <input type="text" class="form-control" name="team" value="">
+                          <input type="text" class="form-control" name="team" value="{{old('team')}}">
                         </div>
                         <button type="submmit" class="btn btn-primary">Create</button>
                     </form>

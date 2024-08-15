@@ -23,8 +23,8 @@ class ManageUserDataTable extends DataTable
     {
         return (new EloquentDataTable($query))
             ->addColumn('action', function($query){
-                $editBtn = "<a href='".route('admin.brand-client.edit', $query->id)."' class='btn btn-info'><i class='far fa-edit'></i></a>";
-                $deleteBtn = "<a href='".route('admin.brand-client.destroy', $query->id)."' class='btn btn-danger ml-1 delete-item'><i class='fas fa-trash-alt'></i></a>";
+                $editBtn = "<a href='".route('admin.manage-user.edit', $query->id)."' class='btn btn-info'><i class='far fa-edit'></i></a>";
+                $deleteBtn = "<a href='".route('admin.manage-user.destroy', $query->id)."' class='btn btn-danger ml-1 delete-item'><i class='fas fa-trash-alt'></i></a>";
                 return $editBtn.$deleteBtn;
             })
             ->rawColumns(['action'])
