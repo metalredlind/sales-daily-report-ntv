@@ -14,7 +14,9 @@ return new class extends Migration
         Schema::create('brand_clients', function (Blueprint $table) {
             $table->id();
             
-            $table->string('pic_ntv');
+            $table->unsignedBigInteger('pic_ntv_id')->nullable(); // Foreign key to users table
+            $table->foreign('pic_ntv_id')->references('id')->on('users')->onDelete('set null');
+
             $table->string('jenis_industri');
             $table->string('nama_brand');
             $table->string('pic_brand_nama');
@@ -34,6 +36,10 @@ return new class extends Migration
      */
     public function down(): void
     {
+        Schema::table('brand_clients', function (Blueprint $table) {
+            $table->dropForeign(['pic_ntv_id']);
+        });
+
         Schema::dropIfExists('brand_clients');
     }
 };

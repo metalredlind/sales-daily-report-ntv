@@ -47,4 +47,9 @@ class User extends Authenticatable
     {
         return $this->hasMany(BrandClient::class, 'user_team', 'team');
     }
+
+    public function brandClientsUserNtv()
+    {
+        return $this->hasMany(BrandClient::class, 'pic_ntv_id');
+    }
 }
