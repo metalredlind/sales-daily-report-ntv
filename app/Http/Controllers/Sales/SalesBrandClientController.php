@@ -24,7 +24,9 @@ class SalesBrandClientController extends Controller
      */
     public function create()
     {
-        $users = User::all();
+        $currentUserTeam = auth()->user()->team;
+        $users = User::where('team', $currentUserTeam)->get();
+
         return view('sales.brand-client.create', compact('users'));
     }
 
@@ -77,7 +79,9 @@ class SalesBrandClientController extends Controller
     public function edit(string $id)
     {
         $brandClient = BrandClient::findOrFail($id);
-        $users = User::all();
+        $currentUserTeam = auth()->user()->team;
+        $users = User::where('team', $currentUserTeam)->get();
+
         return view('sales.brand-client.edit', compact('brandClient', 'users'));
     }
 
