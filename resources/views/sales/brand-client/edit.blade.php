@@ -21,7 +21,12 @@
                                 @method('PUT')
                                 <div class="form-group">
                                     <label>PIC NTV</label>
-                                    <input type="text" class="form-control" name="pic_ntv" value="{{$brandClient->pic_ntv}}">
+                                    <select class="form-control" name="pic_ntv_id">
+                                        <option value="">Select PIC NTV</option>
+                                        @foreach($users as $user)
+                                            <option value="{{ $user->id }}" {{ $brandClient->pic_ntv_id == $user->id ? 'selected' : '' }}>{{ $user->name }}</option>
+                                        @endforeach
+                                    </select>
                                 </div>
                                 <label>Brand/Client</label>
                                 <div class="form-group">

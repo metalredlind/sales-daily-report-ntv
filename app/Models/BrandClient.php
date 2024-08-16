@@ -11,6 +11,9 @@ class BrandClient extends Model
 
     public function user()
     {
-        return $this->belongsTo(User::class, 'user_team', 'team');
+        return $this->belongsTo(User::class, 'pic_ntv_id');
     }
+
+
+    
 }

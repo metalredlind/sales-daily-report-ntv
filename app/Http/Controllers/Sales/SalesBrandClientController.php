@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Sales;
 use App\DataTables\SalesBrandClientDataTable;
 use App\Http\Controllers\Controller;
 use App\Models\BrandClient;
+use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -23,7 +24,8 @@ class SalesBrandClientController extends Controller
      */
     public function create()
     {
-        return view('sales.brand-client.create');
+        $users = User::all();
+        return view('sales.brand-client.create', compact('users'));
     }
 
     /**
@@ -32,7 +34,7 @@ class SalesBrandClientController extends Controller
     public function store(Request $request)
     {
         $request->validate([
-            'pic_ntv' => ['required', 'max:200'],
+            'pic_ntv_id' => ['required'],
             'jenis_industri' => ['required', 'max:200'],
             'nama_brand' => ['required', 'max:200'],
             'pic_brand_nama' => ['required', 'max:200'],
@@ -44,7 +46,7 @@ class SalesBrandClientController extends Controller
 
         $brandClient = new BrandClient();
 
-        $brandClient->pic_ntv = $request->pic_ntv;
+        $brandClient->pic_ntv_id = $request->pic_ntv_id;
         $brandClient->jenis_industri = $request->jenis_industri;
         $brandClient->nama_brand = $request->nama_brand;
         $brandClient->pic_brand_nama = $request->pic_brand_nama;
@@ -75,7 +77,8 @@ class SalesBrandClientController extends Controller
     public function edit(string $id)
     {
         $brandClient = BrandClient::findOrFail($id);
-        return view('sales.brand-client.edit', compact('brandClient'));
+        $users = User::all();
+        return view('sales.brand-client.edit', compact('brandClient', 'users'));
     }
 
     /**
@@ -84,7 +87,7 @@ class SalesBrandClientController extends Controller
     public function update(Request $request, string $id)
     {
         $request->validate([
-            'pic_ntv' => ['required', 'max:200'],
+            'pic_ntv_id' => ['required'],
             'jenis_industri' => ['required', 'max:200'],
             'nama_brand' => ['required', 'max:200'],
             'pic_brand_nama' => ['required', 'max:200'],
@@ -97,7 +100,7 @@ class SalesBrandClientController extends Controller
 
         $brandClient = BrandClient::findOrFail($id);
 
-        $brandClient->pic_ntv = $request->pic_ntv;
+        $brandClient->pic_ntv_id = $request->pic_ntv_id;
         $brandClient->jenis_industri = $request->jenis_industri;
         $brandClient->nama_brand = $request->nama_brand;
         $brandClient->pic_brand_nama = $request->pic_brand_nama;
