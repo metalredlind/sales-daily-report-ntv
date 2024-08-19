@@ -5,8 +5,8 @@ use App\Http\Controllers\Sales\SalesBrandClientController;
 use App\Http\Controllers\Sales\SalesDailyReportController;
 use App\Http\Controllers\Sales\SalesMediaOrderController;
 use App\Http\Controllers\Sales\SalesProposalSuratController;
+use App\Http\Controllers\Sales\SalesTargetController;
 use App\Http\Controllers\SalesProfileController;
-use App\Http\Controllers\TargetSalesController;
 use Illuminate\Support\Facades\Route;
 
 //sales route
@@ -30,7 +30,7 @@ Route::resource('proposal-surat', SalesProposalSuratController::class);
 Route::resource('media-order', SalesMediaOrderController::class);
 
 //target route
-Route::resource('target-sales', TargetSalesController::class);
+Route::resource('target-sales', SalesTargetController::class);
 
 //daterangefilter Datatables
 Route::get('brand-client-data', [SalesBrandClientController::class, 'getData'])->name('brand-client.data');
