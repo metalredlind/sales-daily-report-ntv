@@ -22,9 +22,14 @@
                         <div class="card-body">
                             <div class="col-6">
                                 <!-- Date Range Picker Input -->
-                                <div class="mb-3">
-                                    <input type="text" id="daterange" class="form-control"
-                                        placeholder="Select Date Range">
+                                <label>Date Range Picker</label>
+                                <div class="input-group">
+                                    <div class="input-group-prepend">
+                                    <div class="input-group-text">
+                                        <i class="fas fa-calendar"></i>
+                                    </div>
+                                    </div>
+                                    <input type="text" id="daterange" class="form-control daterange-cus" placeholder="Select Date Range">
                                 </div>
                             </div>
                             {{ $dataTable->table() }}
