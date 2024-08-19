@@ -106,7 +106,7 @@ class BrandClientController extends Controller
         $brandClient->realisasi_revenue = $request->realisasi_revenue;
         $brandClient->keterangan = $request->keterangan;
         $brandClient->user_team = Auth::user()->team;
-        
+
         $brandClient->save();
 
         toastr('Brand/Klien baru berhasil diupdate', 'success');

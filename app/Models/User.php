@@ -52,4 +52,9 @@ class User extends Authenticatable
     {
         return $this->hasMany(BrandClient::class, 'pic_ntv_id');
     }
+
+    public function targetSales()
+    {
+        return $this->hasMany(TargetSales::class, 'user_sales_id');
+    }
 }

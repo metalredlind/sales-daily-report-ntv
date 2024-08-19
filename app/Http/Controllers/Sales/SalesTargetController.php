@@ -2,7 +2,10 @@
 
 namespace App\Http\Controllers\Sales;
 
+use App\DataTables\TargetSalesDataTable;
 use App\Http\Controllers\Controller;
+use App\Models\TargetSales;
+use App\Models\User;
 use Illuminate\Http\Request;
 
 class SalesTargetController extends Controller
@@ -10,9 +13,9 @@ class SalesTargetController extends Controller
     /**
      * Display a listing of the resource.
      */
-    public function index()
+    public function index(TargetSalesDataTable $dataTable)
     {
-        return view('sales.target-sales.index');
+        return $dataTable->render('sales.target-sales.index');
     }
 
     /**
@@ -20,7 +23,8 @@ class SalesTargetController extends Controller
      */
     public function create()
     {
-        return view('sales.target-sales.create');
+        $users = User::all(); // Fetch all users
+        return view('sales.target-sales.create', compact('users'));
     }
 
     /**
@@ -28,7 +32,21 @@ class SalesTargetController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $request->validate([
+            'user_sales_id' => 'required|exists:users,id',
+            'target_sales' => 'required|numeric',
+            'month' => 'required|digits:2',
+            'year' => 'required|digits:4',
+        ]);
+
+        $targetSales = new TargetSales();
+        $targetSales->user_sales_id = $request->user_sales_id;
+        $targetSales->target_sales = $request->target_sales;
+        $targetSales->month = $request->month;
+        $targetSales->year = $request->year;
+        $targetSales->save();
+
+        return redirect()->route('sales.target-sales.index')->with('success', 'Target Sales created successfully.');
     }
 
     /**
