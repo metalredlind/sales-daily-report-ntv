@@ -43,8 +43,8 @@
                                     <tr>
                                         <th>ID</th>
                                         <th>Team</th>
-                                        <th>Name</th>
-                                        <th>Title</th>
+                                        <th>Nama</th>
+                                        <th>Jabatan</th>
                                         <th>Target</th>
                                         <th>Realisasi</th>
                                         <th>Selisih/Varian</th>
@@ -62,8 +62,8 @@
 
 @endsection
 
-@section('scripts')
-
+@push('scripts')
+{{ $dataTable->scripts(attributes: ['type' => 'module']) }}
 
 <script>
     $(document).ready(function() {
@@ -73,7 +73,6 @@
             ajax: {
                 url: '{{ route("sales.target-sales.index") }}',
                 data: function(d) {
-                    console.log('Data object:', d);  // Debugging line
                     d.month = $('#monthFilter').val();
                     d.year = $('#yearFilter').val();
                 }
@@ -91,9 +90,8 @@
         });
 
         $('#monthFilter, #yearFilter').change(function() {
-            console.log('Filters changed');  // Debugging line
             table.ajax.reload();
         });
     });
 </script>
-@endsection
+@endpush
