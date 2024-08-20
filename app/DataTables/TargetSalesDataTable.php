@@ -39,6 +39,7 @@ class TargetSalesDataTable extends DataTable
         $selectedMonth = request()->get('month');
         $selectedYear = request()->get('year');
 
+        // Set the start and end dates for the selected month and year
         $startDate = "{$selectedYear}-{$selectedMonth}-01 00:00:00";
         $endDate = date('Y-m-d 23:59:59', strtotime("last day of {$selectedYear}-{$selectedMonth}"));
 
@@ -57,8 +58,10 @@ class TargetSalesDataTable extends DataTable
                 $join->on('brand_clients.pic_ntv_id', '=', 'users.id')
                     ->whereBetween('brand_clients.created_at', [$startDate, $endDate]);
             })
+            ->whereYear('target_sales.created_at', $selectedYear)
+            ->whereMonth('target_sales.created_at', $selectedMonth)
             ->groupBy('target_sales.id', 'users.team', 'users.name', 'users.title', 'target_sales.target_sales');
-}
+    }
     /**
      * Optional method if you want to use the html builder.
      */
