@@ -78,6 +78,9 @@ class SalesTargetController extends Controller
      */
     public function destroy(string $id)
     {
-        //
+        $targetSales = TargetSales::findOrFail($id);
+        $targetSales->delete();
+
+        return response(['status' => 'success', 'message'=> 'Target has been deleted successfully']);
     }
 }

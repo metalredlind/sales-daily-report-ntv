@@ -25,8 +25,8 @@ class TargetSalesDataTable extends DataTable
         return (new EloquentDataTable($query))
             ->addColumn('action', function($query){
                 // $editBtn = "<a href='".route('sales.target-sales.edit', $query->id)."' class='btn btn-info'><i class='far fa-edit'></i></a>";
-                // $deleteBtn = "<a href='".route('sales.target-sales.destroy', $query->id)."' class='btn btn-danger ml-1 delete-item'><i class='fas fa-trash-alt'></i></a>";
-                // return $editBtn.$deleteBtn;
+                $deleteBtn = "<a href='".route('sales.target-sales.destroy', $query->id)."' class='btn btn-danger ml-1 delete-item'><i class='fas fa-trash-alt'></i></a>";
+                return $deleteBtn;
             })
             ->addColumn('target', function($query){
                 return 'Rp ' . number_format($query->target, 0, ".", ".");
@@ -37,6 +37,7 @@ class TargetSalesDataTable extends DataTable
             ->addColumn('selisih_varian', function($query){
                 return 'Rp ' . number_format($query->selisih_varian, 0, ".", ".");
             })
+            ->rawColumns(['action'])
             ->setRowId('id');
     }
 
