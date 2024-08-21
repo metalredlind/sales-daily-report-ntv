@@ -13,7 +13,7 @@ return new class extends Migration
     {
         Schema::create('brand_clients', function (Blueprint $table) {
             $table->id();
-            
+
             $table->unsignedBigInteger('pic_ntv_id')->nullable(); // Foreign key to users table
             $table->foreign('pic_ntv_id')->references('id')->on('users')->onDelete('set null');
 
