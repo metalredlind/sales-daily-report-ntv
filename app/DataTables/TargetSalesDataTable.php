@@ -46,6 +46,8 @@ class TargetSalesDataTable extends DataTable
      */
     public function query(TargetSales $model): QueryBuilder
     {
+        $user = auth()->user();
+
         $selectedMonth = request()->get('month');
         $selectedYear = request()->get('year');
 
@@ -68,6 +70,7 @@ class TargetSalesDataTable extends DataTable
                 $join->on('brand_clients.pic_ntv_id', '=', 'users.id')
                     ->whereBetween('brand_clients.created_at', [$startDate, $endDate]);
             })
+            ->where('users.team', $user->team)  // Filter by user's team
             ->whereYear('target_sales.created_at', $selectedYear)
             ->whereMonth('target_sales.created_at', $selectedMonth)
             ->groupBy('target_sales.id', 'users.team', 'users.name', 'users.title', 'target_sales.target_sales');
