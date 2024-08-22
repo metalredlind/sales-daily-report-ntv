@@ -21,11 +21,18 @@ class BrandClientDataTable extends DataTable
                 $detailBtn = "<a href='#' class='btn btn-dark ml-1' data-bs-toggle='modal' data-bs-target='#exampleModal'><i class='fa fa-eye'></i></a>";
                 return $editBtn.$deleteBtn.$detailBtn;
             })
-            ->addColumn('proyeksi_revenue', function($query){
+            ->addColumn('proyeksi_revenue', function($query) {
                 return 'Rp ' . number_format($query->proyeksi_revenue, 0, ".", ".");
             })
-            ->addColumn('tanggal_dibuat', function($query){
+            ->addColumn('realisasi_revenue', function($query) {
+                return 'Rp ' . number_format($query->realisasi_revenue, 0, ".", ".");
+            })
+            ->addColumn('tanggal_dibuat', function($query) {
                 return date('d F Y', strtotime($query->created_at));
+            })
+            // You can also format 'pic_ntv' if necessary
+            ->addColumn('pic_ntv', function($query) {
+                return $query->user->name ?? 'N/A';  // Assuming 'name' is the field for user's name
             })
             ->rawColumns(['action'])
             ->setRowId('id');
@@ -64,13 +71,14 @@ class BrandClientDataTable extends DataTable
 
     public function getColumns(): array
     {
-        return [            
+        return [
             Column::make('id'),
             Column::make('pic_ntv'),
             Column::make('jenis_industri'),
             Column::make('nama_brand'),
             Column::make('proyeksi_revenue'),
-            Column::make('tanggal_dibuat'),  // Add created_at column
+            Column::make('realisasi_revenue'),
+            Column::make('tanggal_dibuat'),
             Column::computed('action')
                   ->exportable(false)
                   ->printable(false)
