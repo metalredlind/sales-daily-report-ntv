@@ -2,6 +2,7 @@
 
 namespace App\DataTables;
 
+use App\Models\ManagerProposalSurat;
 use App\Models\ProposalSurat;
 use Illuminate\Database\Eloquent\Builder as QueryBuilder;
 use Yajra\DataTables\EloquentDataTable;
@@ -12,7 +13,7 @@ use Yajra\DataTables\Html\Editor\Editor;
 use Yajra\DataTables\Html\Editor\Fields;
 use Yajra\DataTables\Services\DataTable;
 
-class SalesProposalSuratDataTable extends DataTable
+class ManagerProposalSuratDataTable extends DataTable
 {
     /**
      * Build the DataTable class.
@@ -23,8 +24,8 @@ class SalesProposalSuratDataTable extends DataTable
     {
         return (new EloquentDataTable($query))
             ->addColumn('action', function($query){
-                $editBtn = "<a href='".route('sales.proposal-surat.edit', $query->id)."' class='btn btn-info'><i class='far fa-edit'></i></a>";
-                $deleteBtn = "<a href='".route('sales.proposal-surat.destroy', $query->id)."' class='btn btn-danger ml-1 delete-item'><i class='fas fa-trash-alt'></i></a>";
+                $editBtn = "<a href='".route('manager.proposal-surat.edit', $query->id)."' class='btn btn-info'><i class='far fa-edit'></i></a>";
+                $deleteBtn = "<a href='".route('manager.proposal-surat.destroy', $query->id)."' class='btn btn-danger ml-1 delete-item'><i class='fas fa-trash-alt'></i></a>";
                 $detailBtn = "<a href='#' class='btn btn-dark ml-1' data-bs-toggle='modal' data-bs-target='#exampleModal'><i class='fa fa-eye'></i></a>";
                 return $editBtn.$deleteBtn.$detailBtn;
             })
@@ -69,9 +70,9 @@ class SalesProposalSuratDataTable extends DataTable
     public function html(): HtmlBuilder
     {
         return $this->builder()
-                    ->setTableId('salesproposalsurat-table')
+                    ->setTableId('managerproposalsurat-table')
                     ->columns($this->getColumns())
-                    ->minifiedAjax(route('sales.proposal-surat.data'))
+                    ->minifiedAjax(route('manager.proposal-surat.data'))
                     //->dom('Bfrtip')
                     ->orderBy(1)
                     ->selectStyleSingle()
@@ -97,11 +98,6 @@ class SalesProposalSuratDataTable extends DataTable
             Column::make('perihal'),
             Column::make('status_follow_up'),
             Column::make('tanggal_dibuat'),
-            Column::computed('action')
-                  ->exportable(false)
-                  ->printable(false)
-                  ->width(180)
-                  ->addClass('text-center'),
         ];
     }
 
@@ -110,6 +106,6 @@ class SalesProposalSuratDataTable extends DataTable
      */
     protected function filename(): string
     {
-        return 'SalesProposalSurat_' . date('YmdHis');
+        return 'ManagerProposalSurat_' . date('YmdHis');
     }
 }

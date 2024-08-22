@@ -2,7 +2,7 @@
 
 namespace App\DataTables;
 
-use App\Models\ProposalSurat;
+use App\Models\BrandClient;
 use Illuminate\Database\Eloquent\Builder as QueryBuilder;
 use Yajra\DataTables\EloquentDataTable;
 use Yajra\DataTables\Html\Builder as HtmlBuilder;
@@ -12,7 +12,7 @@ use Yajra\DataTables\Html\Editor\Editor;
 use Yajra\DataTables\Html\Editor\Fields;
 use Yajra\DataTables\Services\DataTable;
 
-class SalesProposalSuratDataTable extends DataTable
+class ManagerBrandClientDataTable extends DataTable
 {
     /**
      * Build the DataTable class.
@@ -22,37 +22,34 @@ class SalesProposalSuratDataTable extends DataTable
     public function dataTable(QueryBuilder $query): EloquentDataTable
     {
         return (new EloquentDataTable($query))
-            ->addColumn('action', function($query){
-                $editBtn = "<a href='".route('sales.proposal-surat.edit', $query->id)."' class='btn btn-info'><i class='far fa-edit'></i></a>";
-                $deleteBtn = "<a href='".route('sales.proposal-surat.destroy', $query->id)."' class='btn btn-danger ml-1 delete-item'><i class='fas fa-trash-alt'></i></a>";
-                $detailBtn = "<a href='#' class='btn btn-dark ml-1' data-bs-toggle='modal' data-bs-target='#exampleModal'><i class='fa fa-eye'></i></a>";
-                return $editBtn.$deleteBtn.$detailBtn;
+            ->addColumn('action', function($query) {
+                return $this->actionButtons($query);
             })
-            ->addColumn('status_follow_up', function($query){
-                $belumDikirim = "<i class='badge badge-danger'>Belum Dikirim</i>";
-                $sudahDikirim = "<i class='badge badge-success'>Sudah Dikirim</i>";
-                if($query->status_follow_up == 1){
-                    return $sudahDikirim;
-                } else {
-                    return $belumDikirim;
-                };
+            ->addColumn('proyeksi_revenue', function($query) {
+                return 'Rp ' . number_format($query->proyeksi_revenue, 0, ".", ".");
             })
-            ->addColumn('tanggal_dibuat', function($query){
+            ->addColumn('realisasi_revenue', function($query) {
+                return 'Rp ' . number_format($query->realisasi_revenue, 0, ".", ".");
+            })
+            ->addColumn('tanggal_dibuat', function($query) {
                 return date('d F Y', strtotime($query->created_at));
             })
-            ->rawColumns(['action','status_follow_up'])
+            // You can also format 'pic_ntv' if necessary
+            ->addColumn('pic_ntv', function($query) {
+                return $query->user->name ?? 'N/A';  // Assuming 'name' is the field for user's name
+            })
+            ->rawColumns(['action'])
             ->setRowId('id');
     }
 
     /**
      * Get the query source of dataTable.
      */
-    public function query(ProposalSurat $model): QueryBuilder
+    public function query(BrandClient $model): QueryBuilder
     {
-        // Get the currently authenticated user's team
         $userTeam = auth()->user()->team;
 
-        $query = $model->newQuery()->where('user_team', $userTeam);
+        $query = $model->newQuery()->with('user')->where('user_team', $userTeam);
 
         if (request()->has('start_date') && request()->has('end_date')) {
             $startDate = request('start_date') . ' 00:00:00';
@@ -69,10 +66,9 @@ class SalesProposalSuratDataTable extends DataTable
     public function html(): HtmlBuilder
     {
         return $this->builder()
-                    ->setTableId('salesproposalsurat-table')
+                    ->setTableId('managerbrandclient-table')
                     ->columns($this->getColumns())
-                    ->minifiedAjax(route('sales.proposal-surat.data'))
-                    //->dom('Bfrtip')
+                    ->minifiedAjax(route('manager.brand-client.data'))
                     ->orderBy(1)
                     ->selectStyleSingle()
                     ->buttons([
@@ -90,18 +86,14 @@ class SalesProposalSuratDataTable extends DataTable
      */
     public function getColumns(): array
     {
-        return [
+        return [            
             Column::make('id'),
-            Column::make('no_surat'),
-            Column::make('tujuan_surat'),
-            Column::make('perihal'),
-            Column::make('status_follow_up'),
+            Column::make('pic_ntv'),
+            Column::make('jenis_industri'),
+            Column::make('nama_brand'),
+            Column::make('proyeksi_revenue'),
+            Column::make('realisasi_revenue'),
             Column::make('tanggal_dibuat'),
-            Column::computed('action')
-                  ->exportable(false)
-                  ->printable(false)
-                  ->width(180)
-                  ->addClass('text-center'),
         ];
     }
 
@@ -110,6 +102,15 @@ class SalesProposalSuratDataTable extends DataTable
      */
     protected function filename(): string
     {
-        return 'SalesProposalSurat_' . date('YmdHis');
+        return 'ManagerBrandClient_' . date('YmdHis');
+    }
+
+    protected function actionButtons($query): string
+    {
+        $editBtn = "<a href='".route('sales.brand-client.edit', $query->id)."' class='btn btn-info'><i class='far fa-edit'></i></a>";
+        $deleteBtn = "<a href='".route('sales.brand-client.destroy', $query->id)."' class='btn btn-danger ml-1 delete-item'><i class='fas fa-trash-alt'></i></a>";
+        $detailBtn = "<a href='#' class='btn btn-dark ml-1' data-bs-toggle='modal' data-bs-target='#exampleModal'><i class='fa fa-eye'></i></a>";
+        
+        return $editBtn . $deleteBtn . $detailBtn;
     }
 }

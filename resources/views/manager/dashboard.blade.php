@@ -1,230 +1,167 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta content="width=device-width, initial-scale=1, maximum-scale=1, shrink-to-fit=no" name="viewport">
-  <title>General Dashboard &mdash; Stisla</title>
-
-  <!-- General CSS Files -->
-  <link rel="stylesheet" href="{{asset('stisla/assets/modules/bootstrap/css/bootstrap.min.css')}}">
-  <link rel="stylesheet" href="{{asset('stisla/assets/modules/fontawesome/css/all.min.css')}}">
-
-  <!-- CSS Libraries -->
-  <link rel="stylesheet" href="{{asset('stisla/assets/modules/jqvmap/dist/jqvmap.min.css')}}">
-  <link rel="stylesheet" href="{{asset('stisla/assets/modules/weather-icon/css/weather-icons.min.css')}}">
-  <link rel="stylesheet" href="{{asset('stisla/assets/modules/weather-icon/css/weather-icons-wind.min.css')}}">
-  <link rel="stylesheet" href="{{asset('stisla/assets/modules/summernote/summernote-bs4.css')}}">
-
-  <!-- Template CSS -->
-  <link rel="stylesheet" href="{{asset('stisla/assets/css/style.css')}}">
-  <link rel="stylesheet" href="{{asset('stisla/assets/css/components.css')}}">
-<!-- Start GA -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=UA-94034622-3"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-
-  gtag('config', 'UA-94034622-3');
-</script>
-<!-- /END GA --></head>
-
-<body>
-  <div id="app">
-    <div class="main-wrapper main-wrapper-1">
-      <div class="navbar-bg"></div>
-      <nav class="navbar navbar-expand-lg main-navbar">
-        <form class="form-inline mr-auto">
-          <ul class="navbar-nav mr-3">
-            <li><a href="#" data-toggle="sidebar" class="nav-link nav-link-lg"><i class="fas fa-bars"></i></a></li>
-            <li><a href="#" data-toggle="search" class="nav-link nav-link-lg d-sm-none"><i class="fas fa-search"></i></a></li>
-          </ul>
-        </form>
-        <ul class="navbar-nav navbar-right">
-          <li class="dropdown"><a href="#" data-toggle="dropdown" class="nav-link dropdown-toggle nav-link-lg nav-link-user">
-            <img alt="image" src="{{asset('stisla/assets/img/avatar/avatar-1.png')}}" class="rounded-circle mr-1">
-            <div class="d-sm-none d-lg-inline-block">Hi, {{ Auth::user()->name }}</div></a>
-            <div class="dropdown-menu dropdown-menu-right">
-              <div class="dropdown-title">Logged in 5 min ago</div>
-              <a href="features-profile.html" class="dropdown-item has-icon">
-                <i class="far fa-user"></i> Profile
-              </a>
-              <a href="features-settings.html" class="dropdown-item has-icon">
-                <i class="fas fa-cog"></i> Settings
-              </a>
-              <div class="dropdown-divider"></div>
-             
-                <!-- Authentication -->
-                <form method="POST" action="{{ route('logout') }}">
-                  @csrf
-                  <a href="{{route('logout')}}" 
-                      onclick="event.preventDefault();
-                          this.closest('form').submit();"
-                      class="dropdown-item has-icon text-danger">
-                    <i class="fas fa-sign-out-alt"></i> Logout
-                  </a>
-                </form>
-            </div>
-          </li>
-        </ul>
-      </nav>
-      <div class="main-sidebar sidebar-style-2">
-        <aside id="sidebar-wrapper">
-          <div class="sidebar-brand">
-            <a href="index.html">NTV Daily Report</a>
-          </div>
-          <div class="sidebar-brand sidebar-brand-sm">
-            <a href="index.html">St</a>
-          </div>
-          <ul class="sidebar-menu">
-            <li class="menu-header">Dashboard</li>
-            <li><a class="nav-link" href="#"><i class="far fa-square"></i> <span>Home</span></a></li>
-            <li class="dropdown active">
-              <a href="#" class="nav-link has-dropdown"><i class="fas fa-fire"></i><span>Target</span></a>
-              <ul class="dropdown-menu">
-                <li class=active><a class="nav-link" href="index-0.html">Input Target</a></li>
-                <li><a class="nav-link" href="index.html">View Target</a></li>
-              </ul>
-            </li>
-            <li class="menu-header">Starter</li>
-            <li class="dropdown">
-              <a href="#" class="nav-link has-dropdown" data-toggle="dropdown"><i class="fas fa-columns"></i> <span>Brand/Client</span></a>
-              <ul class="dropdown-menu">
-                <li><a class="nav-link" href="layout-default.html">Default Layout</a></li>
-                <li><a class="nav-link" href="layout-transparent.html">Transparent Sidebar</a></li>
-                <li><a class="nav-link" href="layout-top-navigation.html">Top Navigation</a></li>
-              </ul>
-            </li>
-            <li class="dropdown">
-              <a href="#" class="nav-link has-dropdown" data-toggle="dropdown"><i class="fas fa-columns"></i> <span>Daily Report</span></a>
-              <ul class="dropdown-menu">
-                <li><a class="nav-link" href="layout-default.html">Default Layout</a></li>
-                <li><a class="nav-link" href="layout-transparent.html">Transparent Sidebar</a></li>
-                <li><a class="nav-link" href="layout-top-navigation.html">Top Navigation</a></li>
-              </ul>
-            </li>
-            <li class="dropdown">
-              <a href="#" class="nav-link has-dropdown" data-toggle="dropdown"><i class="fas fa-columns"></i> <span>Proposal dan Surat</span></a>
-              <ul class="dropdown-menu">
-                <li><a class="nav-link" href="layout-default.html">Default Layout</a></li>
-                <li><a class="nav-link" href="layout-transparent.html">Transparent Sidebar</a></li>
-                <li><a class="nav-link" href="layout-top-navigation.html">Top Navigation</a></li>
-              </ul>
-            </li>
-            <li class="dropdown">
-              <a href="#" class="nav-link has-dropdown" data-toggle="dropdown"><i class="fas fa-columns"></i> <span>List Media Order</span></a>
-              <ul class="dropdown-menu">
-                <li><a class="nav-link" href="layout-default.html">Default Layout</a></li>
-                <li><a class="nav-link" href="layout-transparent.html">Transparent Sidebar</a></li>
-                <li><a class="nav-link" href="layout-top-navigation.html">Top Navigation</a></li>
-              </ul>
-            </li>
-     </aside>
-      </div>
-
-      <!-- Main Content -->
-      <div class="main-content">
-        <section class="section">
-          <div class="section-header">
-            <h1>Dashboard</h1>
-          </div>
-          <div class="row">
-            <div class="col-lg-3 col-md-6 col-sm-6 col-12">
-              <div class="card card-statistic-1">
-                <div class="card-icon bg-primary">
-                  <i class="far fa-user"></i>
-                </div>
-                <div class="card-wrap">
-                  <div class="card-header">
-                    <h4>Total Admin</h4>
-                  </div>
-                  <div class="card-body">
-                    10
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div class="col-lg-3 col-md-6 col-sm-6 col-12">
-              <div class="card card-statistic-1">
-                <div class="card-icon bg-danger">
-                  <i class="far fa-newspaper"></i>
-                </div>
-                <div class="card-wrap">
-                  <div class="card-header">
-                    <h4>News</h4>
-                  </div>
-                  <div class="card-body">
-                    42
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div class="col-lg-3 col-md-6 col-sm-6 col-12">
-              <div class="card card-statistic-1">
-                <div class="card-icon bg-warning">
-                  <i class="far fa-file"></i>
-                </div>
-                <div class="card-wrap">
-                  <div class="card-header">
-                    <h4>Reports</h4>
-                  </div>
-                  <div class="card-body">
-                    1,201
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div class="col-lg-3 col-md-6 col-sm-6 col-12">
-              <div class="card card-statistic-1">
-                <div class="card-icon bg-success">
-                  <i class="fas fa-circle"></i>
-                </div>
-                <div class="card-wrap">
-                  <div class="card-header">
-                    <h4>Online Users</h4>
-                  </div>
-                  <div class="card-body">
-                    47
-                  </div>
-                </div>
-              </div>
-            </div>                  
-          </div>
-        </section>
-      </div>
-      <footer class="main-footer">
-        <div class="footer-left">
-          Copyright &copy; 2018 <div class="bullet"></div> Design By <a href="https://nauval.in/">Muhamad Nauval Azhar</a>
-        </div>
-        <div class="footer-right">
-          
-        </div>
-      </footer>
+@extends('manager.layouts.master')
+@section('content')
+<style>
+    .hidden { display: none; }
+    .profit { color: green; }
+    .loss { color: red; }
+</style>
+<section class="section">
+    <div class="section-header">
+        <h1>Dashboard</h1>
     </div>
-  </div>
+    <div class="row">
+        <div class="col-lg-3 col-md-6 col-sm-6 col-12">
+            <div class="card card-statistic-1">
+                <div class="card-icon bg-primary">
+                    <i class="far fa-user"></i>
+                </div>
+                <div class="card-wrap">
+                    <div class="card-header">
+                        <h4>Target Juli (Rp)</h4>
+                    </div>
+                    <div class="card-body" id="target-juli">
+                        1000000000000
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-3 col-md-6 col-sm-6 col-12">
+            <div class="card card-statistic-1">
+                <div class="card-icon bg-danger">
+                    <i class="far fa-newspaper"></i>
+                </div>
+                <div class="card-wrap">
+                    <div class="card-header">
+                        <h4>Realisasi (Rp)</h4>
+                    </div>
+                    <div class="card-body" id="realisasi">
+                        500000000
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-3 col-md-6 col-sm-6 col-12">
+            <div class="card card-statistic-1">
+                <div class="card-icon bg-warning">
+                    <i class="far fa-file"></i>
+                </div>
+                <div class="card-wrap">
+                    <div class="card-header">
+                        <h4>Selisih/Varian (Rp)</h4>
+                    </div>
+                    <div class="card-body" id="selisih">
+                        999500000000
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-3 col-md-6 col-sm-6 col-12">
+            <div class="card card-statistic-1">
+                <div class="card-icon bg-success">
+                    <i class="fas fa-circle"></i>
+                </div>
+                <div class="card-wrap">
+                    <div class="card-header">
+                        <h4>Team:</h4>
+                    </div>
+                    <div class="card-body">
+                        <select id="team-select" onchange="updateDashboard()">
+                            <option value="all">ALL TEAM</option>
+                            <option value="team1">Team 1</option>
+                            <option value="team2">Team 2</option>
+                            <option value="team3">Team 3</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 
-  <!-- General JS Scripts -->
-  <script src="{{asset('stisla/assets/modules/jquery.min.js')}}"></script>
-  <script src="{{asset('stisla/assets/modules/popper.js')}}"></script>
-  <script src="{{asset('stisla/assets/modules/tooltip.js')}}"></script>
-  <script src="{{asset('stisla/assets/modules/bootstrap/js/bootstrap.min.js')}}"></script>
-  <script src="{{asset('stisla/assets/modules/nicescroll/jquery.nicescroll.min.js')}}"></script>
-  <script src="{{asset('stisla/assets/modules/moment.min.js')}}"></script>
-  <script src="{{asset('stisla/assets/js/stisla.js')}}"></script>
-  
-  <!-- JS Libraies -->
-  <script src="{{asset('stisla/assets/modules/simple-weather/jquery.simpleWeather.min.js')}}"></script>
-  <script src="{{asset('stisla/assets/modules/chart.min.js')}}"></script>
-  <script src="{{asset('stisla/assets/modules/jqvmap/dist/jquery.vmap.min.js')}}"></script>
-  <script src="{{asset('stisla/assets/modules/jqvmap/dist/maps/jquery.vmap.world.js')}}"></script>
-  <script src="{{asset('stisla/assets/modules/summernote/summernote-bs4.js')}}"></script>
-  <script src="{{asset('stisla/assets/modules/chocolat/dist/js/jquery.chocolat.min.js')}}"></script>
+    <div id="team-tables">
+        <table class="table hidden" id="table-team">
+            <thead>
+                <tr>
+                    <th class="text-center">#</th>
+                    <th>Waktu</th>
+                    <th>Nama Tim Bertugas</th>
+                    <th>Nama Brand/Klien</th>
+                    <th>Jenis Kegiatan</th>
+                    <th>Follow Up</th>
+                    <th>Action</th>
+                </tr>
+            </thead>
+            <tbody id="table-body">
+                <tr>
+                    <td>1</td>
+                    <td>7-4-2024, 08:00</td>
+                    <td>Tim 1</td>
+                    <td>Brand 1</td>
+                    <td>Bahas I</td>
+                    <td><div class="badge badge-success">Deal</div></td>
+                    <td><a href="" class="btn btn-dark" data-toggle="modal" data-target="#exampleModal"><i class="fa fa-eye"></i></a></td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</section>
 
-  <!-- Page Specific JS File -->
-  <script src="{{asset('stisla/assets/js/page/index-0.js')}}"></script>
-  
-  <!-- Template JS File -->
-  <script src="{{asset('stisla/assets/js/scripts.js')}}"></script>
-  <script src="{{asset('stisla/assets/js/custom.js')}}"></script>
-</body>
-</html>
+<script>
+    const data = {
+        all: { target: 100000000, realisasi: 50000 },
+        team1: { target: 40000000, realisasi: 20000 },
+        team2: { target: 30000000, realisasi: 15000 },
+        team3: { target: 30000000, realisasi: 15000 }
+    };
+
+    const tableRows = {
+        all: [
+            { waktu: '7-4-2024, 08:00', team: 'Tim 1', brand: 'Brand 1', kegiatan: 'Bahas I', followUp: 'Deal', followUpClass: 'success', action: 'exampleModal' },
+            { waktu: '7-15-2024, 09:00', team: 'Tim 2', brand: 'Brand 2', kegiatan: 'Bahas 2', followUp: 'Deal', followUpClass: 'success', action: 'exampleModal' },
+            { waktu: '7-14-2024, 08:00', team: 'Tim 3', brand: 'Brand 3', kegiatan: 'Bahas 3', followUp: 'No Deal', followUpClass: 'danger', action: 'exampleModal' }
+        ],
+        team1: [
+            { waktu: '7-4-2024, 08:00', team: 'Tim 1', brand: 'Brand 1', kegiatan: 'Bahas I', followUp: 'Deal', followUpClass: 'success', action: 'exampleModal' }
+        ],
+        team2: [
+            { waktu: '7-15-2024, 09:00', team: 'Tim 2', brand: 'Brand 2', kegiatan: 'Bahas 2', followUp: 'Deal', followUpClass: 'success', action: 'exampleModal' }
+        ],
+        team3: [
+            { waktu: '7-14-2024, 08:00', team: 'Tim 3', brand: 'Brand 3', kegiatan: 'Bahas 3', followUp: 'No Deal', followUpClass: 'danger', action: 'exampleModal' }
+        ]
+    };
+
+    function updateDashboard() {
+        const team = document.getElementById('team-select').value;
+        const targetElement = document.getElementById('target-juli');
+        const realisasiElement = document.getElementById('realisasi');
+        const selisihElement = document.getElementById('selisih');
+
+        const target = data[team].target;
+        const realisasi = data[team].realisasi;
+        const selisih = target - realisasi;
+
+        targetElement.textContent = target;
+        realisasiElement.textContent = realisasi;
+        selisihElement.textContent = selisih;
+        selisihElement.className = selisih >= 0 ? 'loss' : 'profit';
+
+        const tableBody = document.getElementById('table-body');
+        tableBody.innerHTML = '';
+        tableRows[team].forEach((row, index) => {
+            tableBody.innerHTML += `
+                <tr>
+                    <td>${index + 1}</td>
+                    <td>${row.waktu}</td>
+                    <td>${row.team}</td>
+                    <td>${row.brand}</td>
+                    <td>${row.kegiatan}</td>
+                    <td><div class="badge badge-${row.followUpClass}">${row.followUp}</div></td>
+                    <td><a href="" class="btn btn-dark" data-toggle="modal" data-target="#${row.action}"><i class="fa fa-eye"></i></a></td>
+                </tr>
+            `;
+        });
+
+        document.getElementById('table-team').classList.remove('hidden');
+    }
+</script>
+@endsection
