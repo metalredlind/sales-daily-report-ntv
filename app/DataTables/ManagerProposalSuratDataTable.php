@@ -74,7 +74,7 @@ class ManagerProposalSuratDataTable extends DataTable
                     ->columns($this->getColumns())
                     ->minifiedAjax(route('manager.proposal-surat.data'))
                     //->dom('Bfrtip')
-                    ->orderBy(1)
+                    ->orderBy(0)
                     ->selectStyleSingle()
                     ->buttons([
                         Button::make('excel'),

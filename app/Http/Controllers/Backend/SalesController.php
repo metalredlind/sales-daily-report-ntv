@@ -2,13 +2,14 @@
 
 namespace App\Http\Controllers\Backend;
 
+use App\DataTables\SalesDailyReportDataTable;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 
 class SalesController extends Controller
 {
-    public function dashboard()
+    public function dashboard(SalesDailyReportDataTable $dataTable)
     {
-        return view('sales.dashboard');
+        return $dataTable->render('sales.dashboard');
     }
 }

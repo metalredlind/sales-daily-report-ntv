@@ -64,7 +64,7 @@ class MediaOrderDataTable extends DataTable
                     ->columns($this->getColumns())
                     ->minifiedAjax(route('admin.media-order.data'))
                     //->dom('Bfrtip')
-                    ->orderBy(1)
+                    ->orderBy(0)
                     ->selectStyleSingle()
                     ->buttons([
                         Button::make('excel'),

@@ -61,7 +61,7 @@ class ManagerDailyReportDataTable extends DataTable
                     ->columns($this->getColumns())
                     ->minifiedAjax(route('manager.daily-report.data'))
                     //->dom('Bfrtip')
-                    ->orderBy(1)
+                    ->orderBy(0)
                     ->selectStyleSingle()
                     ->buttons([
                         Button::make('excel'),
