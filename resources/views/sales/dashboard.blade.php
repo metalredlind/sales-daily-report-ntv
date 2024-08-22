@@ -17,10 +17,10 @@
                 </div>
                 <div class="card-wrap">
                     <div class="card-header">
-                        <h4>Target Juli (Rp)</h4>
+                        <h4>Target Juli</h4>
                     </div>
                     <div class="card-body" id="target-juli">
-                        1000000000000
+                        Rp {{ number_format($target) }}
                     </div>
                 </div>
             </div>
@@ -32,10 +32,10 @@
                 </div>
                 <div class="card-wrap">
                     <div class="card-header">
-                        <h4>Realisasi (Rp)</h4>
+                        <h4>Realisasi</h4>
                     </div>
                     <div class="card-body" id="realisasi">
-                        500000000
+                        Rp {{ number_format($realisasi) }}
                     </div>
                 </div>
             </div>
@@ -47,10 +47,10 @@
                 </div>
                 <div class="card-wrap">
                     <div class="card-header">
-                        <h4>Selisih/Varian (Rp)</h4>
+                        <h4>Selisih/Varian</h4>
                     </div>
                     <div class="card-body" id="selisih">
-                        999500000000
+                        Rp {{ number_format($selisih_varian) }}
                     </div>
                 </div>
             </div>
@@ -71,6 +71,7 @@
                             <option value="team2">Team 2</option>
                             <option value="team3">Team 3</option>
                         </select> --}}
+                        {{Auth::user()->team}}
                     </div>
                 </div>
             </div>
@@ -103,21 +104,8 @@
             </tbody>
         </table>
     </div> --}}
-
-    <div class="col-3">
-        <!-- Date Range Picker Input -->
-        <label>Date Range Picker</label>
-        <div class="input-group">
-            <div class="input-group-prepend">
-            <div class="input-group-text">
-                <i class="fas fa-calendar"></i>
-            </div>
-            </div>
-            <input type="text" id="daterange" class="form-control daterange-cus" placeholder="Select Date Range">
-        </div>
-    </div>
-
-    {{ $dataTable->table() }}
+{{-- 
+    {{ $dataTable->table() }} --}}
 
 </section>
 
