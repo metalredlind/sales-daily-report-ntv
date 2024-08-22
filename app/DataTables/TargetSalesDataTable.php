@@ -48,12 +48,9 @@ class TargetSalesDataTable extends DataTable
     {
         $user = auth()->user();
 
+        // Get the selected month and year from the request
         $selectedMonth = request()->get('month');
         $selectedYear = request()->get('year');
-
-        // Set the start and end dates for the selected month and year
-        $startDate = "{$selectedYear}-{$selectedMonth}-01 00:00:00";
-        $endDate = date('Y-m-d 23:59:59', strtotime("last day of {$selectedYear}-{$selectedMonth}"));
 
         return $model->newQuery()
             ->select(
@@ -66,13 +63,14 @@ class TargetSalesDataTable extends DataTable
                 DB::raw('COALESCE(target_sales.target_sales, 0) - COALESCE(SUM(brand_clients.realisasi_revenue), 0) as selisih_varian')
             )
             ->rightJoin('users', 'target_sales.user_sales_id', '=', 'users.id')
-            ->leftJoin('brand_clients', function($join) use ($startDate, $endDate) {
+            ->leftJoin('brand_clients', function($join) use ($selectedMonth, $selectedYear) {
                 $join->on('brand_clients.pic_ntv_id', '=', 'users.id')
-                    ->whereBetween('brand_clients.created_at', [$startDate, $endDate]);
+                    ->whereYear('brand_clients.created_at', $selectedYear)
+                    ->whereMonth('brand_clients.created_at', $selectedMonth);
             })
-            ->where('users.team', $user->team)  // Filter by user's team
-            ->whereYear('target_sales.created_at', $selectedYear)
-            ->whereMonth('target_sales.created_at', $selectedMonth)
+            ->where('users.team', $user->team)  // Filter by the user's team
+            ->where('target_sales.year', $selectedYear)
+            ->where('target_sales.month', $selectedMonth)
             ->groupBy('target_sales.id', 'users.team', 'users.name', 'users.title', 'target_sales.target_sales');
     }
     /**

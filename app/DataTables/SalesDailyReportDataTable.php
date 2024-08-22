@@ -82,7 +82,7 @@ class SalesDailyReportDataTable extends DataTable
         return [
             Column::make('id'),
             Column::make('waktu'),
-            Column::make('tim_bertugas'),
+            Column::make('tim_bertugas')->title('Nama yang bertugas'),
             Column::make('nama_brand_klien'),
             Column::make('jenis_kegiatan'),
             Column::make('follow_up'),

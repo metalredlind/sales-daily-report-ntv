@@ -23,7 +23,7 @@
                                     <input type="text" class="form-control datetimepicker" name="waktu" value="{{$dailyReport->waktu}}">
                                   </div>
                                 <div class="form-group">
-                                    <label>Nama Tim yang Bertugas</label>
+                                    <label>Nama yang Bertugas</label>
                                     <input type="text" class="form-control" name="tim_bertugas" value="{{$dailyReport->tim_bertugas}}">
                                 </div>
                                 <label>Tujuan Klien/Brand</label>
