@@ -8,7 +8,7 @@
         </div>
         <ul class="sidebar-menu">
             <li class="menu-header">Dashboard</li>
-            <li class="{{setActive(['manager.dashboard.*'])}}"><a class="nav-link" href="{{ route('manager.dashboard') }}"><i class="fas fa-home"></i> <span>Home</span></a></li>
+            <li class="{{setActive(['manager.dashboard'])}}"><a class="nav-link" href="{{ route('manager.dashboard') }}"><i class="fas fa-home"></i> <span>Home</span></a></li>
             <li class="{{setActive(['manager.target-sales.*'])}}"><a class="nav-link" href="{{ route('manager.target-sales.index') }}"><i class="fas fa-bullseye"></i></i><span>Target</span></a></li>
             <li class="menu-header">Starter</li>
             <li class="{{setActive(['manager.brand-client.*'])}}"><a class="nav-link" href="{{ route('manager.brand-client.index') }}"><i class="fas fa-phone"></i><span>Brand/Client</span></a></li>

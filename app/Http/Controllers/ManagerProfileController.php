@@ -9,7 +9,7 @@ class ManagerProfileController extends Controller
 {
     public function index()
     {
-        return view('sales.profile.index');
+        return view('manager.profile.index');
     }
 
     public function updateProfile(Request $request)
@@ -37,7 +37,7 @@ class ManagerProfileController extends Controller
             'current_password' => ['required', 'current_password'],
             'password' => ['required', 'confirmed', 'min:8']
         ]);
-        
+
         $request->user()->update([
             'password' => bcrypt($request->password)
         ]);
