@@ -15,7 +15,7 @@
                         <h4>Target
                             <!-- Year Dropdown -->
                             <select id="yearFilter" class="form-control d-inline" style="width: 100px; display: inline-block;">
-                                @for ($y = date('Y') - 5; $y <= date('Y'); $y++)
+                                @for ($y = date('Y') ; $y <= date('Y') + 5; $y++)
                                     <option value="{{ $y }}" @if($y == date('Y')) selected @endif>{{ $y }}</option>
                                 @endfor
                             </select>
