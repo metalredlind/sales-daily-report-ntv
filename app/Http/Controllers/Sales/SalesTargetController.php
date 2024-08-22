@@ -23,7 +23,11 @@ class SalesTargetController extends Controller
      */
     public function create()
     {
-        $users = User::all(); // Fetch all users
+        $userTeam = auth()->user()->team;
+
+        // Get only users from the same team as the logged-in user
+        $users = User::where('team', $userTeam)->get();
+
         return view('sales.target-sales.create', compact('users'));
     }
 

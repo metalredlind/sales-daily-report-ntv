@@ -17,10 +17,10 @@
                 </div>
                 <div class="card-wrap">
                     <div class="card-header">
-                        <h4>Target Juli (Rp)</h4>
+                        <h4>Target Juli</h4>
                     </div>
                     <div class="card-body" id="target-juli">
-                        1000000000000
+                        Rp {{ number_format($target) }}
                     </div>
                 </div>
             </div>
@@ -32,10 +32,10 @@
                 </div>
                 <div class="card-wrap">
                     <div class="card-header">
-                        <h4>Realisasi (Rp)</h4>
+                        <h4>Realisasi</h4>
                     </div>
                     <div class="card-body" id="realisasi">
-                        500000000
+                        Rp {{ number_format($realisasi) }}
                     </div>
                 </div>
             </div>
@@ -47,10 +47,10 @@
                 </div>
                 <div class="card-wrap">
                     <div class="card-header">
-                        <h4>Selisih/Varian (Rp)</h4>
+                        <h4>Selisih/Varian</h4>
                     </div>
                     <div class="card-body" id="selisih">
-                        999500000000
+                        Rp {{ number_format($selisih_varian) }}
                     </div>
                 </div>
             </div>
@@ -65,19 +65,20 @@
                         <h4>Team:</h4>
                     </div>
                     <div class="card-body">
-                        <select id="team-select" onchange="updateDashboard()">
+                        {{-- <select id="team-select" onchange="updateDashboard()">
                             <option value="all">ALL TEAM</option>
                             <option value="team1">Team 1</option>
                             <option value="team2">Team 2</option>
                             <option value="team3">Team 3</option>
-                        </select>
+                        </select> --}}
+                        {{Auth::user()->team}}
                     </div>
                 </div>
             </div>
         </div>
     </div>
 
-    <div id="team-tables">
+    {{-- <div id="team-tables">
         <table class="table hidden" id="table-team">
             <thead>
                 <tr>
@@ -102,66 +103,15 @@
                 </tr>
             </tbody>
         </table>
-    </div>
+    </div> --}}
+{{-- 
+    {{ $dataTable->table() }} --}}
+
 </section>
 
-<script>
-    const data = {
-        all: { target: 100000000, realisasi: 50000 },
-        team1: { target: 40000000, realisasi: 20000 },
-        team2: { target: 30000000, realisasi: 15000 },
-        team3: { target: 30000000, realisasi: 15000 }
-    };
-
-    const tableRows = {
-        all: [
-            { waktu: '7-4-2024, 08:00', team: 'Tim 1', brand: 'Brand 1', kegiatan: 'Bahas I', followUp: 'Deal', followUpClass: 'success', action: 'exampleModal' },
-            { waktu: '7-15-2024, 09:00', team: 'Tim 2', brand: 'Brand 2', kegiatan: 'Bahas 2', followUp: 'Deal', followUpClass: 'success', action: 'exampleModal' },
-            { waktu: '7-14-2024, 08:00', team: 'Tim 3', brand: 'Brand 3', kegiatan: 'Bahas 3', followUp: 'No Deal', followUpClass: 'danger', action: 'exampleModal' }
-        ],
-        team1: [
-            { waktu: '7-4-2024, 08:00', team: 'Tim 1', brand: 'Brand 1', kegiatan: 'Bahas I', followUp: 'Deal', followUpClass: 'success', action: 'exampleModal' }
-        ],
-        team2: [
-            { waktu: '7-15-2024, 09:00', team: 'Tim 2', brand: 'Brand 2', kegiatan: 'Bahas 2', followUp: 'Deal', followUpClass: 'success', action: 'exampleModal' }
-        ],
-        team3: [
-            { waktu: '7-14-2024, 08:00', team: 'Tim 3', brand: 'Brand 3', kegiatan: 'Bahas 3', followUp: 'No Deal', followUpClass: 'danger', action: 'exampleModal' }
-        ]
-    };
-
-    function updateDashboard() {
-        const team = document.getElementById('team-select').value;
-        const targetElement = document.getElementById('target-juli');
-        const realisasiElement = document.getElementById('realisasi');
-        const selisihElement = document.getElementById('selisih');
-
-        const target = data[team].target;
-        const realisasi = data[team].realisasi;
-        const selisih = target - realisasi;
-
-        targetElement.textContent = target;
-        realisasiElement.textContent = realisasi;
-        selisihElement.textContent = selisih;
-        selisihElement.className = selisih >= 0 ? 'loss' : 'profit';
-
-        const tableBody = document.getElementById('table-body');
-        tableBody.innerHTML = '';
-        tableRows[team].forEach((row, index) => {
-            tableBody.innerHTML += `
-                <tr>
-                    <td>${index + 1}</td>
-                    <td>${row.waktu}</td>
-                    <td>${row.team}</td>
-                    <td>${row.brand}</td>
-                    <td>${row.kegiatan}</td>
-                    <td><div class="badge badge-${row.followUpClass}">${row.followUp}</div></td>
-                    <td><a href="" class="btn btn-dark" data-toggle="modal" data-target="#${row.action}"><i class="fa fa-eye"></i></a></td>
-                </tr>
-            `;
-        });
-
-        document.getElementById('table-team').classList.remove('hidden');
-    }
-</script>
 @endsection
+
+@push('scripts')
+    {{ $dataTable->scripts(attributes: ['type' => 'module']) }}
+
+@endpush

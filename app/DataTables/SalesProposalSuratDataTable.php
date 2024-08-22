@@ -73,7 +73,7 @@ class SalesProposalSuratDataTable extends DataTable
                     ->columns($this->getColumns())
                     ->minifiedAjax(route('sales.proposal-surat.data'))
                     //->dom('Bfrtip')
-                    ->orderBy(1)
+                    ->orderBy(0)
                     ->selectStyleSingle()
                     ->buttons([
                         Button::make('excel'),

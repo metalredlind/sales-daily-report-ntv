@@ -62,7 +62,7 @@
                                     </div>
                                 </div>
                                 <div class="form-group">
-                                    <label>Proyeksi Revenue</label>
+                                    <label>Realisasi</label>
                                     <div class="input-group">
                                         <div class="input-group-prepend">
                                             <div class="input-group-text">
