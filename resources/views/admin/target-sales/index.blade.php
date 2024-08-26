@@ -45,8 +45,8 @@
                                         <th>Team</th>
                                         <th>Nama</th>
                                         <th>Jabatan</th>
-                                        <th>Target</th>
                                         <th>Realisasi</th>
+                                        <th>Target</th>
                                         <th>Selisih/Varian</th>
                                         <th>Action</th>
                                     </tr>
@@ -82,8 +82,8 @@
                   { data: 'tim', name: 'tim' },
                   { data: 'nama', name: 'nama' },
                   { data: 'jabatan', name: 'jabatan' },
-                  { data: 'target', name: 'target' },
                   { data: 'realisasi', name: 'realisasi' },
+                  { data: 'target', name: 'target' },
                   { data: 'selisih_varian', name: 'selisih_varian' },
                   { data: 'action', name: 'action', orderable: false, searchable: false }
               ]

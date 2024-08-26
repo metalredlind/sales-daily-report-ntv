@@ -60,7 +60,8 @@ class TargetSalesDataTable extends DataTable
                 'users.title as jabatan',
                 DB::raw('COALESCE(target_sales.target_sales, 0) as target'),
                 DB::raw('COALESCE(SUM(brand_clients.realisasi_revenue), 0) as realisasi'),
-                DB::raw('COALESCE(target_sales.target_sales, 0) - COALESCE(SUM(brand_clients.realisasi_revenue), 0) as selisih_varian')
+                //DB::raw('COALESCE(target_sales.target_sales, 0) - COALESCE(SUM(brand_clients.realisasi_revenue), 0) as selisih_varian')
+                DB::raw('COALESCE(SUM(brand_clients.realisasi_revenue), 0) - COALESCE(target_sales.target_sales, 0) as selisih_varian')
             )
             ->rightJoin('users', 'target_sales.user_sales_id', '=', 'users.id')
             ->leftJoin('brand_clients', function($join) use ($selectedMonth, $selectedYear) {
@@ -105,8 +106,8 @@ class TargetSalesDataTable extends DataTable
             Column::make('tim')->title('Team'),
             Column::make('nama')->title('Nama'),
             Column::make('jabatan')->title('Jabatan'),
-            Column::make('target')->title('Target'),
             Column::make('realisasi')->title('Realisasi'),
+            Column::make('target')->title('Target'),
             Column::make('selisih_varian')->title('Selisih/Varian'),
             Column::computed('action')
                   ->exportable(false)
