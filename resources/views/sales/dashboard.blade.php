@@ -20,7 +20,7 @@
                 </div>
                 <div class="card-wrap">
                     <div class="card-header">
-                        <h4>Target Juli</h4>
+                        <h4>Target Bulan Ini</h4>
                     </div>
                     <div class="card-body" id="target-juli">
                         Rp {{ number_format($target_team) }}
@@ -35,7 +35,7 @@
                 </div>
                 <div class="card-wrap">
                     <div class="card-header">
-                        <h4>Realisasi</h4>
+                        <h4>Realisasi Bulan Ini</h4>
                     </div>
                     <div class="card-body" id="realisasi">
                         Rp {{ number_format($realisasi_team) }}
