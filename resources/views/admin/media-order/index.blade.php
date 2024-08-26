@@ -3,7 +3,7 @@
 @section('content')
     <section class="section">
         <div class="section-header">
-            <h1>List Deal Media Order</h1>
+            <h1>List Paket</h1>
         </div>
 
         <div class="section-body">
@@ -12,7 +12,7 @@
                 <div class="col-12">
                     <div class="card">
                         <div class="card-header">
-                            <h4>Media Order</h4>
+                            <h4>Paket</h4>
                             <div class="card-header-action">
                                 <a href="{{ route('admin.media-order.create') }}" class="btn btn-primary">
                                     + Add New
