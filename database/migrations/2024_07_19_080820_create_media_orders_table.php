@@ -19,6 +19,7 @@ return new class extends Migration
             $table->date('tanggal_paket');
             $table->decimal('nominal_paket', 20, 0);
             $table->string('jenis_paket');
+            $table->enum('status_paket', ['ongoing','deal','nodeal'])->default('ongoing');
             $table->integer('user_team');
 
             $table->timestamps();
