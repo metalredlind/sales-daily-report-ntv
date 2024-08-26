@@ -34,10 +34,10 @@ class ManagerDailyReportController extends Controller
         $request->validate([
             'waktu' => ['required'],
             'tim_bertugas' => ['required', 'max:200'],
-            'nama_brand_klien' => ['max:200'],
-            'lokasi_pertemuan' => ['max:200'],
-            'nama_klien' => ['max:200'],
-            'nomor_telepon' => ['max:200'],
+            'nama_brand_klien' => ['required','max:200'],
+            'lokasi_pertemuan' => ['required','max:200'],
+            'nama_klien' => ['required','max:200'],
+            'nomor_telepon' => ['required','max:200'],
             'jenis_kegiatan' => ['required', 'max:200'],
             'follow_up' => ['required', 'max:200'],
         ]);

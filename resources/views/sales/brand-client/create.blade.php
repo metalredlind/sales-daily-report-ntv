@@ -36,17 +36,17 @@
                                     <label>Nama Brand</label>
                                     <input type="text" class="form-control" name="nama_brand" value="{{old('nama_brand')}}">
                                 </div>
-                                <label>PIC</label>
+                                <label>PIC Client</label>
                                 <div class="form-group">
-                                    <label>PIC Nama</label>
+                                    <label>PIC Nama Client</label>
                                     <input type="text" class="form-control" name="pic_brand_nama" value="{{old('pic_brand_nama')}}">
                                 </div>
                                 <div class="form-group">
-                                    <label>PIC Jabatan</label>
+                                    <label>PIC Jabatan Client</label>
                                     <input type="text" class="form-control" name="pic_brand_jabatan" value="{{old('pic_brand_jabatan')}}">
                                 </div>
                                 <div class="form-group">
-                                    <label>PIC No. Telepon</label>
+                                    <label>PIC No. Telepon Client</label>
                                     <input type="text" class="form-control" name="pic_brand_telepon" value="{{old('pic_brand_telepon')}}">
                                 </div>
                                 <div class="form-group">
