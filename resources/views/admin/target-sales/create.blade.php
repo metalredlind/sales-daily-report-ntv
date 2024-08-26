@@ -14,7 +14,7 @@
                         <h4>Target Sales</h4>
                     </div>
                     <div class="card-body">
-                        <form action="{{ route('sales.target-sales.store') }}" method="POST">
+                        <form action="{{ route('admin.target-sales.store') }}" method="POST">
                             @csrf
                             <div class="form-group">
                                 <label for="user_sales_id">Select Salesperson</label>

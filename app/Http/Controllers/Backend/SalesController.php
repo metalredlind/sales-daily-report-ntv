@@ -2,7 +2,6 @@
 
 namespace App\Http\Controllers\Backend;
 
-use App\DataTables\SalesDailyReportDataTable;
 use App\Http\Controllers\Controller;
 use App\Models\BrandClient;
 use App\Models\TargetSales;
@@ -12,7 +11,7 @@ use Illuminate\Support\Facades\Auth;
 
 class SalesController extends Controller
 {
-    public function dashboard(SalesDailyReportDataTable $dataTable)
+    public function dashboard()
     {
         // Get the current user
         $user = Auth::user();
@@ -38,7 +37,25 @@ class SalesController extends Controller
         // Calculate the difference
         $selisih_varian = $target - $realisasi;
 
+        // Team data
+        $team = $user->team;
+
+        // Get all team members' user IDs
+        $teamMemberIds = \App\Models\User::where('team', $team)->pluck('id');
+
+        $target_team = TargetSales::whereIn('user_sales_id', $teamMemberIds)
+            ->where('month', $currentMonth)
+            ->where('year', $currentYear)
+            ->sum('target_sales');
+
+        $realisasi_team = BrandClient::whereIn('pic_ntv_id', $teamMemberIds)
+            ->whereMonth('created_at', $currentMonth)
+            ->whereYear('created_at', $currentYear)
+            ->sum('realisasi_revenue');
+
+        $selisih_varian_team = $target_team - $realisasi_team;
+
         // Pass the data to the view
-        return $dataTable->render('sales.dashboard', compact('target', 'realisasi', 'selisih_varian'));
+        return view('sales.dashboard', compact('target', 'realisasi', 'selisih_varian', 'target_team', 'realisasi_team', 'selisih_varian_team'));
     }
 }
