@@ -115,8 +115,8 @@ class SalesBrandClientDataTable extends DataTable
     {
         $editBtn = "<a href='".route('sales.brand-client.edit', $query->id)."' class='btn btn-info'><i class='far fa-edit'></i></a>";
         $deleteBtn = "<a href='".route('sales.brand-client.destroy', $query->id)."' class='btn btn-danger ml-1 delete-item'><i class='fas fa-trash-alt'></i></a>";
-        $detailBtn = "<a href='#' class='btn btn-dark ml-1' data-bs-toggle='modal' data-bs-target='#exampleModal'><i class='fa fa-eye'></i></a>";
+        //$detailBtn = "<a href='#' class='btn btn-dark ml-1' data-bs-toggle='modal' data-bs-target='#exampleModal'><i class='fa fa-eye'></i></a>";
 
-        return $editBtn . $deleteBtn . $detailBtn;
+        return $editBtn.$deleteBtn;
     }
 }

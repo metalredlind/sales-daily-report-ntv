@@ -25,8 +25,8 @@ class ProposalSuratDataTable extends DataTable
             ->addColumn('action', function($query){
                 $editBtn = "<a href='".route('admin.proposal-surat.edit', $query->id)."' class='btn btn-info'><i class='far fa-edit'></i></a>";
                 $deleteBtn = "<a href='".route('admin.proposal-surat.destroy', $query->id)."' class='btn btn-danger ml-1 delete-item'><i class='fas fa-trash-alt'></i></a>";
-                $detailBtn = "<a href='#' class='btn btn-dark ml-1' data-bs-toggle='modal' data-bs-target='#exampleModal'><i class='fa fa-eye'></i></a>";
-                return $editBtn.$deleteBtn.$detailBtn;
+                //$detailBtn = "<a href='#' class='btn btn-dark ml-1' data-bs-toggle='modal' data-bs-target='#exampleModal'><i class='fa fa-eye'></i></a>";
+                return $editBtn.$deleteBtn;
             })
             ->addColumn('status_follow_up', function($query){
                 $belumDikirim = "<i class='badge badge-danger'>Belum Dikirim</i>";
