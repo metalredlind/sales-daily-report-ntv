@@ -45,7 +45,18 @@
                                     <label>Jenis Paket</label>
                                     <input type="text" class="form-control" name="jenis_paket" value="{{$mediaOrder->jenis_paket}}">
                                 </div>
-
+                                <div class="form-group">
+                                    <label>Status Paket</label>
+                                    <select id="inputState" class="form-control wsus__input" name="status_paket">
+                                        <option {{$mediaOrder->status_paket == 'ongoing' ? 'selected': ''}} value="ongoing">Ongoing</option>
+                                        <option {{$mediaOrder->status_paket == 'deal' ? 'selected': ''}} value="deal">Deal</option>
+                                        <option {{$mediaOrder->status_paket == 'nodeal' ? 'selected': ''}} value="nodeal">No Deal</option>
+                                    </select>
+                                </div>
+                                <div class="form-group">
+                                    <label>Tim</label>
+                                    <input type="text" class="form-control" name="user_team" value="{{$mediaOrder->user_team}}">
+                                </div>
                                 <div class="card-footer text-right">
                                     <button class="btn btn-primary mr-1" type="submit">Update</button>
                                 </div>

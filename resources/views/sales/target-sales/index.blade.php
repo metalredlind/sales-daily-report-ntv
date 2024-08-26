@@ -30,9 +30,9 @@
                             </select>
                         </h4>
                         <div class="card-header-action">
-                            <a href="{{ route('sales.target-sales.create') }}" class="btn btn-primary">
+                            {{-- <a href="{{ route('sales.target-sales.create') }}" class="btn btn-primary">
                                 + Add New
-                            </a>
+                            </a> --}}
                         </div>
                     </div>
 
@@ -45,10 +45,9 @@
                                         <th>Team</th>
                                         <th>Nama</th>
                                         <th>Jabatan</th>
-                                        <th>Target</th>
                                         <th>Realisasi</th>
+                                        <th>Target</th>
                                         <th>Selisih/Varian</th>
-                                        <th>Action</th>
                                     </tr>
                                 </thead>
                             </table>
@@ -82,10 +81,9 @@
                 { data: 'tim', name: 'tim' },
                 { data: 'nama', name: 'nama' },
                 { data: 'jabatan', name: 'jabatan' },
-                { data: 'target', name: 'target' },
                 { data: 'realisasi', name: 'realisasi' },
+                { data: 'target', name: 'target' },
                 { data: 'selisih_varian', name: 'selisih_varian' },
-                { data: 'action', name: 'action', orderable: false, searchable: false }
             ]
         });
 

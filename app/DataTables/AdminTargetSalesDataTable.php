@@ -13,7 +13,7 @@ use Yajra\DataTables\Html\Editor\Editor;
 use Yajra\DataTables\Html\Editor\Fields;
 use Yajra\DataTables\Services\DataTable;
 
-class TargetSalesDataTable extends DataTable
+class AdminTargetSalesDataTable extends DataTable
 {
     /**
      * Build the DataTable class.
@@ -23,11 +23,11 @@ class TargetSalesDataTable extends DataTable
     public function dataTable(QueryBuilder $query): EloquentDataTable
     {
         return (new EloquentDataTable($query))
-            // ->addColumn('action', function($query){
-            //     $editBtn = "<a href='".route('sales.target-sales.edit', $query->id)."' class='btn btn-info'><i class='far fa-edit'></i></a>";
-            //     $deleteBtn = "<a href='".route('sales.target-sales.destroy', $query->id)."' class='btn btn-danger ml-1 delete-item'><i class='fas fa-trash-alt'></i></a>";
-            //     return $deleteBtn;
-            // })
+            ->addColumn('action', function($query){
+                // $editBtn = "<a href='".route('sales.target-sales.edit', $query->id)."' class='btn btn-info'><i class='far fa-edit'></i></a>";
+                $deleteBtn = "<a href='".route('admin.target-sales.destroy', $query->id)."' class='btn btn-danger ml-1 delete-item'><i class='fas fa-trash-alt'></i></a>";
+                return $deleteBtn;
+            })
             ->addColumn('target', function($query){
                 return 'Rp ' . number_format($query->target, 0, ".", ".");
             })
@@ -37,7 +37,7 @@ class TargetSalesDataTable extends DataTable
             ->addColumn('selisih_varian', function($query){
                 return 'Rp ' . number_format($query->selisih_varian, 0, ".", ".");
             })
-            //->rawColumns(['action'])
+            ->rawColumns(['action'])
             ->setRowId('id');
     }
 
@@ -69,7 +69,6 @@ class TargetSalesDataTable extends DataTable
                     ->whereYear('brand_clients.created_at', $selectedYear)
                     ->whereMonth('brand_clients.created_at', $selectedMonth);
             })
-            ->where('users.team', $user->team)  // Filter by the user's team
             ->where('target_sales.year', $selectedYear)
             ->where('target_sales.month', $selectedMonth)
             ->groupBy('target_sales.id', 'users.team', 'users.name', 'users.title', 'target_sales.target_sales');
@@ -80,7 +79,7 @@ class TargetSalesDataTable extends DataTable
     public function html(): HtmlBuilder
     {
         return $this->builder()
-                    ->setTableId('targetsales-table')
+                    ->setTableId('admintargetsales-table')
                     ->columns($this->getColumns())
                     ->minifiedAjax()
                     //->dom('Bfrtip')
@@ -122,6 +121,6 @@ class TargetSalesDataTable extends DataTable
      */
     protected function filename(): string
     {
-        return 'TargetSales_' . date('YmdHis');
+        return 'AdminTargetSales_' . date('YmdHis');
     }
 }

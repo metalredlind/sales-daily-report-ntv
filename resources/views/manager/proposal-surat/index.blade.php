@@ -14,9 +14,7 @@
                         <div class="card-header">
                             <h4>Proposal & Surat</h4>
                             <div class="card-header-action">
-                                <a href="{{ route('manager.proposal-surat.create') }}" class="btn btn-primary">
-                                    + Add New
-                                </a>
+                                
                             </div>
                         </div>
                         <div class="card-body">

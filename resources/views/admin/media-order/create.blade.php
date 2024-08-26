@@ -44,7 +44,18 @@
                                     <label>Jenis Paket</label>
                                     <input type="text" class="form-control" name="jenis_paket" value="{{old('jenis_paket')}}">
                                 </div>
-
+                                <div class="form-group">
+                                    <label>Status Paket</label>
+                                    <select id="inputState" class="form-control wsus__input" name="status_paket">
+                                        <option value="ongoing">Ongoing</option>
+                                        <option value="deal">Deal</option>
+                                        <option value="nodeal">No Deal</option>
+                                    </select>
+                                </div>
+                                <div class="form-group">
+                                    <label>Tim</label>
+                                    <input type="text" class="form-control" name="user_team" value="{{old('user_team')}}">
+                                </div>
                                 <div class="card-footer text-right">
                                     <button class="btn btn-primary mr-1" type="submit">Tambah</button>
                                 </div>

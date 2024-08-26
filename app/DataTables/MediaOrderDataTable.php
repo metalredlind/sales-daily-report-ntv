@@ -25,8 +25,8 @@ class MediaOrderDataTable extends DataTable
         ->addColumn('action', function($query){
             $editBtn = "<a href='".route('admin.media-order.edit', $query->id)."' class='btn btn-info'><i class='far fa-edit'></i></a>";
             $deleteBtn = "<a href='".route('admin.media-order.destroy', $query->id)."' class='btn btn-danger ml-1 delete-item'><i class='fas fa-trash-alt'></i></a>";
-            $detailBtn = "<a href='#' class='btn btn-dark ml-1' data-bs-toggle='modal' data-bs-target='#exampleModal'><i class='fa fa-eye'></i></a>";
-            return $editBtn.$deleteBtn.$detailBtn;
+            //$detailBtn = "<a href='#' class='btn btn-dark ml-1' data-bs-toggle='modal' data-bs-target='#exampleModal'><i class='fa fa-eye'></i></a>";
+            return $editBtn.$deleteBtn;
         })
         ->addColumn('nominal_paket', function($query){
             return 'Rp ' . number_format($query->nominal_paket, 0, ".", ".");;
@@ -34,7 +34,19 @@ class MediaOrderDataTable extends DataTable
         ->addColumn('tanggal_dibuat', function($query){
             return date('d F Y', strtotime($query->created_at));
         })
-        ->rawColumns(['action', 'nominal_paket'])
+        ->addColumn('status_paket', function($query){
+            $onGoing = "<i class='badge badge-secondary'>On Going</i>";
+            $deal = "<i class='badge badge-success'>Deal</i>";
+            $noDeal = "<i class='badge badge-danger'>No Deal</i>";
+            if($query->status_paket == 'ongoing'){
+                return $onGoing;
+            } elseif($query->status_paket == 'deal') {
+                return $deal;
+            } elseif($query->status_paket == 'nodeal') {
+                return $noDeal;
+            };
+        })
+        ->rawColumns(['action', 'nominal_paket','status_paket'])
         ->setRowId('id');
     }
 
@@ -88,11 +100,12 @@ class MediaOrderDataTable extends DataTable
             Column::make('tanggal_paket'),
             Column::make('nominal_paket'),
             Column::make('jenis_paket'),
+            Column::make('status_paket'),
             Column::make('tanggal_dibuat'),  // Add created_at column
             Column::computed('action')
                   ->exportable(false)
                   ->printable(false)
-                  ->width(180)
+                  ->width(120)
                   ->addClass('text-center'),
         ];
     }

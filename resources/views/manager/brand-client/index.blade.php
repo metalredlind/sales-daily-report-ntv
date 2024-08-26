@@ -13,9 +13,7 @@
                         <div class="card-header">
                             <h4>Brand / Klien</h4>
                             <div class="card-header-action">
-                                <a href="{{ route('manager.brand-client.create') }}" class="btn btn-primary">
-                                    + Add New
-                                </a>
+                                
                             </div>
                         </div>
                         <div class="card-body">
