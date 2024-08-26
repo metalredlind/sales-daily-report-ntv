@@ -35,7 +35,7 @@ class SalesController extends Controller
             ->sum('realisasi_revenue');
 
         // Calculate the difference
-        $selisih_varian = $target - $realisasi;
+        $selisih_varian = $realisasi - $target;
 
         // Team data
         $team = $user->team;
@@ -53,7 +53,7 @@ class SalesController extends Controller
             ->whereYear('created_at', $currentYear)
             ->sum('realisasi_revenue');
 
-        $selisih_varian_team = $target_team - $realisasi_team;
+        $selisih_varian_team = $realisasi_team - $target_team;
 
         // Pass the data to the view
         return view('sales.dashboard', compact('target', 'realisasi', 'selisih_varian', 'target_team', 'realisasi_team', 'selisih_varian_team'));
