@@ -20,7 +20,7 @@
                             </div>
                         </div>
                         <div class="card-body">
-                            <div class="col-6">
+                            <div class="col-3">
                                 <!-- Date Range Picker Input -->
                                 <label>Date Range Picker</label>
                                 <div class="input-group">

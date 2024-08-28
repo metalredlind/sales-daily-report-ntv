@@ -19,11 +19,10 @@
                             </div>
                         </div>
                         <div class="card-body">
-                            <div class="col-6">
+                            <div class="col-3">
                                 <!-- Date Range Picker Input -->
                                 <div class="mb-3">
-                                    <input type="text" id="daterange" class="form-control"
-                                        placeholder="Select Date Range">
+                                    <input type="text" id="daterange" class="form-control" placeholder="Select Date Range">
                                 </div>
                             </div>
                             {{ $dataTable->table() }}

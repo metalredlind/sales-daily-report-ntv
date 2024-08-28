@@ -92,11 +92,6 @@ class SalesMediaOrderDataTable extends DataTable
             Column::make('nominal_paket'),
             Column::make('jenis_paket'),
             Column::make('tanggal_dibuat'),  // Add created_at column
-            Column::computed('action')
-                  ->exportable(false)
-                  ->printable(false)
-                  ->width(180)
-                  ->addClass('text-center'),
         ];
     }
 
