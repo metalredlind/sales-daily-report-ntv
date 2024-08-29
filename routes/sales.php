@@ -37,5 +37,3 @@ Route::get('brand-client-data', [SalesBrandClientController::class, 'getData'])-
 Route::get('daily-report-data', [SalesDailyReportController::class, 'getData'])->name('daily-report.data');
 Route::get('proposal-surat-data', [SalesProposalSuratController::class, 'getData'])->name('proposal-surat.data');
 Route::get('media-order-data', [SalesMediaOrderController::class, 'getData'])->name('media-order.data');
-
-Route::get('daily-report/brand-client/{id}', [SalesDailyReportController::class, 'getBrandClient']);

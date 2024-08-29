@@ -133,15 +133,4 @@ class SalesDailyReportController extends Controller
     {
         return $dataTable->ajax();
     }
-
-    public function getBrandClient($id)
-{
-    $brandClient = BrandClient::find($id);
-
-    return response()->json([
-        'pic_brand_nama' => $brandClient->pic_brand_nama,
-        'pic_brand_jabatan' => $brandClient->pic_brand_jabatan,
-        'pic_brand_telepon' => $brandClient->pic_brand_telepon,
-    ]);
-}
 }

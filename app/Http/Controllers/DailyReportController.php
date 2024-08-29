@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\DataTables\DailyReportDataTable;
+use App\Models\BrandClient;
 use App\Models\DailyReport;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -22,7 +23,8 @@ class DailyReportController extends Controller
      */
     public function create()
     {
-        return view('admin.daily-report.create');
+        $brandClients = BrandClient::all();
+        return view('admin.daily-report.create', compact('brandClients'));
     }
 
     /**
@@ -74,7 +76,8 @@ class DailyReportController extends Controller
     public function edit(string $id)
     {
         $dailyReport = DailyReport::findOrFail($id);
-        return view('admin.daily-report.edit', compact('dailyReport'));
+        $brandClients = BrandClient::all();
+        return view('admin.daily-report.edit', compact('dailyReport','brandClients'));;
     }
 
     /**
