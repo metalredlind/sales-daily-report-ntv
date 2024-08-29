@@ -34,7 +34,19 @@ class ManagerMediaOrderDataTable extends DataTable
         ->addColumn('tanggal_dibuat', function($query){
             return date('d F Y', strtotime($query->created_at));
         })
-        ->rawColumns(['action', 'nominal_paket'])
+        ->addColumn('status_paket', function($query){
+            $onGoing = "<i class='badge badge-secondary'>On Going</i>";
+            $deal = "<i class='badge badge-success'>Deal</i>";
+            $noDeal = "<i class='badge badge-danger'>No Deal</i>";
+            if($query->status_paket == 'ongoing'){
+                return $onGoing;
+            } elseif($query->status_paket == 'deal') {
+                return $deal;
+            } elseif($query->status_paket == 'nodeal') {
+                return $noDeal;
+            };
+        })
+        ->rawColumns(['action', 'nominal_paket', 'status_paket'])
         ->setRowId('id');
     }
 
@@ -90,7 +102,8 @@ class ManagerMediaOrderDataTable extends DataTable
             Column::make('nomor_paket'),
             Column::make('tanggal_paket'),
             Column::make('nominal_paket'),
-            Column::make('jenis_paket'),
+            Column::make('jenis_paket')->title('Nama Program'),
+            Column::make('status_paket'),
             Column::make('tanggal_dibuat'),  // Add created_at column
         ];
     }
