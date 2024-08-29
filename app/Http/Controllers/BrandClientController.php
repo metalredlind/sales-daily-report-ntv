@@ -76,8 +76,10 @@ class BrandClientController extends Controller
      */
     public function edit(string $id)
     {
+        $users = User::all();
+
         $brandClient = BrandClient::findOrFail($id);
-        return view('admin.brand-client.edit', compact('brandClient'));
+        return view('admin.brand-client.edit', compact('brandClient','users'));
     }
 
     /**
