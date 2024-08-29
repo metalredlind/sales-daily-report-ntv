@@ -81,7 +81,7 @@ class DailyReportDataTable extends DataTable
             Column::make('tim_bertugas'),
             Column::make('nama_brand_klien'),
             Column::make('jenis_kegiatan'),
-            Column::make('follow_up'),
+            Column::make('follow_up')->title('Keterangan'),
             Column::computed('action')
                   ->exportable(false)
                   ->printable(false)

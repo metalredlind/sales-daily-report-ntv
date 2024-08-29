@@ -63,7 +63,7 @@
                                 <input type="text" class="form-control" name="jenis_kegiatan" value="{{$dailyReport->jenis_kegiatan}}">
                             </div>
                             <div class="form-group">
-                                <label>Follow Up Lanjutan</label>
+                                <label>Keterangan</label>
                                 <input type="text" class="form-control" name="follow_up" value="{{$dailyReport->follow_up}}">
                             </div>
 
