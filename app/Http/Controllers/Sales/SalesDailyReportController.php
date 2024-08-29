@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Sales;
 
 use App\DataTables\SalesDailyReportDataTable;
 use App\Http\Controllers\Controller;
+use App\Models\BrandClient;
 use App\Models\DailyReport;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -23,7 +24,9 @@ class SalesDailyReportController extends Controller
      */
     public function create()
     {
-        return view('sales.daily-report.create');
+        $currentUserTeam = auth()->user()->team;
+        $brandClients = BrandClient::where('user_team', $currentUserTeam)->get();
+        return view('sales.daily-report.create', compact('brandClients'));
     }
 
     /**
@@ -75,7 +78,9 @@ class SalesDailyReportController extends Controller
     public function edit(string $id)
     {
         $dailyReport = DailyReport::findOrFail($id);
-        return view('sales.daily-report.edit', compact('dailyReport'));
+        $currentUserTeam = auth()->user()->team;
+        $brandClients = BrandClient::where('user_team', $currentUserTeam)->get();
+        return view('sales.daily-report.edit', compact('dailyReport','brandClients'));
     }
 
     /**
@@ -128,4 +133,15 @@ class SalesDailyReportController extends Controller
     {
         return $dataTable->ajax();
     }
+
+    public function getBrandClient($id)
+{
+    $brandClient = BrandClient::find($id);
+
+    return response()->json([
+        'pic_brand_nama' => $brandClient->pic_brand_nama,
+        'pic_brand_jabatan' => $brandClient->pic_brand_jabatan,
+        'pic_brand_telepon' => $brandClient->pic_brand_telepon,
+    ]);
+}
 }
