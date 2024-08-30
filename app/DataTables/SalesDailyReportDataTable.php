@@ -85,11 +85,11 @@ class SalesDailyReportDataTable extends DataTable
             Column::make('tim_bertugas')->title('Nama yang bertugas'),
             Column::make('nama_brand_klien'),
             Column::make('jenis_kegiatan'),
-            Column::make('follow_up'),
+            Column::make('follow_up')->title('Keterangan'),
             Column::computed('action')
                   ->exportable(false)
                   ->printable(false)
-                  ->width(180)
+                  ->width(120)
                   ->addClass('text-center'),
         ];
     }

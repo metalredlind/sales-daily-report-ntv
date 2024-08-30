@@ -78,14 +78,15 @@ class DailyReportDataTable extends DataTable
         return [
             Column::make('id'),
             Column::make('waktu'),
+            Column::make('user_team')->title('Tim'),
             Column::make('tim_bertugas'),
             Column::make('nama_brand_klien'),
             Column::make('jenis_kegiatan'),
-            Column::make('follow_up'),
+            Column::make('follow_up')->title('Keterangan'),
             Column::computed('action')
                   ->exportable(false)
                   ->printable(false)
-                  ->width(180)
+                  ->width(120)
                   ->addClass('text-center'),
         ];
     }

@@ -89,6 +89,7 @@ class ProposalSuratDataTable extends DataTable
     {
         return [
             Column::make('id'),
+            Column::make('user_team')->title('Tim'),
             Column::make('no_surat'),
             Column::make('tujuan_surat'),
             Column::make('perihal'),
@@ -97,7 +98,7 @@ class ProposalSuratDataTable extends DataTable
             Column::computed('action')
                   ->exportable(false)
                   ->printable(false)
-                  ->width(180)
+                  ->width(120)
                   ->addClass('text-center'),
         ];
     }

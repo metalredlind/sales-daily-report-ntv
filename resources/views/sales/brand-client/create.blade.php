@@ -18,15 +18,6 @@
                             <form action="{{ route('sales.brand-client.store') }}" method="POST"
                                 enctype="multipart/form-data">
                                 @csrf
-                                <div class="form-group">
-                                    <label>PIC NTV</label>
-                                    <select class="form-control" name="pic_ntv_id">
-                                        <option value="">Select PIC NTV</option>
-                                        @foreach($users as $user)
-                                            <option value="{{ $user->id }}" {{ old('pic_ntv_id') == $user->id ? 'selected' : '' }}>{{ $user->name }}</option>
-                                        @endforeach
-                                    </select>
-                                </div>
                                 <label>Brand/Client</label>
                                 <div class="form-group">
                                     <label>Jenis Industri</label>

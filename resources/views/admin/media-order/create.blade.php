@@ -3,7 +3,7 @@
 @section('content')
     <section class="section">
         <div class="section-header">
-            <h1>Create Deal Media Order</h1>
+            <h1>Create Paket</h1>
         </div>
 
         <div class="section-body">
@@ -12,7 +12,7 @@
                 <div class="col-8">
                     <div class="card">
                         <div class="card-header">
-                            <h4>Deal Media Order</h4>
+                            <h4>Paket</h4>
                         </div>
                         <div class="card-body">
                             <form action="{{ route('admin.media-order.store') }}" method="POST" enctype="multipart/form-data">

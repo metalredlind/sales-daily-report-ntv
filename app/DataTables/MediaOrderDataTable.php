@@ -95,11 +95,11 @@ class MediaOrderDataTable extends DataTable
     {
         return [
             Column::make('id'),
+            Column::make('user_team')->title('Tim'),
             Column::make('klien'),
             Column::make('nomor_paket'),
             Column::make('tanggal_paket'),
             Column::make('nominal_paket'),
-            Column::make('jenis_paket'),
             Column::make('status_paket'),
             Column::make('tanggal_dibuat'),  // Add created_at column
             Column::computed('action')

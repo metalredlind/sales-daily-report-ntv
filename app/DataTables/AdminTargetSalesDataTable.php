@@ -111,7 +111,7 @@ class AdminTargetSalesDataTable extends DataTable
             Column::computed('action')
                   ->exportable(false)
                   ->printable(false)
-                  ->width(180)
+                  ->width(150)
                   ->addClass('text-center'),
         ];
     }

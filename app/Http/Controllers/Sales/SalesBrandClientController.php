@@ -36,7 +36,6 @@ class SalesBrandClientController extends Controller
     public function store(Request $request)
     {
         $request->validate([
-            'pic_ntv_id' => ['required'],
             'jenis_industri' => ['required', 'max:200'],
             'nama_brand' => ['required', 'max:200'],
             'pic_brand_nama' => ['required', 'max:200'],
@@ -48,7 +47,7 @@ class SalesBrandClientController extends Controller
 
         $brandClient = new BrandClient();
 
-        $brandClient->pic_ntv_id = $request->pic_ntv_id;
+        $brandClient->pic_ntv_id = Auth::user()->id;
         $brandClient->jenis_industri = $request->jenis_industri;
         $brandClient->nama_brand = $request->nama_brand;
         $brandClient->pic_brand_nama = $request->pic_brand_nama;
@@ -91,7 +90,6 @@ class SalesBrandClientController extends Controller
     public function update(Request $request, string $id)
     {
         $request->validate([
-            'pic_ntv_id' => ['required'],
             'jenis_industri' => ['required', 'max:200'],
             'nama_brand' => ['required', 'max:200'],
             'pic_brand_nama' => ['required', 'max:200'],
@@ -104,7 +102,7 @@ class SalesBrandClientController extends Controller
 
         $brandClient = BrandClient::findOrFail($id);
 
-        $brandClient->pic_ntv_id = $request->pic_ntv_id;
+        $brandClient->pic_ntv_id = Auth::user()->id;
         $brandClient->jenis_industri = $request->jenis_industri;
         $brandClient->nama_brand = $request->nama_brand;
         $brandClient->pic_brand_nama = $request->pic_brand_nama;
