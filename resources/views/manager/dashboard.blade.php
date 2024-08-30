@@ -1,10 +1,5 @@
 @extends('manager.layouts.master')
 @section('content')
-<style>
-    .hidden { display: none; }
-    .profit { color: green; }
-    .loss { color: red; }
-</style>
 <section class="section">
     <div class="section-header">
         <h1>Dashboard</h1>
