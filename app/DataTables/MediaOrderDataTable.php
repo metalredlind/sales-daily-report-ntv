@@ -46,6 +46,9 @@ class MediaOrderDataTable extends DataTable
                 return $noDeal;
             };
         })
+        ->addColumn('user_name', function($query){
+            return $query->userName->name ?? 'N/A';
+        })
         ->rawColumns(['action', 'nominal_paket','status_paket'])
         ->setRowId('id');
     }
@@ -96,6 +99,7 @@ class MediaOrderDataTable extends DataTable
         return [
             Column::make('id'),
             Column::make('user_team')->title('Tim'),
+            Column::make('user_nama')->title('Tim yang Bertugas'),
             Column::make('klien'),
             Column::make('nomor_paket'),
             Column::make('tanggal_paket'),

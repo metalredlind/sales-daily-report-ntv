@@ -21,7 +21,7 @@
                                 @method('PUT')
                                 <div class="form-group">
                                     <label>PIC NTV</label>
-                                    <select class="form-control" name="pic_ntv_id">
+                                    <select class="form-control" name="pic_ntv_id" disabled>
                                         <option value="">Select PIC NTV</option>
                                         @foreach($users as $user)
                                             <option value="{{ $user->id }}" {{ $brandClient->pic_ntv_id == $user->id ? 'selected' : '' }}>{{ $user->name }}</option>

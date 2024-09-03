@@ -40,6 +40,9 @@ class SalesProposalSuratDataTable extends DataTable
             ->addColumn('tanggal_dibuat', function($query){
                 return date('d F Y', strtotime($query->created_at));
             })
+            ->addColumn('user_name', function($query){
+                return $query->userName->name ?? 'N/A';
+            })
             ->rawColumns(['action','status_follow_up'])
             ->setRowId('id');
     }
@@ -92,6 +95,7 @@ class SalesProposalSuratDataTable extends DataTable
     {
         return [
             Column::make('id'),
+            Column::make('user_name')->title('Tim yang Bertugas'),
             Column::make('no_surat'),
             Column::make('tujuan_surat'),
             Column::make('perihal'),

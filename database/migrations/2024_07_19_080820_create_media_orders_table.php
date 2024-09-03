@@ -22,6 +22,9 @@ return new class extends Migration
             $table->enum('status_paket', ['ongoing','deal','nodeal'])->default('ongoing');
             $table->integer('user_team');
 
+            $table->unsignedBigInteger('user_id')->nullable(); // Foreign key to users table
+            $table->foreign('user_id')->references('id')->on('users')->onDelete('set null');
+
             $table->timestamps();
         });
     }
@@ -31,6 +34,10 @@ return new class extends Migration
      */
     public function down(): void
     {
+        Schema::table('media_orders', function (Blueprint $table) {
+            $table->dropForeign(['user_id']);
+        });
+
         Schema::dropIfExists('media_orders');
     }
 };
