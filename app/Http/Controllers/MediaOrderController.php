@@ -36,6 +36,8 @@ class MediaOrderController extends Controller
             'tanggal_paket' => ['required', 'max:100'],
             'nominal_paket' => ['required','numeric'],
             'jenis_paket' => ['required','max:200'],
+            'status_paket' => ['required'],
+            'user_team' => ['required']
         ]);
 
         $mediaOrder = new MediaOrder();
@@ -45,7 +47,8 @@ class MediaOrderController extends Controller
         $mediaOrder->tanggal_paket = $request->tanggal_paket;
         $mediaOrder->nominal_paket = $request->nominal_paket;
         $mediaOrder->jenis_paket = $request->jenis_paket;
-        $mediaOrder->user_team = Auth::user()->team;
+        $mediaOrder->status_paket = $request->status_paket;
+        $mediaOrder->user_team = $request->user_team;
 
         $mediaOrder->save();
 
@@ -82,6 +85,7 @@ class MediaOrderController extends Controller
             'tanggal_paket' => ['required', 'max:100'],
             'nominal_paket' => ['required','numeric'],
             'jenis_paket' => ['required','max:200'],
+            'status_paket' => ['required'],
         ]);
 
         $mediaOrder = MediaOrder::findOrFail($id);
@@ -91,7 +95,8 @@ class MediaOrderController extends Controller
         $mediaOrder->tanggal_paket = $request->tanggal_paket;
         $mediaOrder->nominal_paket = $request->nominal_paket;
         $mediaOrder->jenis_paket = $request->jenis_paket;
-        $mediaOrder->user_team = Auth::user()->team;
+        $mediaOrder->status_paket = $request->status_paket;
+        $mediaOrder->user_team = $request->user_team;
 
         $mediaOrder->save();
 
@@ -109,5 +114,10 @@ class MediaOrderController extends Controller
         $mediaOrder->delete();
 
         return response(['status' => 'success', 'message'=> 'Media Order has been deleted successfully']);
+    }
+
+    public function getData(MediaOrderDataTable $dataTable)
+    {
+        return $dataTable->ajax();
     }
 }

@@ -25,8 +25,8 @@ class DailyReportDataTable extends DataTable
             ->addColumn('action', function($query){
                 $editBtn = "<a href='".route('admin.daily-report.edit', $query->id)."' class='btn btn-info'><i class='far fa-edit'></i></a>";
                 $deleteBtn = "<a href='".route('admin.daily-report.destroy', $query->id)."' class='btn btn-danger ml-1 delete-item'><i class='fas fa-trash-alt'></i></a>";
-                $detailBtn = "<a href='#' class='btn btn-dark ml-1' data-bs-toggle='modal' data-bs-target='#exampleModal'><i class='fa fa-eye'></i></a>";
-                return $editBtn.$deleteBtn.$detailBtn;
+                //$detailBtn = "<a href='#' class='btn btn-dark ml-1' data-bs-toggle='modal' data-bs-target='#exampleModal'><i class='fa fa-eye'></i></a>";
+                return $editBtn.$deleteBtn;
             })
             ->rawColumns(['action'])
             ->setRowId('id');
@@ -37,7 +37,15 @@ class DailyReportDataTable extends DataTable
      */
     public function query(DailyReport $model): QueryBuilder
     {
-        return $model->newQuery();
+        $query = $model->newQuery();
+
+        if (request()->has('start_date') && request()->has('end_date')) {
+            $startDate = request('start_date') . ' 00:00:00';
+            $endDate = request('end_date') . ' 23:59:59';
+            $query->whereBetween('waktu', [$startDate, $endDate]);
+        }
+
+        return $query;
     }
 
     /**
@@ -48,9 +56,9 @@ class DailyReportDataTable extends DataTable
         return $this->builder()
                     ->setTableId('dailyreport-table')
                     ->columns($this->getColumns())
-                    ->minifiedAjax()
+                    ->minifiedAjax(route('admin.daily-report.data'))
                     //->dom('Bfrtip')
-                    ->orderBy(1)
+                    ->orderBy(0)
                     ->selectStyleSingle()
                     ->buttons([
                         Button::make('excel'),
@@ -70,14 +78,15 @@ class DailyReportDataTable extends DataTable
         return [
             Column::make('id'),
             Column::make('waktu'),
+            Column::make('user_team')->title('Tim'),
             Column::make('tim_bertugas'),
             Column::make('nama_brand_klien'),
             Column::make('jenis_kegiatan'),
-            Column::make('follow_up'),
+            Column::make('follow_up')->title('Keterangan'),
             Column::computed('action')
                   ->exportable(false)
                   ->printable(false)
-                  ->width(180)
+                  ->width(120)
                   ->addClass('text-center'),
         ];
     }

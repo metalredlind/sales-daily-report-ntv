@@ -25,8 +25,8 @@ class ProposalSuratDataTable extends DataTable
             ->addColumn('action', function($query){
                 $editBtn = "<a href='".route('admin.proposal-surat.edit', $query->id)."' class='btn btn-info'><i class='far fa-edit'></i></a>";
                 $deleteBtn = "<a href='".route('admin.proposal-surat.destroy', $query->id)."' class='btn btn-danger ml-1 delete-item'><i class='fas fa-trash-alt'></i></a>";
-                $detailBtn = "<a href='#' class='btn btn-dark ml-1' data-bs-toggle='modal' data-bs-target='#exampleModal'><i class='fa fa-eye'></i></a>";
-                return $editBtn.$deleteBtn.$detailBtn;
+                //$detailBtn = "<a href='#' class='btn btn-dark ml-1' data-bs-toggle='modal' data-bs-target='#exampleModal'><i class='fa fa-eye'></i></a>";
+                return $editBtn.$deleteBtn;
             })
             ->addColumn('status_follow_up', function($query){
                 $belumDikirim = "<i class='badge badge-danger'>Belum Dikirim</i>";
@@ -37,6 +37,12 @@ class ProposalSuratDataTable extends DataTable
                     return $belumDikirim;
                 };
             })
+            ->addColumn('tanggal_dibuat', function($query){
+                return date('d F Y', strtotime($query->created_at));
+            })
+            ->addColumn('user_name', function($query){
+                return $query->userName->name ?? 'N/A';
+            })
             ->rawColumns(['action','status_follow_up'])
             ->setRowId('id');
     }
@@ -46,7 +52,15 @@ class ProposalSuratDataTable extends DataTable
      */
     public function query(ProposalSurat $model): QueryBuilder
     {
-        return $model->newQuery();
+        $query = $model->newQuery();
+
+        if (request()->has('start_date') && request()->has('end_date')) {
+            $startDate = request('start_date') . ' 00:00:00';
+            $endDate = request('end_date') . ' 23:59:59';
+            $query->whereBetween('created_at', [$startDate, $endDate]);
+        }
+
+        return $query;
     }
 
     /**
@@ -57,9 +71,9 @@ class ProposalSuratDataTable extends DataTable
         return $this->builder()
                     ->setTableId('proposalsurat-table')
                     ->columns($this->getColumns())
-                    ->minifiedAjax()
+                    ->minifiedAjax(route('admin.proposal-surat.data'))
                     //->dom('Bfrtip')
-                    ->orderBy(1)
+                    ->orderBy(0)
                     ->selectStyleSingle()
                     ->buttons([
                         Button::make('excel'),
@@ -78,15 +92,17 @@ class ProposalSuratDataTable extends DataTable
     {
         return [
             Column::make('id'),
-            Column::make('tanggal'),
+            Column::make('user_team')->title('Tim'),
+            Column::make('user_name')->title('Tim yang Bertugas'),
             Column::make('no_surat'),
             Column::make('tujuan_surat'),
             Column::make('perihal'),
             Column::make('status_follow_up'),
+            Column::make('tanggal_dibuat'),
             Column::computed('action')
                   ->exportable(false)
                   ->printable(false)
-                  ->width(180)
+                  ->width(120)
                   ->addClass('text-center'),
         ];
     }

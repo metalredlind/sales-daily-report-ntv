@@ -3,7 +3,7 @@
 @section('content')
     <section class="section">
         <div class="section-header">
-            <h1>Create Deal Media Order</h1>
+            <h1>Create Paket</h1>
         </div>
 
         <div class="section-body">
@@ -12,7 +12,7 @@
                 <div class="col-8">
                     <div class="card">
                         <div class="card-header">
-                            <h4>Deal Media Order</h4>
+                            <h4>Paket</h4>
                         </div>
                         <div class="card-body">
                             <form action="{{ route('admin.media-order.store') }}" method="POST" enctype="multipart/form-data">
@@ -44,7 +44,18 @@
                                     <label>Jenis Paket</label>
                                     <input type="text" class="form-control" name="jenis_paket" value="{{old('jenis_paket')}}">
                                 </div>
-
+                                <div class="form-group">
+                                    <label>Status Paket</label>
+                                    <select id="inputState" class="form-control wsus__input" name="status_paket">
+                                        <option value="ongoing">Ongoing</option>
+                                        <option value="deal">Deal</option>
+                                        <option value="nodeal">No Deal</option>
+                                    </select>
+                                </div>
+                                <div class="form-group">
+                                    <label>Tim</label>
+                                    <input type="text" class="form-control" name="user_team" value="{{old('user_team')}}">
+                                </div>
                                 <div class="card-footer text-right">
                                     <button class="btn btn-primary mr-1" type="submit">Tambah</button>
                                 </div>

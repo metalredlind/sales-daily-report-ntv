@@ -2,8 +2,9 @@
 
 namespace App\Http\Controllers;
 
-use App\DataTables\TargetSalesDataTable;
+use App\DataTables\AdminTargetSalesDataTable;
 use App\Models\TargetSales;
+use App\Models\User;
 use Illuminate\Http\Request;
 
 class TargetSalesController extends Controller
@@ -11,9 +12,9 @@ class TargetSalesController extends Controller
     /**
      * Display a listing of the resource.
      */
-    public function index()
+    public function index(AdminTargetSalesDataTable $dataTable)
     {
-        return view('admin.target-sales.index');
+        return $dataTable->render('admin.target-sales.index');
     }
 
     /**
@@ -21,7 +22,9 @@ class TargetSalesController extends Controller
      */
     public function create()
     {
-        return view('admin.target-sales.create');
+        $users = User::all();
+
+        return view('admin.target-sales.create', compact('users'));
     }
 
     /**
@@ -29,7 +32,21 @@ class TargetSalesController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $request->validate([
+            'user_sales_id' => 'required|exists:users,id',
+            'target_sales' => 'required|numeric',
+            'month' => 'required|digits:2',
+            'year' => 'required|digits:4',
+        ]);
+
+        $targetSales = new TargetSales();
+        $targetSales->user_sales_id = $request->user_sales_id;
+        $targetSales->target_sales = $request->target_sales;
+        $targetSales->month = $request->month;
+        $targetSales->year = $request->year;
+        $targetSales->save();
+
+        return redirect()->route('admin.target-sales.index')->with('success', 'Target Sales created successfully.');
     }
 
     /**
@@ -45,7 +62,7 @@ class TargetSalesController extends Controller
      */
     public function edit(string $id)
     {
-        //
+        return view('admin.target-sales.edit');
     }
 
     /**
@@ -61,6 +78,9 @@ class TargetSalesController extends Controller
      */
     public function destroy(string $id)
     {
-        //
+        $targetSales = TargetSales::findOrFail($id);
+        $targetSales->delete();
+
+        return response(['status' => 'success', 'message'=> 'Target has been deleted successfully']);
     }
 }

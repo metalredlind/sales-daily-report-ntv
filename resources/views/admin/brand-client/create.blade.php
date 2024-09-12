@@ -20,7 +20,12 @@
                                 @csrf
                                 <div class="form-group">
                                     <label>PIC NTV</label>
-                                    <input type="text" class="form-control" name="pic_ntv" value="{{old('pic_ntv')}}">
+                                    <select class="form-control" name="pic_ntv_id">
+                                        <option value="">Select PIC NTV</option>
+                                        @foreach($users as $user)
+                                            <option value="{{ $user->id }}" {{ old('pic_ntv_id') == $user->id ? 'selected' : '' }}>{{ $user->name }}</option>
+                                        @endforeach
+                                    </select>
                                 </div>
                                 <label>Brand/Client</label>
                                 <div class="form-group">
@@ -52,7 +57,18 @@
                                                 Rp
                                             </div>
                                         </div>
-                                        <input type="text" class="form-control" name="proyeksi_revenue" value="{{old('proyeksi_revenue')}}">
+                                        <input type="numeric" class="form-control" name="proyeksi_revenue" value="{{old('proyeksi_revenue')}}">
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label>Realisasi</label>
+                                    <div class="input-group">
+                                        <div class="input-group-prepend">
+                                            <div class="input-group-text">
+                                                Rp
+                                            </div>
+                                        </div>
+                                        <input type="numeric" disabled class="form-control" name="realisasi_revenue" value="0">
                                     </div>
                                 </div>
                                 <div class="form-group">

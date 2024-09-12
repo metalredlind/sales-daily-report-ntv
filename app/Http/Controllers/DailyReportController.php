@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\DataTables\DailyReportDataTable;
+use App\Models\BrandClient;
 use App\Models\DailyReport;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -22,7 +23,8 @@ class DailyReportController extends Controller
      */
     public function create()
     {
-        return view('admin.daily-report.create');
+        $brandClients = BrandClient::all();
+        return view('admin.daily-report.create', compact('brandClients'));
     }
 
     /**
@@ -33,10 +35,10 @@ class DailyReportController extends Controller
         $request->validate([
             'waktu' => ['required'],
             'tim_bertugas' => ['required', 'max:200'],
-            'nama_brand_klien' => ['max:200'],
-            'lokasi_pertemuan' => ['max:200'],
-            'nama_klien' => ['max:200'],
-            'nomor_telepon' => ['max:200'],
+            'nama_brand_klien' => ['required','max:200'],
+            'lokasi_pertemuan' => ['required','max:200'],
+            'nama_klien' => ['required','max:200'],
+            'nomor_telepon' => ['required','max:200'],
             'jenis_kegiatan' => ['required', 'max:200'],
             'follow_up' => ['required', 'max:200'],
         ]);
@@ -74,7 +76,8 @@ class DailyReportController extends Controller
     public function edit(string $id)
     {
         $dailyReport = DailyReport::findOrFail($id);
-        return view('admin.daily-report.edit', compact('dailyReport'));
+        $brandClients = BrandClient::all();
+        return view('admin.daily-report.edit', compact('dailyReport','brandClients'));;
     }
 
     /**
@@ -121,5 +124,10 @@ class DailyReportController extends Controller
         $dailyReport->delete();
 
         return response(['status' => 'success', 'message'=> 'Daily Report has been deleted successfully']);
+    }
+
+    public function getData(DailyReportDataTable $dataTable)
+    {
+        return $dataTable->ajax();
     }
 }
