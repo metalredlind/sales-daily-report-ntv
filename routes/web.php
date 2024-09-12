@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\Backend\AdminController;
 use App\Http\Controllers\Backend\ManagerController;
+use App\Http\Controllers\Backend\SalesController;
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 
@@ -20,8 +21,15 @@ Route::get('/', function () {
     return view('auth.login');
 });
 
-
 Route::get('/dashboard', function () {
+    $user = auth()->user();
+    if ($user->role === 'admin') {
+        return redirect()->route('admin.dashboard');
+    } elseif ($user->role === 'manager') {
+        return redirect()->route('manager.dashboard');
+    } elseif ($user->role === 'sales') {
+        return redirect()->route('sales.dashboard');
+    }
     return view('403');
 })->middleware(['auth', 'verified'])->name('dashboard');
 
