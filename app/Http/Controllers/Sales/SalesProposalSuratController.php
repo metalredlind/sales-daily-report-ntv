@@ -45,6 +45,7 @@ class SalesProposalSuratController extends Controller
         $proposalSurat->perihal = $request->perihal;
         $proposalSurat->status_follow_up = $request->status_follow_up;
         $proposalSurat->user_team = Auth::user()->team;
+        $proposalSurat->user_id = Auth::user()->id;
 
         $proposalSurat->save();
 

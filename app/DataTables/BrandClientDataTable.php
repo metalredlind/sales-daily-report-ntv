@@ -74,6 +74,7 @@ class BrandClientDataTable extends DataTable
         return [
             Column::make('id'),
             Column::make('pic_ntv'),
+            Column::make('user_team')->title('Tim'),
             Column::make('jenis_industri'),
             Column::make('nama_brand'),
             Column::make('proyeksi_revenue'),

@@ -46,6 +46,7 @@ class SalesMediaOrderController extends Controller
         $mediaOrder->tanggal_paket = $request->tanggal_paket;
         $mediaOrder->nominal_paket = $request->nominal_paket;
         $mediaOrder->jenis_paket = $request->jenis_paket;
+        $mediaOrder->user_id = Auth::user()->id;
         $mediaOrder->user_team = Auth::user()->team;
 
         $mediaOrder->save();

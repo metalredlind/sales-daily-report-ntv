@@ -20,6 +20,9 @@ return new class extends Migration
             $table->boolean('status_follow_up');
             $table->integer('user_team');
 
+            $table->unsignedBigInteger('user_id')->nullable(); // Foreign key to users table
+            $table->foreign('user_id')->references('id')->on('users')->onDelete('set null');
+
             $table->timestamps();
         });
     }
@@ -29,6 +32,10 @@ return new class extends Migration
      */
     public function down(): void
     {
+        Schema::table('proposal_surats', function (Blueprint $table) {
+            $table->dropForeign(['user_id']);
+        });
+
         Schema::dropIfExists('proposal_surats');
     }
 };
